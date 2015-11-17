@@ -13,9 +13,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'NerdController'
 		})
 
-		.when('/geeks', {
-			templateUrl: 'views/geek.html',
-			controller: 'GeekController'	
+		.when('/sandbox', {
+			templateUrl: 'views/sandbox.html',
+			controller: 'SandboxController'	
 		});
 
 	$locationProvider.html5Mode(true);
