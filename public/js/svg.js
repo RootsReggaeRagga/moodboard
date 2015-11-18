@@ -75,9 +75,12 @@ function doload(u) {
     document.getElementById("background-rect").addEventListener("mouseup", onMouseUp, false);
 }
 
-function isImageAccessible(url) {
-    return false;
-} 
+function isImageAccessible(image_url){
+    var http = new XMLHttpRequest();
+    http.open('HEAD', image_url, false);
+    http.send();
+    return http.status != 404;
+}
 
 function isBrowserSupported() {
     var isChromium = window.chrome;
