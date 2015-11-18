@@ -15,4 +15,4 @@ npm-debug.log
 node_modules
 
 public/libs
-config\db.js
+config/mongodb_config.js

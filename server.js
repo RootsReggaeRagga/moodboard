@@ -8,7 +8,7 @@ var methodOverride = require('method-override');
 // configuration ===========================================
 	
 // config files
-var db = require('./config/db');
+var db = require('./config/mongodb_config');
 
 var port = process.env.PORT || 8080; // set our port
 
