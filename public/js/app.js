@@ -1,1 +1,4 @@
-angular.module('moodboardApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'NerdService', 'SandboxCtrl', 'SandboxService']);
+angular.module('moodboardApp', ['ngRoute', 'appRoutes', 'HomeCtrl',
+		'SandboxCtrl', 'SandboxService',
+		'CustomizeCtrl', 'CustomizeService'
+	]);

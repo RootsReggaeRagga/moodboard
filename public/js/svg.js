@@ -75,11 +75,16 @@ function doload(u) {
     document.getElementById("background-rect").addEventListener("mouseup", onMouseUp, false);
 }
 
-function isImageAccessible(image_url){
-    var http = new XMLHttpRequest();
-    http.open('HEAD', image_url, false);
-    http.send();
-    return http.status != 404;
+function isImageAccessible(image_url) {
+    try {
+        var http = new XMLHttpRequest();
+        http.open('HEAD', image_url, false);
+        http.send();
+        return http.status != 404;
+    } catch (e) {
+        console.error('Error while loading an image : ' + e);
+        return false;
+    }
 }
 
 function isBrowserSupported() {

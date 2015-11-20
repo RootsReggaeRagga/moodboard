@@ -5,12 +5,12 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 		// home page
 		.when('/', {
 			templateUrl: 'views/home.html',
-			controller: 'MainController'
+			controller: 'HomeController'
 		})
 
 		.when('/nerds', {
-			templateUrl: 'views/nerd.html',
-			controller: 'NerdController'
+			templateUrl: 'views/customize.html',
+			controller: 'CustomizeController'
 		})
 
 		.when('/sandbox', {
