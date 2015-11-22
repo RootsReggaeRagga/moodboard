@@ -8,14 +8,14 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'HomeController'
 		})
 
-		.when('/nerds', {
-			templateUrl: 'views/customize.html',
-			controller: 'CustomizeController'
-		})
-
 		.when('/sandbox', {
 			templateUrl: 'views/sandbox.html',
 			controller: 'SandboxController'	
+		})
+
+		.when('/customize', {
+			templateUrl: 'views/customize.html',
+			controller: 'CustomizeController'
 		});
 
 	$locationProvider.html5Mode(true);

@@ -1,6 +1,6 @@
 const SVG = "http://www.w3.org/2000/svg";
 const XLINK = "http://www.w3.org/1999/xlink";
-const hotspot = "rgba(0,200,200,0.3)";
+const hotspot = "rgba(110,100,100,0.15)";
 var r2d = 360.0 / (2.0 * Math.PI);
 var gCanvas = null;
 var currentTransform = null;
@@ -77,12 +77,12 @@ function doload(u) {
 
 function isImageAccessible(image_url) {
     try {
-        var http = new XMLHttpRequest();
+         var http = new XMLHttpRequest();
         http.open('HEAD', image_url, false);
         http.send();
-        return http.status != 404;
+        return http.status != 404;   
     } catch (e) {
-        console.error('Error while loading an image : ' + e);
+        console.error('Image @' + image_url + ' is not accessible.');
         return false;
     }
 }
