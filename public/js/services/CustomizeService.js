@@ -1,5 +1,7 @@
-angular.module('CustomizeService', []).factory('Customize', ['$http', function($http) {
-
-	
-
+angular.module('CustomizeService', []).factory('CustomizeSrv', ['$http', function($http) {
+	return {
+		getPageName: function() {
+			return 'Customization';
+		}
+	};
 }]);
