@@ -7,3 +7,9 @@ Porting in progress...
 2. Install bower dependencies `bower install`
 3. Start up the server: `node server.js`
 4. View in browser at http://localhost:8080
+
+## Documentation / Quick links
+
+https://scotch.io/tutorials/setting-up-a-mean-stack-single-page-application  
+https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4  
+
