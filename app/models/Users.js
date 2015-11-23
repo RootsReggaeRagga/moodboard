@@ -1,14 +1,25 @@
 // grab the mongoose module
 var mongoose = require('mongoose');
-/*
-// define our User model
-var usersSchema = new mongoose.Schema({
-  firstname: { type: String },	
-  lastname: String,
-  username: String,
-  password: String
+var Schema = mongoose.Schema;
+
+// create a schema
+var userSchema = new Schema({
+  name: String,
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  admin: Boolean,
+  location: String,
+  meta: {
+    age: Number,
+    website: String
+  },
+  created_at: Date,
+  updated_at: Date
 });
 
-// module.exports allows us to pass this to other files when it is called
-module.exports = mongoose.model('Users', usersSchema});
-*/
+// the schema is useless so far
+// we need to create a model using it
+var User = mongoose.model('User', userSchema);
+
+// make this available to our users in our Node applications
+module.exports = User;
