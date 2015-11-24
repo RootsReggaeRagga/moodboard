@@ -2,9 +2,12 @@ module.exports = function(app) {
 	var mongoose = require('mongoose');
 
 	// **************************** MODELS ****************************
-	var Users = mongoose.model('Users', {
+	var users = mongoose.model('users', {
+	    firstname : String, 
+	    lastname : String,
+	    email : String, 
 	    username : String, 
-	    password : String
+	    password: String
 	});
 
 	// server routes ===========================================================
@@ -12,21 +15,35 @@ module.exports = function(app) {
 	// authentication routes
 
 	// **************************** FRONTEND **************************
-
-	// Users
-	app.get('/api/users', function(req, res) {
-        // use mongoose to get all todos in the database
-        Users.find(function(err, todos) {
-            // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+	// GET
+	// All users
+	app.get('/api/v1/users', function(req, res) {
+        users.find(function(err, u) {
             if (err)
-                res.send(err)
-            res.json(todos); // return all todos in JSON format
+                res.send(err);
+            res.json(u);
         });
+    });
+
+	// GET
+	// Specific user
+	app.get('/api/v1/users/:username', function(req, res) {
+		var username = req.params.username;
+        users.findOne({'username': username}, function(err, u){
+            if (err)
+                res.send(err);
+            res.json(u);
+		});
     });
     
 	// route to handle all angular requests
-	app.get('*', function(req, res) {
+	app.get('/', function(req, res) {
 		res.sendfile('./public/index.html');
+	});
+
+	// Route to 404 page
+	app.get('*', function(req, res) {
+		res.sendfile('./public/error/404.html');
 	});
 
 };
