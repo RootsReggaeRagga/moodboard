@@ -42,8 +42,8 @@ module.exports = function(app) {
 	});
 
 	// Route to 404 page
-	app.get('*', function(req, res) {
+	/*app.get('*', function(req, res) {
 		res.sendfile('./public/error/404.html');
-	});
+	});*/
 
 };
