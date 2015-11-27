@@ -55,3 +55,8 @@ function getJSONFile(user) {
     });
     return d;
 }
+
+function isHexaColor(sNum) {
+	var color = sNum.substring(1, sNum.length);
+  	return (typeof color === "string") && color.length === 6 && ! isNaN(parseInt(color, 16));
+}
