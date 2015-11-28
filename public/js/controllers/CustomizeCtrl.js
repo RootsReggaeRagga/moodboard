@@ -1,21 +1,16 @@
 angular.module('CustomizeCtrl', []).controller('CustomizeController', function($scope, $rootScope, CustomizeSrv) {
 
 	// --------------------------- APPLY USER'S VALUES --------------------------- //
+	// Retrieve user data
+  applyUserInterfaceStyle($rootScope.userData);
 
-	// $rootScope.user ...
 	$scope.customize = {
-		backgroundcolor:'#90C3D4',
-		actionbarcolor:'#77HU00',
-		edgeofpictures:'#67HY65'
+		backgroundcolor:$rootScope.userData.apparences[0].backgroundcolor,
+		actionbarcolor:$rootScope.userData.apparences[0].actionbarcolor,
+		edgeofpictures:$rootScope.userData.apparences[0].edgeofpictures
 	};
 
-	// Apply user's background color
-	// document.getElementById('mainView').style.background = $rootScope.user ...;
-
-	var response = CustomizeSrv.getPageName();
-
 	// --------------------------- FUNCTIONS --------------------------- // 
-
 	$scope.saveChanges = function() {
     	console.log('form values : ' + $scope.customize.backgroundcolor);
     	console.log('form values : ' + $scope.customize.actionbarcolor);

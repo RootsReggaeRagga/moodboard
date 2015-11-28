@@ -60,3 +60,13 @@ function isHexaColor(sNum) {
 	var color = sNum.substring(1, sNum.length);
   	return (typeof color === "string") && color.length === 6 && ! isNaN(parseInt(color, 16));
 }
+
+function applyUserInterfaceStyle(userData) {
+	document.querySelector(".mdl-layout__content").style.background = userData.apparences[0].backgroundcolor;
+  	document.querySelector(".mdl-layout__header").style.background = userData.apparences[0].actionbarcolor;
+}
+
+function applyDefaultInterfaceStyle() {
+	document.querySelector(".mdl-layout__content").style.background = '#2e3764';
+  	document.querySelector(".mdl-layout__header").style.background = '#2e3764';
+}

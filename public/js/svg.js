@@ -9,25 +9,19 @@ var gCanvasHeight = null;
 var images = [];
 var links = [];
 var authentifiedUser = "joeybronner";
-var user = "joeybronner";
 var invalid_img = 'img/invalid_img.png';
 var backgroundcolor;
 var db;
 
-function doload(u) {
+function doload(userData) {
 
     // Check if Chrome or Safari browser
     if (!isBrowserSupported())
         return;
 
-    document.getElementById('page-title-username').innerHTML = u.toUpperCase();
+    var u = userData._username.toUpperCase();
+    document.getElementById('page-title-username').innerHTML = u;
 
-    if (u=='' || u==undefined)
-        u=user;
-    else
-        user=u;
-
-    var userData = getJSONFile(user);
     images = getImagesFromUserJsonData(userData);
     links = getLinksFromUserJsonData(userData);
     applySandboxBackgroundColor(userData);
@@ -44,7 +38,7 @@ function doload(u) {
         var img = new Image();
 
         // If image is not accessible or link broken, use a default image :/
-        images[k] = isImageAccessible(images[k]) ? images[k] : invalid_img;
+        //simages[k] = isImageAccessible(images[k]) ? images[k] : invalid_img;
 
         // do some hackyness here to get the correct variables
         // to the function

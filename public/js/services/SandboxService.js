@@ -12,7 +12,6 @@ angular.module('SandboxService', []).factory('SandboxSrv', ['$http', function($h
 
         // call to get data a user
         getUserData : function(username) {
-        	console.log('searching for ' + username);
             return $http.get('/api/v1/users/' + username + '/data');
         }
     };
