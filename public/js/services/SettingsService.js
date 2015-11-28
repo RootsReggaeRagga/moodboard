@@ -1,7 +1,7 @@
-angular.module('CustomizeService', []).factory('CustomizeSrv', ['$http', function($http) {
+angular.module('SettingsService', []).factory('SettingsSrv', ['$http', function($http) {
 	return {
 		getPageName: function() {
-			return 'Customization';
+			return 'Settings';
 		},
 
 		/*

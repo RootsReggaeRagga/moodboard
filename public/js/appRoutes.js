@@ -8,9 +8,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/sandbox.html',
 			controller: 'SandboxController'	
 		})
-		.when('/customize', {
-			templateUrl: 'views/customize.html',
-			controller: 'CustomizeController'
+		.when('/settings', {
+			templateUrl: 'views/settings.html',
+			controller: 'SettingsController'
 		});
 	$locationProvider.html5Mode(true);
 }]);

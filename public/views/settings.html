@@ -1,0 +1,55 @@
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--12-col" style="text-align: center;">
+		<form>
+			<!-- Apparences -->
+		  	<h4>Colors</h4>
+		  	<!-- Background color -->
+		  	<p>
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input ng-model="customize.backgroundcolor" ng-change="updateBackgroundColor()" class="mdl-textfield__input" type="text" style="text-align:right;"/>
+			    <label class="mdl-textfield__label">Background color</label>
+			  </div>
+		    </p>
+		    <!-- Actionbar color -->
+		    <p>
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input ng-model="customize.actionbarcolor" class="mdl-textfield__input" type="text" style="text-align:right;"/>
+			    <label class="mdl-textfield__label">Actionbar color</label>
+			  </div>
+		    </p>
+		    <!-- Edge of pictures -->
+		    <p>
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input ng-model="customize.edgeofpictures" class="mdl-textfield__input" type="text" style="text-align:right;"/>
+			    <label class="mdl-textfield__label">Edge of pictures</label>
+			  </div>
+		    </p>
+		    
+		    <!-- Private / Public -->
+		    <h4 id="privacy-title">Privacy</h4>
+			<div class="snippet-demo">
+	            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded" id="switch-privacy" data-upgraded=",MaterialSwitch,MaterialRipple">
+				  	<input type="checkbox" class="mdl-switch__input" checked="">
+				  	<span class="mdl-switch__label"></span>
+					<div class="mdl-switch__track" ng-click="switchPrivacy()"></div>
+					<div class="mdl-switch__thumb" ng-click="switchPrivacy()">
+						<span class="mdl-switch__focus-helper"></span>
+					</div>
+				</label>
+	          <div id="privacy-value" class="snippet-caption">
+          		{{ privacy }}
+        	  </div>
+	        </div>
+		</form>
+	</div>
+	<div class="mdl-cell mdl-cell--12-col" style="text-align: center;">
+		<!-- Bottom buttons to save changes -->
+		<button class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="applyDefaultValues()">
+	  		Apply default values
+	  	</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="saveChanges()">
+        	Save
+        </button>
+	</div>
+</div>
+

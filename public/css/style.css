@@ -88,6 +88,10 @@ a.mdl-badge {
   box-sizing: border-box;
 }
 
+.mdl-switch {
+  width: auto;
+}
+
 /* Inputs */
 .mdl-textfield__input {
   border-bottom: 0px;

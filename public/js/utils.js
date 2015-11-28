@@ -5,7 +5,7 @@ function searchUser(e) {
         return false;
     }
 }
-
+/*
 function changeSection(section) {
 	var sections = ['myboard', 'friends', 'random', 'customize'];
 	for (var s in sections) {
@@ -31,7 +31,7 @@ function changeSection(section) {
 
 	// Hide left panel
 	document.getElementById('left-panel').className = document.getElementById('left-panel').className.replace(' is-visible', '');
-}
+}*/
 
 function loadApparencePanel() {
 	// Load user data
@@ -69,4 +69,8 @@ function applyUserInterfaceStyle(userData) {
 function applyDefaultInterfaceStyle() {
 	document.querySelector(".mdl-layout__content").style.background = '#2e3764';
   	document.querySelector(".mdl-layout__header").style.background = '#2e3764';
+}
+
+function hasClass(element, cls) {
+    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
 }
