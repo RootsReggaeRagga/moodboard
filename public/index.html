@@ -44,6 +44,7 @@
 	        </a>
 	        <span id="page-title-username" class="mdl-layout-title-mini"></span>
 	        <div class="mdl-layout-spacer"></div>
+	        <!-- (T) Search a user -->
 	        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
 	          <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
 	            <i class="material-icons">search</i>
@@ -52,7 +53,16 @@
 	            <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp" onkeypress="return searchUser(event)"/>
 	          </div>
 	        </div>
-	        <nav class="mdl-navigation mdl-layout--large-screen-only" style="margin-left:30px">
+			<!-- (+) Add an element to UI -->
+			<button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon mdl-text" style="margin-left:30px; top:-3px;">
+			  <i class="material-icons">add</i>
+			</button>
+			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
+			  <li class="mdl-menu__item">Add a post-it</li>
+			  <li disabled class="mdl-menu__item">Add an element with URL</li>
+			</ul>
+			<!-- (X) Notifications -->
+			<nav class="mdl-navigation mdl-layout--large-screen-only" style="margin-left:30px">
 	          <a class="mdl-badge" data-badge="4" href="">Mood</a>
 	        </nav>
 	      </div>
