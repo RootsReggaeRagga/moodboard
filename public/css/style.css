@@ -95,12 +95,20 @@ a.mdl-badge {
 }
 
 .mdl-switch__track {
-  background:gray;
+  background:#cccccc;
+}
+
+.mdl-switch.is-checked .mdl-switch__track {
+    background: rgba(204,204,204, 0.5);
 }
 
 /* Inputs */
 .mdl-textfield__input {
   border-bottom: 0px;
+}
+
+.mdl-uppercase {
+  text-transform: uppercase;
 }
 
 /* Cards */
