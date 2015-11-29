@@ -2,7 +2,7 @@ angular.module('SettingsCtrl', []).controller('SettingsController', function($sc
 
 	 // --------------------------- APPLY USER'S VALUES --------------------------- //
 	 // Retrieve user data
-    applyUserInterfaceStyle($rootScope.userData);
+   applyUserInterfaceStyle($rootScope.userData);
 
 	 $scope.customize = {
 		  backgroundcolor:$rootScope.userData.apparences[0].backgroundcolor,
@@ -10,7 +10,18 @@ angular.module('SettingsCtrl', []).controller('SettingsController', function($sc
 	   	edgeofpictures:$rootScope.userData.apparences[0].edgeofpictures
 	 };
 
-   $scope.privacy = 'Public';
+   $scope.privacy = capitalizeFirstLetter($rootScope.userData.settings[0].privacy);
+   var switchPrivacy = document.getElementById('switch-privacy');
+   switch($scope.privacy) {
+      case 'Public':
+        if (hasClass(switchPrivacy, 'is-checked'))
+            switchPrivacy.classList.remove('is-checked');
+            break;
+      case 'Private':
+        if (!hasClass(switchPrivacy, 'is-checked'))
+            switchPrivacy.classList.add('is-checked');
+            break;
+   }
 
 	 // --------------------------- FUNCTIONS --------------------------- // 
 	 $scope.saveChanges = function() {
@@ -40,7 +51,6 @@ angular.module('SettingsCtrl', []).controller('SettingsController', function($sc
         switchPrivacy.classList.remove('is-checked');
       else
         switchPrivacy.classList.add('is-checked');
-      
 
       // Change label value
       $scope.privacy = $scope.privacy == 'Private' ? 'Public' : 'Private';

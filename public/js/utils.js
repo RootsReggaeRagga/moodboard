@@ -62,8 +62,12 @@ function isHexaColor(sNum) {
 }
 
 function applyUserInterfaceStyle(userData) {
-	document.querySelector(".mdl-layout__content").style.background = userData.apparences[0].backgroundcolor;
-  	document.querySelector(".mdl-layout__header").style.background = userData.apparences[0].actionbarcolor;
+	var background = userData.apparences[0].backgroundcolor;
+	var actionbar = userData.apparences[0].actionbarcolor;
+	try { document.querySelector(".mdl-layout__content").style.background = background } catch (e) {}
+  	try { document.querySelector(".mdl-layout__header").style.background = actionbar; } catch (e) {}
+	try { document.querySelector(".mdl-switch__thumb").style.background = actionbar; } catch (e) {}
+	try { document.querySelector(".mdl-button--raised").style.background = actionbar;	} catch (e) {}
 }
 
 function applyDefaultInterfaceStyle() {
@@ -73,4 +77,8 @@ function applyDefaultInterfaceStyle() {
 
 function hasClass(element, cls) {
     return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }

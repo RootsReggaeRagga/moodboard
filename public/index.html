@@ -40,9 +40,9 @@
 	    <header class="mdl-layout__header">
 	      <div class="mdl-layout__header-row">
 	        <a href="/" class="white-link">
-	        	<span class="mdl-layout-title">MOODBOARD -&nbsp;</span>
+	        	<span class="mdl-layout-title">{{ websiteName }}</span>
 	        </a>
-	        <span id="page-title-username" class="mdl-layout-title-mini"></span>
+	        <span id="page-title-username" class="mdl-layout-title-mini"> {{ username }}</span>
 	        <div class="mdl-layout-spacer"></div>
 	        <!-- (T) Search a user -->
 	        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
@@ -59,7 +59,8 @@
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
 			  <li class="mdl-menu__item">Add a post-it</li>
-			  <li disabled class="mdl-menu__item">Add an element with URL</li>
+			  <li disabled class="mdl-menu__item">Add an element from URL</li>
+			  <li disabled class="mdl-menu__item">Add a caption</li>
 			</ul>
 			<!-- (X) Notifications -->
 			<nav class="mdl-navigation mdl-layout--large-screen-only" style="margin-left:30px">

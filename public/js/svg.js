@@ -16,12 +16,10 @@ var db;
 function doload(userData) {
 
     // Check if Chrome or Safari browser
-    if (!isBrowserSupported())
-        return;
+    //if (!isBrowserSupported())
+    //    return;
 
     var u = userData._username.toUpperCase();
-    document.getElementById('page-title-username').innerHTML = u;
-
     images = getImagesFromUserJsonData(userData);
     links = getLinksFromUserJsonData(userData);
     applySandboxBackgroundColor(userData);

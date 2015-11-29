@@ -41,6 +41,8 @@ a.mdl-badge {
 }
 
 .mdl-layout-title-mini {
+    text-transform: uppercase;
+    left: 10px;
     display: block;
     position: relative;
     font-family: 'Roboto-Thin';
@@ -90,6 +92,10 @@ a.mdl-badge {
 
 .mdl-switch {
   width: auto;
+}
+
+.mdl-switch__track {
+  background:gray;
 }
 
 /* Inputs */
