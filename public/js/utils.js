@@ -70,11 +70,6 @@ function applyUserInterfaceStyle(userData) {
 	try { document.querySelector(".mdl-button--raised").style.background = actionbar;	} catch (e) {}
 }
 
-function applyDefaultInterfaceStyle() {
-	document.querySelector(".mdl-layout__content").style.background = '#2e3764';
-  	document.querySelector(".mdl-layout__header").style.background = '#2e3764';
-}
-
 function hasClass(element, cls) {
     return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
 }
