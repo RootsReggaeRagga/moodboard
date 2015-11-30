@@ -54,14 +54,18 @@
 	          </div>
 	        </div>
 			<!-- (+) Add an element to UI -->
-			<button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon mdl-text" style="margin-left:30px; top:-3px;">
+			<button id="add-button" class="mdl-button mdl-js-button mdl-button--icon mdl-text" style="display:none; margin-left:30px; top:-3px;">
 			  <i class="material-icons">add</i>
 			</button>
-			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
+			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="add-button">
 			  <li class="mdl-menu__item">Add a post-it</li>
-			  <li disabled class="mdl-menu__item">Add an element from URL</li>
 			  <li disabled class="mdl-menu__item">Add a caption</li>
+			  <li disabled class="mdl-menu__item">Add an element from URL</li>
 			</ul>
+			<!-- (<) Share -->
+			<label id="share-button" class="mdl-button mdl-js-button mdl-button--icon" style="display:none; margin-left:30px; top:-3px;">
+	          <i class="material-icons">share</i>
+	        </label>
 			<!-- (X) Notifications -->
 			<nav class="mdl-navigation mdl-layout--large-screen-only" style="margin-left:30px">
 	          <a class="mdl-badge" data-badge="4" href="">Mood</a>

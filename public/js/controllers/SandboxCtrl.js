@@ -1,7 +1,9 @@
 angular.module('SandboxCtrl', []).controller('SandboxController', function($scope, $rootScope, SandboxSrv) {
   	/* -------------------- METHODS -------------------- */
-  	$scope.showActionBar = function() {
+  	$scope.showActionBarAndElements = function() {
   		document.getElementById("actionbar").style.display = 'block';
+  		document.getElementById("share-button").style.display = 'block';
+  		document.getElementById("add-button").style.display = 'block';
   	}
 
   	/* -------------------- INIT -------------------- */
@@ -9,7 +11,7 @@ angular.module('SandboxCtrl', []).controller('SandboxController', function($scop
 		.success(function(data) {
 			$rootScope.userData = data;
 	  		applyUserInterfaceStyle($rootScope.userData);
-	  		$scope.showActionBar();
+	  		$scope.showActionBarAndElements();
 	   		doload(data);
 	   	});
 });
