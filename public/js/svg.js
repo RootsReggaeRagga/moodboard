@@ -11,6 +11,7 @@ var links = [];
 var authentifiedUser = "joeybronner";
 var invalid_img = 'img/invalid_img.png';
 var backgroundcolor;
+var edgeColor;
 var db;
 
 function doload(userData) {
@@ -20,6 +21,7 @@ function doload(userData) {
     //    return;
 
     var u = userData._username.toUpperCase();
+    edgeColor = userData.apparences[0].edgeofpictures;
     images = getImagesFromUserJsonData(userData);
     links = getLinksFromUserJsonData(userData);
     applySandboxBackgroundColor(userData);
@@ -194,7 +196,7 @@ function addImage(url, initOpacity, img) {
     var rect = document.createElementNS(SVG, "rect");
     rect.setAttribute("id", s + "-border");
     svgSetXYWH(rect, -imgw / 2, -imgh / 2, imgw, imgh);
-    rect.setAttribute("stroke", "black");
+    rect.setAttribute("stroke", edgeColor);
     rect.setAttribute("rx", "10");
     rect.setAttribute("ry", "10");
     rect.setAttribute("stroke-width", "10");
