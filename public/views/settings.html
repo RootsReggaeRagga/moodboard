@@ -26,7 +26,7 @@
 	</div>
 	<div class="mdl-cell mdl-cell--4-col" style="text-align: center;"> 
 		    <!-- Private / Public -->
-		    <h4 id="privacy-title">Privacy</h4>
+		    <h4 id="privacy-title">Confidentality</h4>
 			<div class="snippet-demo">
 	            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded" id="switch-privacy" data-upgraded=",MaterialSwitch,MaterialRipple">
 				  	<input type="checkbox" class="mdl-switch__input" checked="">
@@ -40,10 +40,40 @@
           		{{ privacy }}
         	  </div>
 	        </div>
+	        <!-- Subscriptions (email) -->
+	        <h4 id="subscription-title">Subscriptions</h4>
 	</div>
 	<div class="mdl-cell mdl-cell--4-col" style="text-align: center;"> 
 		    <!-- Private / Public -->
 		    <h4 id="privacy-title">Other</h4>
+		    <!-- Login -->
+		  	<p>
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input ng-model="settings.login" class="mdl-textfield__input" type="text" style="text-align:right;"/>
+			    <label class="mdl-textfield__label">Login</label>
+			  </div>
+		    </p>
+		    <!-- Old Password -->
+		  	<p>
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input ng-model="settings.oldpassword" class="mdl-textfield__input" type="password" style="text-align:right;"/>
+			    <label class="mdl-textfield__label">Old password</label>
+			  </div>
+		    </p>
+		    <!-- New Password -->
+		  	<p>
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input ng-model="settings.newpassword" class="mdl-textfield__input" type="password" style="text-align:right;"/>
+			    <label class="mdl-textfield__label">New password</label>
+			  </div>
+		    </p>
+		    <!-- Confirm Password -->
+		  	<p>
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input ng-model="settings.confirmpassword" class="mdl-textfield__input" type="password" style="text-align:right;"/>
+			    <label class="mdl-textfield__label">Confirm password</label>
+			  </div>
+		    </p>
 	</div>
 	<div class="mdl-cell mdl-cell--12-col" style="text-align: center;">
 		<!-- Bottom buttons to save changes -->
