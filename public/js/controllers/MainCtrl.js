@@ -1,4 +1,4 @@
-angular.module('MainCtrl', []).controller('MainController', function($scope, $rootScope) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, $rootScope, $location, MainSrv) {
 	/* -------------------- METHODS -------------------- */
 	$scope.resetSessionAndUserValues = function() {
 		$rootScope.username = '';
@@ -20,6 +20,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ro
 	}
 
 	/* -------------------- INIT -------------------- */
+	console.log(MainSrv.getUserStatus());
 	$scope.resetSessionAndUserValues();
 	$scope.applyDefaultInterfaceStyle();
   	$scope.hideActionBar();
