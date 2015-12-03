@@ -1,4 +1,4 @@
-angular.module('MainService', []).factory('MainSrv', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
+angular.module('LoginService', []).factory('LoginSrv', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
 	// User as null for the moment
 	var user = null;
     // return available functions for use in controllers

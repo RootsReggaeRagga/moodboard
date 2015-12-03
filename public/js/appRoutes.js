@@ -1,8 +1,8 @@
 angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: 'views/home.html',
-			controller: 'MainController'
+			templateUrl: 'views/login.html',
+			controller: 'LoginController'
 		})
 		.when('/sandbox', {
 			templateUrl: 'views/sandbox.html',

@@ -1,5 +1,5 @@
 angular.module('moodboardApp', 	['ngRoute', 'appRoutes',
-									'MainCtrl',	'MainService',					// Homepage
+									'LoginCtrl',	'LoginService',					// Homepage
 									'SandboxCtrl', 'SandboxService',			// Sandbox
 									'SettingsCtrl', 'SettingsService'	 		// Customization
 								]);
