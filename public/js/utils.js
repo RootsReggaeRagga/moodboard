@@ -77,3 +77,7 @@ function hasClass(element, cls) {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+function showALert() {
+	console.log('alerrrt');
+}

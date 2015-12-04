@@ -1,14 +1,9 @@
-angular.module('LoginCtrl', []).controller('LoginController', function($scope, $rootScope, $location, LoginSrv) {
+angular.module('LoginCtrl', ['ui-notification']).controller('LoginController', function($scope, $rootScope, $location, LoginSrv, Notification) {
 	/* -------------------- METHODS -------------------- */
 	$scope.resetSessionAndUserValues = function() {
 		$rootScope.username = '';
 		$rootScope.websiteName = 'MOODBOARD';
 	}
-
-	$scope.connect = function(item) {
-    	$rootScope.username = document.getElementById('username').value;
-    	$rootScope.websiteName = 'MOODBOARD -'; 
-  	}
 
   	$scope.hideActionBar = function() {
   		document.getElementById("actionbar").style.display = 'none';
@@ -19,8 +14,31 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
 	  	document.querySelector(".mdl-layout__header").style.background = '#2e3764';
 	}
 
+	$scope.connect = function () {
+      	$scope.error = false;
+      	$scope.disabled = true;
+
+      	// Trying to log in a user
+      	LoginSrv.login($scope.loginForm.username, $scope.loginForm.password)
+        	// User is known
+	        .then(function () {
+	          $rootScope.username = $scope.loginForm.username;
+	      	  $rootScope.websiteName = 'MOODBOARD -';
+	          $location.path('/sandbox');
+	          $scope.disabled = false;
+	          $scope.loginForm = {};
+	        })
+	        // An error occured ?
+	        .catch(function (e) {
+	          $scope.error = true;
+	          $scope.errorMessage = 'Wrong credentials.';
+	          $scope.disabled = false;
+	          $scope.loginForm = {};
+	          Notification.error($scope.errorMessage);
+	        });
+    };
+
 	/* -------------------- INIT -------------------- */
-	console.log(LoginSrv.getUserStatus());
 	$scope.resetSessionAndUserValues();
 	$scope.applyDefaultInterfaceStyle();
   	$scope.hideActionBar();
