@@ -7,6 +7,7 @@ var currentTransform = null;
 var gCanvasWidth = null;
 var gCanvasHeight = null;
 var images = [];
+var videos = [];
 var links = [];
 var authentifiedUser = "joeybronner";
 var invalid_img = 'img/invalid_img.png';
@@ -17,12 +18,13 @@ var db;
 function doload(userData) {
 
     // Check if Chrome or Safari browser
-    //if (!isBrowserSupported())
-    //    return;
+    if (!isBrowserSupported())
+        return;
 
     var u = userData._username.toUpperCase();
     edgeColor = userData.apparences[0].edgeofpictures;
     images = getImagesFromUserJsonData(userData);
+    videos = getVideosFromUserJsonData(userData);
     links = getLinksFromUserJsonData(userData);
     applySandboxBackgroundColor(userData);
 
@@ -112,6 +114,14 @@ function getImagesFromUserJsonData(userData) {
         images.push(userData.images[i].url);
     } 
     return images;   
+}
+
+function getVideosFromUserJsonData(userData) {
+    var videos = [];
+    for (var i = 0; i < userData.videos.length; i++) {
+        videos.push(userData.videos[i].url);
+    } 
+    return videos;   
 }
 
 function getLinksFromUserJsonData(userData) {
