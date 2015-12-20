@@ -53,6 +53,20 @@ module.exports = function(app) {
             }
 		});
     });
+
+	// GET
+	// Specific user
+	app.post('/api/v1/users/login', function(req, res) {
+		var username = req.body.username;
+		var password = req.body.password;
+        users.findOne({'username': username, 'password': password}, function(err, u) {
+            if (u) {
+                return res.status(200).json({status: 'Registration successful!'});
+            } else {
+            	return res.status(500).send(err);
+            }
+		});
+    });
     
 	// route to handle all angular requests
 	app.get('/', function(req, res) {

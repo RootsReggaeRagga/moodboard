@@ -27,7 +27,7 @@ angular.module('LoginService', []).factory('LoginSrv', ['$q', '$timeout', '$http
 	  var deferred = $q.defer();
 
 	  // send a post request to the server
-	  $http.post('/user/login', {username: username, password: password})
+	  $http.post('/api/v1/users/login', {username: username, password: password})
 	    // handle success
 	    .success(function (data, status) {
 	      if(status === 200 && data.status){
