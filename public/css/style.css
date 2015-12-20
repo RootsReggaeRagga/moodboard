@@ -1,10 +1,10 @@
 @font-face {
-    font-family: 'DK'; /*a name to be used later*/
-    src: url('../fonts/DK.ttf'); /*URL to font*/
+    font-family: 'DK';
+    src: url('../fonts/DK.ttf');
 }
 @font-face {
-    font-family: 'Roboto-Thin'; /*a name to be used later*/
-    src: url('../fonts/Roboto-Thin.ttf'); /*URL to font*/
+    font-family: 'Roboto-Thin';
+    src: url('../fonts/Roboto-Thin.ttf');
 }
 body {
   background-color: #FFF; 

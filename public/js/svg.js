@@ -99,7 +99,7 @@ function isBrowserSupported() {
     if (isChromium !== null && isChromium !== undefined && vendorName === "Google Inc." && isOpera == false || isSafari == true) {
         return true;
     } else {
-        window.location.href = 'error/notsupported.html';
+        window.location.href = '/notsupported';
     }
 }
 

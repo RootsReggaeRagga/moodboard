@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Roboto-Thin';
+    src: url('../fonts/Roboto-Thin.ttf');
+}
+
+@font-face {
+    font-family: 'DK';
+    src: url('../fonts/DK.ttf');
+}
+
+.error-401 {
+    display: block;
+    position: relative;
+    font-family: 'Roboto-Thin';
+    font-size: 20px;
+    color: white;
+    letter-spacing: .02em;
+}
+
+.error-412 {
+    display: block;
+    position: relative;
+    font-family: 'Roboto-Thin';
+    font-size: 20px;
+    color: white;
+    letter-spacing: .02em;
+}
