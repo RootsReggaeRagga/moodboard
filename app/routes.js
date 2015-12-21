@@ -100,8 +100,6 @@ module.exports = function(app) {
 		res.sendfile('./public/error/412.html');
 	});
 
-	
-
 	// Route to 404 page
 	/*app.get('*', function(req, res) {
 		res.sendfile('./public/error/404.html');

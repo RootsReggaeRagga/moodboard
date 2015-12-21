@@ -9,7 +9,6 @@ var gCanvasHeight = null;
 var images = [];
 var videos = [];
 var links = [];
-var authentifiedUser = "joeybronner";
 var invalid_img = 'img/invalid_img.png';
 var backgroundcolor;
 var edgeColor;
