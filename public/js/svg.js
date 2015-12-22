@@ -64,6 +64,14 @@ function doload(userData) {
 
         img.src = images[k];
     }
+
+
+    // Loading videos
+    // TODO: To the loading in a different thread.
+    for (var i = 0, iLen = videos.length; i < iLen; i++) {
+        addVideo(videos[i]);
+    }
+
     gCanvas.addEventListener("mousemove", onMouseMove, false);
     gCanvas.addEventListener("mouseup", onMouseUp, false);
     document.getElementById("background-rect").addEventListener("mousemove", onMouseMove, false);
@@ -75,7 +83,7 @@ function isImageAccessible(image_url) {
          var http = new XMLHttpRequest();
         http.open('HEAD', image_url, false);
         http.send();
-        return http.status != 404;   
+        return http.status != 404;
     } catch (e) {
         console.error('Image @' + image_url + ' is not accessible.');
         return false;
@@ -111,24 +119,24 @@ function getImagesFromUserJsonData(userData) {
     var images = [];
     for (var i = 0; i < userData.images.length; i++) {
         images.push(userData.images[i].url);
-    } 
-    return images;   
+    }
+    return images;
 }
 
 function getVideosFromUserJsonData(userData) {
     var videos = [];
     for (var i = 0; i < userData.videos.length; i++) {
         videos.push(userData.videos[i].url);
-    } 
-    return videos;   
+    }
+    return videos;
 }
 
 function getLinksFromUserJsonData(userData) {
     var links = [];
     for (var i = 0; i < userData.images.length; i++) {
         links.push(userData.images[i].link);
-    } 
-    return links;   
+    }
+    return links;
 }
 
 // convenience function to set X, Y, width, and height attributes
@@ -142,8 +150,9 @@ function svgSetXYWH(el, x, y, w, h) {
 
 function startTransform(ev, group, what) {
     // ignore if something else is already going on
-    if (currentTransform != null)
+    if (currentTransform !== null) {
         return;
+    }
 
     group.parentNode.removeChild(group);
     gCanvas.appendChild(group);
@@ -182,6 +191,41 @@ function newClickableRect(group, id, x, y, w, h, fill, stroke) {
 // this includes the toplevel group, the image itself,
 // and the clickable hotspots used for rotating the image.
 var nextImageId = 0;
+var nextVideoId = 0;
+
+function addVideo(url) {
+    var vidw = '560';
+    var vidh = '349';
+
+    var id = nextVideoId++;
+    var s = 'video' + id;
+
+    var video = [];
+
+    var x = Math.floor(Math.random() * (gCanvasWidth - vidw)) + 1;
+    var y = Math.floor(Math.random() * (gCanvasHeight - vidh)) + 1;
+
+    video += '<g id="' + s + '"><foreignObject width="' + vidw + '" height="' + vidh + '" x="' + x + '" y="' + y + '">';
+    video += '<iframe xmlns="http://www.w3.org/1999/xhtml" width="' + vidw + '" height="' + vidh + '" src="' + url + '" frameborder="0">';
+    video += '</foreignObject></g>';
+
+    gCanvas.innerHTML += video;
+
+    var vid = document.getElementById(s);
+
+    var rect = document.createElementNS(SVG, 'rect');
+    rect.setAttribute('id', s + '-border');
+    svgSetXYWH(rect, x - 5, y - 5, '570px', '359px');
+    rect.setAttribute('stroke', edgeColor);
+    rect.setAttribute('rx', '10');
+    rect.setAttribute('ry', '10');
+    rect.setAttribute('stroke-width', '10');
+    rect.setAttribute('fill', 'none');
+
+    vid.appendChild(rect);
+
+    return vid;
+}
 
 function addImage(url, initOpacity, img) {
     var imgw = img.width > 550 && img.height > 500 ? img.width : img.width * 2;
@@ -189,14 +233,15 @@ function addImage(url, initOpacity, img) {
 
     var id = nextImageId++;
     var s = "image" + id;
-    var g = document.createElementNS(SVG, "g");
+    var g = document.createElementNS(SVG, 'g');
     g.setAttribute("id", s);
 
-    if (initOpacity != null)
+    if (initOpacity !== null) {
         g.style.opacity = initOpacity;
+    }
 
-    var image = document.createElementNS(SVG, "image");
-    image.setAttribute("id", s + "-img");
+    var image = document.createElementNS(SVG, 'image');
+    image.setAttribute("id", s + '-img');
     svgSetXYWH(image, -imgw / 2, -imgh / 2, imgw, imgh);
     image.setAttribute("preserveAspectRatio", "xMinYMin slice");
     image.setAttributeNS(XLINK, "href", url);
