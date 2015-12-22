@@ -194,8 +194,8 @@ var nextImageId = 0;
 var nextVideoId = 0;
 
 function addVideo(url) {
-    var vidw = '560';
-    var vidh = '349';
+    var vidw = 560;
+    var vidh = 349;
 
     var id = nextVideoId++;
     var s = 'video' + id;
@@ -205,25 +205,14 @@ function addVideo(url) {
     var x = Math.floor(Math.random() * (gCanvasWidth - vidw)) + 1;
     var y = Math.floor(Math.random() * (gCanvasHeight - vidh)) + 1;
 
-    video += '<g id="' + s + '"><foreignObject width="' + vidw + '" height="' + vidh + '" x="' + x + '" y="' + y + '">';
-    video += '<iframe xmlns="http://www.w3.org/1999/xhtml" width="' + vidw + '" height="' + vidh + '" src="' + url + '" frameborder="0">';
+    video += '<g id="' + s + '"><foreignObject width="' + 610 + '" height="' + vidh + '" x="' + x + '" y="' + y + '">';
+    video += '<iframe xmlns="http://www.w3.org/1999/xhtml" width="' + vidw + '" height="' + vidh + '" src="' + url + '" frameborder="0"></iframe>';
+    video += '<div style="width:50px; height:' + vidh + 'px; background-color:red; float:right; overflow: auto;">R</div>';
     video += '</foreignObject></g>';
 
     gCanvas.innerHTML += video;
 
     var vid = document.getElementById(s);
-
-    var rect = document.createElementNS(SVG, 'rect');
-    rect.setAttribute('id', s + '-border');
-    svgSetXYWH(rect, x - 5, y - 5, '570px', '359px');
-    rect.setAttribute('stroke', edgeColor);
-    rect.setAttribute('rx', '10');
-    rect.setAttribute('ry', '10');
-    rect.setAttribute('stroke-width', '10');
-    rect.setAttribute('fill', 'none');
-
-    vid.appendChild(rect);
-
     return vid;
 }
 
