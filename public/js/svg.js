@@ -198,7 +198,7 @@ function addVideo(url) {
     var vidh = 349;
 
     var id = nextVideoId++;
-    var s = 'video' + id;
+    var s = 'video-' + id;
 
     var video = [];
 
@@ -214,18 +214,23 @@ function addVideo(url) {
     // Side panel to move iframe (video)
     video += '<div style="width:48px; height:' + vidh + 'px; float:right; overflow: auto;">';
     video += '<label id="move-' + s + '" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">open_with</i></label>';
+    video += '<label id="crop-' + s + '" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">crop</i></label>';
 
     video += '</div>';
     video += '</foreignObject></g>';
 
     gCanvas.innerHTML += video;
+
+    // --------------------------------------------------------------------
+
     var vid = document.getElementById(s);
+    var moveVidButton = document.getElementById('move-' + s);
+    var cropVidButton = document.getElementById('crop-' + s);
 
     // Attaching events
     var clicks = 0,
         delay = 500;
-
-    vid.addEventListener('mousedown', function(event) {
+    moveVidButton.addEventListener('mousedown', function(event) {
         event.preventDefault();
         clicks++;
 
@@ -235,8 +240,10 @@ function addVideo(url) {
 
         deplace(event, vid);
     }, false);
+    moveVidButton.addEventListener('mouseup', onMouseUp, false);
 
-    vid.addEventListener('mouseup', onMouseUp, false);
+    // Return a table with all button IDs (crop & move)
+    // And attach all events after this loop
 
     return vid;
 }
