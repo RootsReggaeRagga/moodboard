@@ -180,7 +180,7 @@ function newClickableRect(group, id, x, y, w, h, fill, stroke) {
     p.setAttribute("fill", fill);
     //p.setAttribute("stroke", stroke);
     //p.setAttribute("stroke-width", 10);
-    p.addEventListener("mousedown", function(evt) {
+    p.addEventListener('mousedown', function(evt) {
         var g = group;
         return startTransform(evt, g, 1);
     }, false);
@@ -212,7 +212,7 @@ function addVideo(url) {
     video += '<iframe xmlns="http://www.w3.org/1999/xhtml" width="' + vidw + '" height="' + vidh + '" src="' + url + '" frameborder="0"></iframe>';
 
     // Side panel to move iframe (video)
-    video += '<div style="width:48px; height:' + vidh + 'px; border:1px dotted red; float:right; overflow: auto;">';
+    video += '<div style="width:48px; height:' + vidh + 'px; float:right; overflow: auto;">';
     video += '<label id="move-' + s + '" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">open_with</i></label>';
 
     video += '</div>';
@@ -224,7 +224,8 @@ function addVideo(url) {
     // Attaching events
     var clicks = 0,
         delay = 500;
-    $(vid).on('mousedown', function(event) {
+
+    vid.addEventListener('mousedown', function(event) {
         event.preventDefault();
         clicks++;
 
@@ -233,7 +234,9 @@ function addVideo(url) {
         }, delay);
 
         deplace(event, vid);
-    });
+    }, false);
+
+    vid.addEventListener('mouseup', onMouseUp, false);
 
     return vid;
 }
