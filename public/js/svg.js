@@ -326,49 +326,60 @@ function deplace(evt, g) {
 }
 
 function onMouseUp(ev) {
-    if (currentTransform)
+    if (currentTransform) {
         rampOpacityUp(currentTransform.g);
+    }
     currentTransform = null;
 }
 
 function onMouseMove(ev) {
-    if (!("currentTransform" in window) ||
-        currentTransform == null)
+    if (!('currentTransform' in window) || currentTransform == null) {
         return;
+    }
 
     var ex = ev.clientX;
     var ey = ev.clientY;
     var g = currentTransform.g;
     var pos = g.vTranslate;
+    var xd;
+    var yd;
 
-    if (currentTransform.what == 1) {
-        var lastAngle = Math.atan2(currentTransform.y - pos[1],
-            currentTransform.x - pos[0]) * r2d;
-        var curAngle = Math.atan2(ey - pos[1],
-            ex - pos[0]) * r2d;
+    if (g.id.indexOf('video') > -1) {
+        xd = ex - g.firstChild.width.baseVal.value;
+        yd = ey/* - currentTransform.y*/;
 
-        g.vRotate += (curAngle - lastAngle);
-
-        var lastLen = Math.sqrt(Math.pow(currentTransform.y - pos[1], 2) +
-            Math.pow(currentTransform.x - pos[0], 2));
-        var curLen = Math.sqrt(Math.pow(ey - pos[1], 2) +
-            Math.pow(ex - pos[0], 2));
-
-        g.vScale = g.vScale * (curLen / lastLen);
-
+        g.firstChild.x.baseVal.value = xd;
+        g.firstChild.y.baseVal.value = yd;
     } else {
-        var xd = ev.clientX - currentTransform.x;
-        var yd = ev.clientY - currentTransform.y;
+        if (currentTransform.what === 1) {
+            var lastAngle = Math.atan2(currentTransform.y - pos[1],
+                currentTransform.x - pos[0]) * r2d;
+            var curAngle = Math.atan2(ey - pos[1],
+                ex - pos[0]) * r2d;
 
-        g.vTranslate = [pos[0] + xd, pos[1] + yd];
+            g.vRotate += (curAngle - lastAngle);
+
+            var lastLen = Math.sqrt(Math.pow(currentTransform.y - pos[1], 2) +
+                Math.pow(currentTransform.x - pos[0], 2));
+            var curLen = Math.sqrt(Math.pow(ey - pos[1], 2) +
+                Math.pow(ex - pos[0], 2));
+
+            g.vScale = g.vScale * (curLen / lastLen);
+
+        } else {
+            xd = ev.clientX - currentTransform.x;
+            yd = ev.clientY - currentTransform.y;
+
+            g.vTranslate = [pos[0] + xd, pos[1] + yd];
+        }
+
+        currentTransform.x = ex;
+        currentTransform.y = ey;
+
+        g.setAttribute("transform", "translate(" + g.vTranslate[0] + "," + g.vTranslate[1] + ") " +
+            "scale(" + g.vScale + "," + g.vScale + ") " +
+            "rotate(" + g.vRotate + ") ");
     }
-
-    currentTransform.x = ex;
-    currentTransform.y = ey;
-
-    g.setAttribute("transform", "translate(" + g.vTranslate[0] + "," + g.vTranslate[1] + ") " +
-        "scale(" + g.vScale + "," + g.vScale + ") " +
-        "rotate(" + g.vRotate + ") ");
 }
 
 function rampOpacityDown(g) {
