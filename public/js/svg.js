@@ -205,14 +205,36 @@ function addVideo(url) {
     var x = Math.floor(Math.random() * (gCanvasWidth - vidw)) + 1;
     var y = Math.floor(Math.random() * (gCanvasHeight - vidh)) + 1;
 
+    // Container
     video += '<g id="' + s + '"><foreignObject width="' + 610 + '" height="' + vidh + '" x="' + x + '" y="' + y + '">';
+
+    // iFrame
     video += '<iframe xmlns="http://www.w3.org/1999/xhtml" width="' + vidw + '" height="' + vidh + '" src="' + url + '" frameborder="0"></iframe>';
-    video += '<div style="width:50px; height:' + vidh + 'px; background-color:red; float:right; overflow: auto;">R</div>';
+
+    // Side panel to move iframe (video)
+    video += '<div style="width:48px; height:' + vidh + 'px; border:1px dotted red; float:right; overflow: auto;">';
+    video += '<label id="move-' + s + '" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">open_with</i></label>';
+
+    video += '</div>';
     video += '</foreignObject></g>';
 
     gCanvas.innerHTML += video;
-
     var vid = document.getElementById(s);
+
+    // Attaching events
+    var clicks = 0,
+        delay = 500;
+    $(vid).on('mousedown', function(event) {
+        event.preventDefault();
+        clicks++;
+
+        setTimeout(function() {
+            clicks = 0;
+        }, delay);
+
+        deplace(event, vid);
+    });
+
     return vid;
 }
 
@@ -347,7 +369,6 @@ function onMouseMove(ev) {
     g.setAttribute("transform", "translate(" + g.vTranslate[0] + "," + g.vTranslate[1] + ") " +
         "scale(" + g.vScale + "," + g.vScale + ") " +
         "rotate(" + g.vRotate + ") ");
-
 }
 
 function rampOpacityDown(g) {
