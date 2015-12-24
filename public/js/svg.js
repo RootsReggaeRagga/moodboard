@@ -67,7 +67,6 @@ function doload(userData) {
         img.src = images[k];
     }
 
-
     // Loading videos
     // TODO: To the loading in a different thread.
     var vids = [];
@@ -76,12 +75,14 @@ function doload(userData) {
     }
 
     for (var j = 0, jLen = vids.length; j < jLen; j++) {
-        var vid = document.getElementById(vids[j]);
-        var moveVidButton = vid.firstChild.childNodes[1].firstChild;
-        moveVidButton.addEventListener('mousedown', function(evt) { 
-            onMouseDown(evt, vid);
-        }, false);
-        moveVidButton.addEventListener('mouseup', onMouseUp, false);
+        (function(j) {
+            var vid = document.getElementById(vids[j]);
+            var moveVidButton = vid.firstChild.childNodes[1].firstChild;
+            moveVidButton.addEventListener('mousedown', function(evt) {
+                onMouseDown(evt, vid);    
+            }, false);
+            moveVidButton.addEventListener('mouseup', onMouseUp, false);
+        }(j));
     }
 
     gCanvas.addEventListener("mousemove", onMouseMove, false);
