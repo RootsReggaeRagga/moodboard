@@ -1,3 +1,5 @@
+'use strict';
+
 const SVG = "http://www.w3.org/2000/svg";
 const XLINK = "http://www.w3.org/1999/xlink";
 const hotspot = "rgba(110,100,100,0.15)";
@@ -68,8 +70,18 @@ function doload(userData) {
 
     // Loading videos
     // TODO: To the loading in a different thread.
+    var vids = [];
     for (var i = 0, iLen = videos.length; i < iLen; i++) {
-        addVideo(videos[i]);
+        vids.push(addVideo(videos[i]));
+    }
+
+    for (var j = 0, jLen = vids.length; j < jLen; j++) {
+        var vid = document.getElementById(vids[j]);
+        var moveVidButton = vid.firstChild.childNodes[1].firstChild;
+        moveVidButton.addEventListener('mousedown', function(evt) { 
+            onMouseDown(evt, vid);
+        }, false);
+        moveVidButton.addEventListener('mouseup', onMouseUp, false);
     }
 
     gCanvas.addEventListener("mousemove", onMouseMove, false);
@@ -149,14 +161,12 @@ function svgSetXYWH(el, x, y, w, h) {
 
 
 function startTransform(ev, group, what) {
-    // ignore if something else is already going on
+    // Ignore if something else is already going on
     if (currentTransform !== null) {
         return;
     }
 
-    group.parentNode.removeChild(group);
-    gCanvas.appendChild(group);
-
+    // Move element
     currentTransform = {
         what: what,
         g: group,
@@ -166,6 +176,7 @@ function startTransform(ev, group, what) {
         x: ev.clientX,
         y: ev.clientY
     };
+
     rampOpacityDown(currentTransform.g);
 }
 
@@ -221,31 +232,9 @@ function addVideo(url) {
 
     gCanvas.innerHTML += video;
 
-    // --------------------------------------------------------------------
+    // -------------------------------------------------------------------
 
-    var vid = document.getElementById(s);
-    var moveVidButton = document.getElementById('move-' + s);
-    var cropVidButton = document.getElementById('crop-' + s);
-
-    // Attaching events
-    var clicks = 0,
-        delay = 500;
-    moveVidButton.addEventListener('mousedown', function(event) {
-        event.preventDefault();
-        clicks++;
-
-        setTimeout(function() {
-            clicks = 0;
-        }, delay);
-
-        deplace(event, vid);
-    }, false);
-    moveVidButton.addEventListener('mouseup', onMouseUp, false);
-
-    // Return a table with all button IDs (crop & move)
-    // And attach all events after this loop
-
-    return vid;
+    return s;
 }
 
 function addImage(url, initOpacity, img) {
@@ -292,33 +281,18 @@ function addImage(url, initOpacity, img) {
     g2.appendChild(newClickableRect(g, s + "-bl", -imgw / 2, imgh / 2 - rsz, rsz, rsz, hotspot, "rgba(100,100,100,0.5)"));
 
     g.appendChild(g2);
-    g.addEventListener("mouseover", function(evt) {
+    g.addEventListener('mouseover', function(evt) {
         var o = g2;
-        o.style.visibility = "visible";
+        o.style.visibility = 'visible';
     }, false);
-    g.addEventListener("mouseout", function(evt) {
+    g.addEventListener('mouseout', function(evt) {
         var o = g2;
-        o.style.visibility = "hidden";
+        o.style.visibility = 'hidden';
     }, false);
 
-    var clicks = 0,
-        delay = 500;
-    $(g).on('mousedown', function(event) {
-        event.preventDefault();
-        clicks++;
-
-        setTimeout(function() {
-            clicks = 0;
-        }, delay);
-
-        if (clicks === 2) {
-            redirectToLink(g.id);
-            clicks = 0;
-            return;
-        } else {
-            deplace(event, g);
-        }
-    });
+    g.addEventListener('mousedown', function(evt) {
+        onMouseDown(evt, g);
+    }, false);
 
     gCanvas.appendChild(g);
 
@@ -333,6 +307,18 @@ function redirectToLink(elementId) {
 
 function deplace(evt, g) {
     return startTransform(evt, g, 0);
+}
+
+function onMouseDown(evt, g) {
+    var clicks = 0;
+    evt.preventDefault();
+    clicks++;
+
+    setTimeout(function() {
+        clicks = 0;
+    }, 500);
+
+    deplace(evt, g);
 }
 
 function onMouseUp(ev) {
