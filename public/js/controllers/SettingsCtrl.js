@@ -10,10 +10,10 @@ angular.module('SettingsCtrl', []).controller('SettingsController', function($sc
     }
 
     $scope.updateBackgroundColor = function() {
-      var color = $scope.customize.backgroundcolor;
+      var color = $scope.customize.colorpalette;
       if (isHexaColor(color)) {
         // Apply background color if it's a valid hexa color
-        document.getElementById('mainView').style.background = color;
+        document.getElementById('mainView').style.background = palette.get(color, '100');
       } else {
         console.log('hexa color is not valid.');
       }
@@ -42,7 +42,7 @@ angular.module('SettingsCtrl', []).controller('SettingsController', function($sc
    $scope.hideActionBarElements();
 
 	 $scope.customize = {
-		  colorpalette:$rootScope.userData.apparences[0].colorpalette
+		  colorpalette: $rootScope.userData.apparences[0].colorpalette
 	 };
 
    $scope.privacy = capitalizeFirstLetter($rootScope.userData.settings[0].privacy);
