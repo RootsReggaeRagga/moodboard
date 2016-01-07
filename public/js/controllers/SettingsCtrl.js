@@ -2,9 +2,7 @@ angular.module('SettingsCtrl', []).controller('SettingsController', function($sc
 
 // --------------------------- FUNCTIONS --------------------------- // 
    $scope.saveChanges = function() {
-      console.log('form values : ' + $scope.customize.backgroundcolor);
-      console.log('form values : ' + $scope.customize.actionbarcolor);
-      console.log('form values : ' + $scope.customize.edgeofpictures);
+      console.log('form values : ' + $scope.customize.colorpalette);
     }
 
     $scope.applyDefaultValues = function() {
@@ -44,9 +42,7 @@ angular.module('SettingsCtrl', []).controller('SettingsController', function($sc
    $scope.hideActionBarElements();
 
 	 $scope.customize = {
-		  backgroundcolor:$rootScope.userData.apparences[0].backgroundcolor,
-		  actionbarcolor:$rootScope.userData.apparences[0].actionbarcolor,
-	   	edgeofpictures:$rootScope.userData.apparences[0].edgeofpictures
+		  colorpalette:$rootScope.userData.apparences[0].colorpalette
 	 };
 
    $scope.privacy = capitalizeFirstLetter($rootScope.userData.settings[0].privacy);

@@ -125,7 +125,7 @@ function isBrowserSupported() {
 
 function applySandboxBackgroundColor(userData) {
     var object =  document.getElementById('background-rect');
-    object.setAttribute("fill", userData.apparences[0].backgroundcolor);
+    object.setAttribute("fill", palette.get(userData.apparences[0].colorpalette, '100'));
 }
 
 function getImagesFromUserJsonData(userData) {

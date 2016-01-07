@@ -64,10 +64,10 @@ function isHexaColor(sNum) {
 function applyUserInterfaceStyle(userData) {
 	var background = userData.apparences[0].backgroundcolor;
 	var actionbar = userData.apparences[0].actionbarcolor;
-	try { document.querySelector(".mdl-layout__content").style.background = background } catch (e) {}
-  	try { document.querySelector(".mdl-layout__header").style.background = actionbar; } catch (e) {}
-	try { document.querySelector(".mdl-switch__thumb").style.background = actionbar; } catch (e) {}
-	try { document.querySelector(".mdl-button--raised").style.background = actionbar;	} catch (e) {}
+	try { document.querySelector(".mdl-layout__content").style.background = palette.get(userData.apparences[0].colorpalette, '500'); } catch (e) {}
+  	try { document.querySelector(".mdl-layout__header").style.background = palette.get(userData.apparences[0].colorpalette, '500'); } catch (e) {}
+	try { document.querySelector(".mdl-switch__thumb").style.background = palette.get(userData.apparences[0].colorpalette, '500'); } catch (e) {}
+	try { document.querySelector(".mdl-button--raised").style.background = palette.get(userData.apparences[0].colorpalette, '500');	} catch (e) {}
 }
 
 function hasClass(element, cls) {
