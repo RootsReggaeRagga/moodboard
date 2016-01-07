@@ -310,15 +310,21 @@ function deplace(evt, g) {
     return startTransform(evt, g, 0);
 }
 
+function foreground(g) {
+    document.getElementById('canvas').appendChild(g);
+}
+
 function onMouseDown(evt, g) {
     var clicks = 0;
     evt.preventDefault();
     clicks++;
-
     setTimeout(function() {
         clicks = 0;
     }, 500);
+    // Element to foreground
+    foreground(g);
 
+    // Element move
     deplace(evt, g);
 }
 
