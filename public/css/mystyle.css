@@ -23,6 +23,9 @@ svg { position:fixed; top:0; left:0; height:100%; width:100% }
 	 cursor:pointer;
 }
 
+.invisible { display:none; }
+.visible { display:block; }
+
 .red { background-color:#F44336; }
 .purple { background-color:#9C27B0; }
 .indigo { background-color:#3F51B5; }

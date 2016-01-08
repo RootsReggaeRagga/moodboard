@@ -82,6 +82,16 @@ function doload(userData) {
                 onMouseDown(evt, vid);
             }, false);
             moveVidButton.addEventListener('mouseup', onMouseUp, false);
+            vid.addEventListener('mouseover', function(evt) {
+                var panel = document.getElementById('tools-' + vid.id);
+                panel.classList.remove('invisible');
+                panel.classList.add('visible');
+            }, false);
+            vid.addEventListener('mouseout', function(evt) {
+                var panel = document.getElementById('tools-' + vid.id);
+                panel.classList.remove('visible');
+                panel.classList.add('invisible');
+            }, false);
         }(j));
     }
 
@@ -224,7 +234,7 @@ function addVideo(url) {
     video += '<iframe xmlns="http://www.w3.org/1999/xhtml" width="' + vidw + '" height="' + vidh + '" src="' + url + '" frameborder="0"></iframe>';
 
     // Side panel to move iframe (video)
-    video += '<div style="width:48px; height:' + vidh + 'px; float:right; overflow: auto;">';
+    video += '<div id="tools-' + s + '" class="invisible" style="width:48px; height:' + vidh + 'px; float:right; overflow: auto;">';
     video += '<label id="move-' + s + '" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">open_with</i></label>';
     video += '<label id="crop-' + s + '" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">crop</i></label>';
 
