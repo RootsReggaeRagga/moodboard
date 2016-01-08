@@ -60,7 +60,7 @@ function doload(userData) {
                 g.setAttribute("transform", "translate(" + g.vTranslate[0] + "," + g.vTranslate[1] + ") " +
                     "scale(" + g.vScale + "," + g.vScale + ") " +
                     "rotate(" + g.vRotate + ") ");
-                rampOpacityUp(g);
+                rampOpacityUp(g, 0.45);
             }
         }(k, images[k]);
 
@@ -79,7 +79,7 @@ function doload(userData) {
             var vid = document.getElementById(vids[j]);
             var moveVidButton = vid.firstChild.childNodes[1].firstChild;
             moveVidButton.addEventListener('mousedown', function(evt) {
-                onMouseDown(evt, vid);    
+                onMouseDown(evt, vid);
             }, false);
             moveVidButton.addEventListener('mouseup', onMouseUp, false);
         }(j));
@@ -396,8 +396,11 @@ function rampOpacityDown(g) {
     rampFunc();
 }
 
-function rampOpacityUp(g) {
-    g.style.opacity = 0.7;
+function rampOpacityUp(g, startOpacity) {
+    if (startOpacity === undefined) {
+        startOpacity = 0.7;
+    }
+    g.style.opacity = startOpacity;
     var rampFunc = function() {
         var o = parseFloat(g.style.opacity) + 0.05;
         g.style.opacity = o;
