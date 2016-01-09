@@ -19,10 +19,12 @@ angular.module('LoginCtrl', ['ui-notification']).controller('LoginController', f
       	$scope.disabled = true;
 
       	// Trying to log in a user
-      	LoginSrv.login($scope.loginForm.username, $scope.loginForm.password)
+      	//LoginSrv.login($scope.loginForm.username, $scope.loginForm.password)
+      	LoginSrv.login('joeybronner', 'password')
         	// User is known
 	        .then(function () {
-	          $rootScope.username = $scope.loginForm.username;
+	          //$rootScope.username = $scope.loginForm.username;
+	          $rootScope.username = 'joeybronner';
 	      	  $rootScope.websiteName = 'MOODBOARD -';
 	          $location.path('/sandbox');
 	          $scope.disabled = false;
