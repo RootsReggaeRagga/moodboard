@@ -25,16 +25,3 @@ svg { position:fixed; top:0; left:0; height:100%; width:100% }
 
 .invisible { display:none; }
 .visible { display:block; }
-
-.red { background-color:#F44336; }
-.purple { background-color:#9C27B0; }
-.indigo { background-color:#3F51B5; }
-.blue { background-color:#2196F3; }
-.cyan { background-color:#00BCD4; }
-.treal { background-color:#009688; }
-.green { background-color:#8BC34A; }
-.yellow { background-color:#FFEB3B; }
-.orange { background-color:#FF9800; }
-.brown { background-color:#795548; }
-.grey { background-color:#9E9E9E; }
-.pink { background-color:#E91E63; }

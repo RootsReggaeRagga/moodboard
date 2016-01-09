@@ -19,6 +19,19 @@ angular.module('SettingsCtrl', []).controller('SettingsController', function($sc
       }
     }
 
+    $scope.previewColorPalette = function($event) {
+      var element = event.target;
+      if (element !== null && (element.id !== undefined)) {
+        var color = capitalizeFirstLetter(element.id.substring(3, element.id.length+1));
+        if (color !== '' && color !== null) {
+            try { document.querySelector(".mdl-layout__content").style.background = palette.get(color, '100'); } catch (e) {}
+            try { document.querySelector(".mdl-layout__header").style.background = palette.get(color, '500'); } catch (e) {}
+            try { document.querySelector(".mdl-switch__thumb").style.background = palette.get(color, '500'); } catch (e) {}
+            try { document.querySelector(".mdl-button--raised").style.background = palette.get(color, '500'); } catch (e) {}
+        } 
+      }
+    }
+
     $scope.switchPrivacy = function() {
       // Change switch value
       var switchPrivacy = document.getElementById('switch-privacy');
@@ -36,9 +49,18 @@ angular.module('SettingsCtrl', []).controller('SettingsController', function($sc
       document.getElementById("add-button").style.display = 'none';
     }
 
+   // Colorize color palette
+   var colorPalette = document.getElementById('color-palette');
+   for (var i = 0; i < colorPalette.children.length; i++) {
+    var box = colorPalette.children[i];
+    var boxId = colorPalette.children[i].getAttribute('id');
+    var color = capitalizeFirstLetter(boxId.substring(3, boxId.length+1));
+    box.style.background = palette.get(color, '500');
+   }
+
 	 // --------------------------- APPLY USER'S VALUES --------------------------- //
 	 // Retrieve user data
-   applyUserInterfaceStyle($rootScope.userData);
+   applyUserInterfaceStyle($rootScope.userData.apparences[0].colorpalette);
    $scope.hideActionBarElements();
 
 	 $scope.customize = {
