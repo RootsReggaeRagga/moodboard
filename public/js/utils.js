@@ -61,11 +61,15 @@ function isHexaColor(sNum) {
   	return (typeof color === "string") && color.length === 6 && ! isNaN(parseInt(color, 16));
 }
 
-function applyUserInterfaceStyle(userData) {
-	try { document.querySelector(".mdl-layout__content").style.background = palette.get(userData.apparences[0].colorpalette, '100'); } catch (e) {}
-  	try { document.querySelector(".mdl-layout__header").style.background = palette.get(userData.apparences[0].colorpalette, '500'); } catch (e) {}
-	try { document.querySelector(".mdl-switch__thumb").style.background = palette.get(userData.apparences[0].colorpalette, '500'); } catch (e) {}
-	try { document.querySelector(".mdl-button--raised").style.background = palette.get(userData.apparences[0].colorpalette, '500');	} catch (e) {}
+function applyUserInterfaceStyle(color) {
+	try { document.querySelector(".mdl-layout__content").style.background = palette.get(color, '100'); } catch (e) {}
+  	try { document.querySelector(".mdl-layout__header").style.background = palette.get(color, '500'); } catch (e) {}
+	try { document.querySelector(".mdl-switch__thumb").style.background = palette.get(color, '500'); } catch (e) {}
+	try { document.querySelector(".mdl-button--raised").style.background = palette.get(color, '500');	} catch (e) {}
+	var backgroundRect = document.getElementById('background-rect');
+	if (backgroundRect !== null) {
+		backgroundRect.setAttribute("fill", palette.get(color, '100'));
+	}
 }
 
 function hasClass(element, cls) {

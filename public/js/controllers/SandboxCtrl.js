@@ -10,7 +10,7 @@ angular.module('SandboxCtrl', []).controller('SandboxController', function($scop
 	SandboxSrv.getUserData($rootScope.username)
 		.success(function(data) {
 			$rootScope.userData = data;
-	  		applyUserInterfaceStyle($rootScope.userData);
+	  		applyUserInterfaceStyle($rootScope.userData.apparences[0].colorpalette);
 	  		$scope.showActionBarAndElements();
 	   		doload(data);
 	   	});

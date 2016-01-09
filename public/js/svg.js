@@ -27,7 +27,7 @@ function doload(userData) {
     images = getImagesFromUserJsonData(userData);
     videos = getVideosFromUserJsonData(userData);
     links = getLinksFromUserJsonData(userData);
-    applySandboxBackgroundColor(userData);
+    applyUserInterfaceStyle(userData.apparences[0].colorpalette);
 
     // Get main canvas & retrieve width/height
     gCanvas = document.getElementById("canvas");
@@ -69,13 +69,14 @@ function doload(userData) {
 
     // Loading videos
     // TODO: To the loading in a different thread.
-    var vids = [];
+    /*var vids = [];
     for (var i = 0, iLen = videos.length; i < iLen; i++) {
         vids.push(addVideo(videos[i]));
     }
 
     for (var j = 0, jLen = vids.length; j < jLen; j++) {
         (function(j) {
+            var hideToolsTimeOut;
             var vid = document.getElementById(vids[j]);
             var moveVidButton = vid.firstChild.childNodes[1].firstChild;
             moveVidButton.addEventListener('mousedown', function(evt) {
@@ -88,12 +89,14 @@ function doload(userData) {
                 panel.classList.add('visible');
             }, false);
             vid.addEventListener('mouseout', function(evt) {
-                var panel = document.getElementById('tools-' + vid.id);
-                panel.classList.remove('visible');
-                panel.classList.add('invisible');
+                hideToolsTimeOut = setTimeout(function() {
+                    var panel = document.getElementById('tools-' + vid.id);
+                    panel.classList.remove('visible');
+                    panel.classList.add('invisible');
+                }, 1500);
             }, false);
         }(j));
-    }
+    }*/
 
     gCanvas.addEventListener("mousemove", onMouseMove, false);
     gCanvas.addEventListener("mouseup", onMouseUp, false);
@@ -131,11 +134,6 @@ function isBrowserSupported() {
     } else {
         window.location.href = '/notsupported';
     }
-}
-
-function applySandboxBackgroundColor(userData) {
-    var object =  document.getElementById('background-rect');
-    object.setAttribute("fill", palette.get(userData.apparences[0].colorpalette, '100'));
 }
 
 function getImagesFromUserJsonData(userData) {
@@ -237,8 +235,8 @@ function addVideo(url) {
     video += '<div id="tools-' + s + '" class="invisible" style="width:48px; height:' + vidh + 'px; float:right; overflow: auto;">';
     video += '<label id="move-' + s + '" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">open_with</i></label>';
     video += '<label id="crop-' + s + '" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">crop</i></label>';
-
     video += '</div>';
+
     video += '</foreignObject></g>';
 
     gCanvas.innerHTML += video;
