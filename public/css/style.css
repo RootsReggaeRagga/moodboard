@@ -23,6 +23,10 @@ a.mdl-badge {
 
 /* Header / Navigation bar */
 
+.mdl-progress {
+  width:100%;
+}
+
 .mdl-layout__header {
   background-color: #2e3764;
 }
