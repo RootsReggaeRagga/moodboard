@@ -3,10 +3,6 @@
 html, body { margin:0; padding:0; overflow:hidden }
 svg { position:fixed; top:0; left:0; height:100%; width:100% }
 
-.red-font {
-	color:red;
-}
-
 .icon-menu-left {
 	display: inline-block;
 	width:40px;
@@ -22,6 +18,11 @@ svg { position:fixed; top:0; left:0; height:100%; width:100% }
 	 display:inline-block;
 	 cursor:pointer;
 }
-
 .invisible { display:none; }
 .visible { display:block; }
+
+.align-bottom {
+	bottom:0px;
+	position: absolute;	
+	width: 100%;
+}

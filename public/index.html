@@ -24,6 +24,7 @@
 
 	<!-- CONTROLLERS, SERVICES & ROUTES -->
 	<script src="js/controllers/NotifierInit.js"></script>
+	<script src="js/controllers/UtilsCtrl.js"></script>
 	<script src="js/controllers/LoginCtrl.js"></script>
 	<script src="js/services/LoginService.js"></script>
 	<script src="js/controllers/SettingsCtrl.js"></script>
@@ -41,10 +42,10 @@
 </head>
 <body ng-app="moodboardApp">
 <div class="container">
-
 	<!-- HEADER -->
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
 	    <header id="actionbar" class="mdl-layout__header">
+		  <div id="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate invisible"></div>
 	      <div class="mdl-layout__header-row">
 	        <a href="/" class="white-link">
 	        	<span class="mdl-layout-title">{{ websiteName }}</span>
@@ -79,7 +80,7 @@
 	        </nav>
 	      </div>
 	    </header>
-	    <div id="left-panel" class="mdl-layout__drawer">
+	    <div id="left-panel" class="mdl-layout__drawer" ng-controller="UtilsController" ng-click="test($event)">
 	      <span class="mdl-layout-title">Menu</span>
 	      <nav class="mdl-navigation">
 	        <a class="mdl-navigation__link" href="/sandbox">
@@ -88,7 +89,7 @@
 	        </a>
 	        <a class="mdl-navigation__link" href="#">
 	          <div class= "icon-menu-left"><i class="tiny material-icons">supervisor_account</i></div>
-	          <div class="txt-menu-left">Friends</div>
+	          <div class="txt-menu-left">Follow</div>
 	        </a>
 	        <a class="mdl-navigation__link" href="#">
 	          <div class= "icon-menu-left"><i class="tiny material-icons">loop</i></div>
@@ -98,9 +99,9 @@
 	          <div class= "icon-menu-left"><i class="tiny material-icons">build</i></div>
 	          <div class="txt-menu-left">Settings</div>
 	        </a>
-	        <a class="mdl-navigation__link" href="#">
+	        <a class="mdl-navigation__link align-bottom" href="/">
 	            <div class= "icon-menu-left"><i class="tiny material-icons">power_settings_new</i></div>
-	          <div class="txt-menu-left">Logout</div>
+	          	<div class="txt-menu-left">Logout</div>
 	        </a>
 	      </nav>
 	    </div>
