@@ -8,6 +8,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/sandbox.html',
 			controller: 'SandboxController'	
 		})
+		.when('/random', {
+			templateUrl: 'views/random.html',
+			controller: 'RandomController'	
+		})
 		.when('/settings', {
 			templateUrl: 'views/settings.html',
 			controller: 'SettingsController'

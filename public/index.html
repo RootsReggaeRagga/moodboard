@@ -31,6 +31,8 @@
 	<script src="js/services/SettingsService.js"></script>
 	<script src="js/controllers/SandboxCtrl.js"></script>
 	<script src="js/services/SandboxService.js"></script>
+	<script src="js/controllers/RandomCtrl.js"></script>
+	<script src="js/services/RandomService.js"></script>
 	<script src="js/appRoutes.js"></script>
 	<script src="js/app.js"></script>
 
@@ -80,7 +82,7 @@
 	        </nav>
 	      </div>
 	    </header>
-	    <div id="left-panel" class="mdl-layout__drawer" ng-controller="UtilsController" ng-click="test($event)">
+	    <div id="left-panel" class="mdl-layout__drawer" ng-controller="UtilsController" ng-click="hideLeftPanel($event)">
 	      <span class="mdl-layout-title">Menu</span>
 	      <nav class="mdl-navigation">
 	        <a class="mdl-navigation__link" href="/sandbox">
@@ -91,7 +93,7 @@
 	          <div class= "icon-menu-left"><i class="tiny material-icons">supervisor_account</i></div>
 	          <div class="txt-menu-left">Follow</div>
 	        </a>
-	        <a class="mdl-navigation__link" href="#">
+	        <a class="mdl-navigation__link" href="/random">
 	          <div class= "icon-menu-left"><i class="tiny material-icons">loop</i></div>
 	          <div class="txt-menu-left">Random</div>
 	        </a>
