@@ -15,6 +15,7 @@ var invalid_img = 'img/invalid_img.png';
 var backgroundcolor;
 var edgeColor;
 var db;
+var clicks = 0;
 
 function doload(userData) {
 
@@ -314,6 +315,35 @@ function redirectToLink(elementId) {
     win.focus();
 }
 
+function removeElement(element) {
+    var toRemove = document.getElementById(element.id);
+    var parent = document.getElementById(element.id).parentNode;
+    parent.removeChild(toRemove);
+}
+
+function zoomElement(evt, element) {
+    element.setAttribute('zoom', 'true');
+
+    // rotation 0
+    element.setAttribute("transform", "rotate(0)");
+    //element.transform.animVal[2].angle = 0;
+    // Ignore if something else is already going on
+    /*
+    if (currentTransform !== null) {
+        return;
+    }
+
+    currentTransform = {
+        what: 1,
+        g: element,
+        s: element.vScale,
+        r: 0,
+        t: element.vTranslate,
+        x: element.clientX,
+        y: element.clientY
+    };*/
+}
+
 function deplace(evt, g) {
     return startTransform(evt, g, 0);
 }
@@ -323,17 +353,24 @@ function foreground(g) {
 }
 
 function onMouseDown(evt, g) {
-    var clicks = 0;
     evt.preventDefault();
     clicks++;
     setTimeout(function() {
         clicks = 0;
     }, 500);
-    // Element to foreground
-    foreground(g);
 
-    // Element move
-    deplace(evt, g);
+    foreground(g); // Bring element foreground
+
+    if (clicks >= 2) {
+        if (g.hasAttribute('zoom')) {  
+            removeElement(g); // Remove element     
+        } else {
+            zoomElement(evt, g); // Zoom to element
+        }   
+        clicks = 0;     
+    } else {
+        deplace(evt, g); // Move element
+    }
 }
 
 function onMouseUp(ev) {

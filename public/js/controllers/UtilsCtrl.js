@@ -1,5 +1,5 @@
 angular.module('UtilsCtrl', []).controller('UtilsController', function($scope){
-        $scope.test = function(event) {
+        $scope.hideLeftPanel = function(event) {
         	var target = event.target;
         	if (target !== null) {
         		if (hasClass(target, 'mdl-navigation__link') || hasClass(target, 'txt-menu-left') || hasClass(target, 'icon-menu-left')) {
