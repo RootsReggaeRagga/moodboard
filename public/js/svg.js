@@ -324,24 +324,38 @@ function removeElement(element) {
 function zoomElement(evt, element) {
     element.setAttribute('zoom', 'true');
 
-    // rotation 0
-    element.setAttribute("transform", "rotate(0)");
-    //element.transform.animVal[2].angle = 0;
-    // Ignore if something else is already going on
-    /*
-    if (currentTransform !== null) {
-        return;
+    var viewportWidth = window.innerWidth;
+    var viewportHeight = window.innerHeight;
+
+    var imageWidth = element.firstChild.width.animVal.value;
+    var imageHeight = element.firstChild.height.animVal.value;
+
+    var sc = 1;
+    var zoom = 0.8;
+    var type = imageWidth > imageHeight ? 'landscape' : 'portrait';
+
+    if (type === 'landscape') {
+        // Landscape image
+        var expectedWidth = viewportWidth * zoom;
+        sc = expectedWidth / imageWidth;
+
+        // If ()
+        if ((imageHeight * sc) > (viewportHeight * zoom)) {
+            type = 'portrait';
+        }
     }
 
-    currentTransform = {
-        what: 1,
-        g: element,
-        s: element.vScale,
-        r: 0,
-        t: element.vTranslate,
-        x: element.clientX,
-        y: element.clientY
-    };*/
+    if (type === 'portrait') {
+        // Portrait image
+        var expectedHeight = viewportHeight * zoom;
+        sc = expectedHeight / imageHeight;
+    }
+
+    // Transform image to zoom mode
+    var translateWidth = (((viewportWidth - (imageWidth * sc)) + (imageWidth * sc)) / 2);
+    var translateHeight = (((viewportHeight - (imageHeight * sc)) + (imageHeight * sc)) / 2);
+
+    element.setAttribute('transform', 'translate(' + translateWidth + ', ' + translateHeight + ') scale(' + sc + ',' + sc + ') rotate(0)');
 }
 
 function deplace(evt, g) {
@@ -362,12 +376,12 @@ function onMouseDown(evt, g) {
     foreground(g); // Bring element foreground
 
     if (clicks >= 2) {
-        if (g.hasAttribute('zoom')) {  
-            removeElement(g); // Remove element     
+        if (g.hasAttribute('zoom')) {
+            removeElement(g); // Remove element
         } else {
             zoomElement(evt, g); // Zoom to element
-        }   
-        clicks = 0;     
+        }
+        clicks = 0;
     } else {
         deplace(evt, g); // Move element
     }
@@ -424,20 +438,21 @@ function onMouseMove(ev) {
         currentTransform.x = ex;
         currentTransform.y = ey;
 
-        g.setAttribute("transform", "translate(" + g.vTranslate[0] + "," + g.vTranslate[1] + ") " +
-            "scale(" + g.vScale + "," + g.vScale + ") " +
-            "rotate(" + g.vRotate + ") ");
+        g.setAttribute('transform', 'translate(' + g.vTranslate[0] + ',' + g.vTranslate[1] + ') ' +
+            'scale(' + g.vScale + ',' + g.vScale + ') ' +
+            'rotate(' + g.vRotate + ') ');
     }
 }
 
 function rampOpacityDown(g) {
     g.style.opacity = 1.0;
-    var rampFunc = function() {
+    var rampFunc = function () {
         var o = parseFloat(g.style.opacity) - 0.05;
         g.style.opacity = o;
-        if (o > 0.7)
+        if (o > 0.7) {
             setTimeout(rampFunc, 10);
-    }
+        }
+    };
     rampFunc();
 }
 
@@ -446,11 +461,12 @@ function rampOpacityUp(g, startOpacity) {
         startOpacity = 0.7;
     }
     g.style.opacity = startOpacity;
-    var rampFunc = function() {
+    var rampFunc = function () {
         var o = parseFloat(g.style.opacity) + 0.05;
         g.style.opacity = o;
-        if (o < 1.0)
+        if (o < 1.0) {
             setTimeout(rampFunc, 10);
-    }
+        }
+    };
     rampFunc();
 }
