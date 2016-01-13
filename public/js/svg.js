@@ -322,10 +322,11 @@ function removeElement(element) {
 }
 
 function zoomElement(evt, element) {
+    var headerHeight = 56;
     element.setAttribute('zoom', 'true');
 
     var viewportWidth = window.innerWidth;
-    var viewportHeight = window.innerHeight;
+    var viewportHeight = window.innerHeight - headerHeight;
 
     var imageWidth = element.firstChild.width.animVal.value;
     var imageHeight = element.firstChild.height.animVal.value;
@@ -353,7 +354,7 @@ function zoomElement(evt, element) {
 
     // Transform image to zoom mode
     var translateWidth = (((viewportWidth - (imageWidth * sc)) + (imageWidth * sc)) / 2);
-    var translateHeight = (((viewportHeight - (imageHeight * sc)) + (imageHeight * sc)) / 2);
+    var translateHeight = (((viewportHeight - (imageHeight * sc)) + (imageHeight * sc)) / 2) + headerHeight;
 
     element.setAttribute('transform', 'translate(' + translateWidth + ', ' + translateHeight + ') scale(' + sc + ',' + sc + ') rotate(0)');
 }
