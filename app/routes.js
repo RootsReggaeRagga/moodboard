@@ -18,22 +18,22 @@ module.exports = function(app) {
 
 	// **************************** MODELS ****************************
 	var users = mongoose.model('users', {
-	    firstname : String, 
+	    firstname : String,
 	    lastname : String,
-	    email : String, 
-	    username : String, 
+	    email : String,
+	    username : String,
 	    password: String
 	});
 
 	var sandboxes = mongoose.model('sandboxes', {
-	    _username : String, 
-	    images : [{ 
-				    url: String, 
-				    link: String 
-				 }], 
-	    apparences : { 
-	    			backgroundcolor: String, 
-	    			actionbarcolor: String 
+	    _username : String,
+	    images : [{
+				    url: String,
+				    link: String
+				 }],
+	    apparences : {
+	    			backgroundcolor: String,
+	    			actionbarcolor: String
 	    			}
 	});
 
@@ -86,10 +86,10 @@ module.exports = function(app) {
             }
 		});
     });
-    
+
 	// route to handle all angular requests
 	app.get('/', function(req, res) {
-		res.sendfile('./public/index.html');
+		res.sendfile('./public/views/index.html');
 	});
 
 	app.get('/unauthorized', function(req, res) {
