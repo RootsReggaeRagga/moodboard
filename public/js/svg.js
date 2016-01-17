@@ -20,8 +20,7 @@ var clicks = 0;
 function doload(userData) {
 
     // Check if Chrome or Safari browser
-    if (!isBrowserSupported())
-        return;
+    // if (!isBrowserSupported()) return;
 
     var u = userData._username.toUpperCase();
     edgeColor = userData.apparences[0].edgeofpictures;
@@ -44,13 +43,13 @@ function doload(userData) {
         // If image is not accessible or link broken, use a default image :/
         //simages[k] = isImageAccessible(images[k]) ? images[k] : invalid_img;
 
-        // do some hackyness here to get the correct variables
-        // to the function
+        // do some hackyness here to get the correct variables to the function
         img.onload = function(k, url) {
             return function() {
                 var g = addImage(url, 1.0, this);
                 g.style.opacity = 1.0;
-                g.vTranslate = [Math.floor((Math.random() * gCanvasWidth * 0.4) + gCanvasWidth * 0.3),
+                g.vTranslate = [
+                    Math.floor((Math.random() * gCanvasWidth * 0.4) + gCanvasWidth * 0.3),
                     Math.floor((Math.random() * gCanvasHeight * 0.5) + gCanvasHeight * 0.3)
                 ];
 
@@ -58,9 +57,11 @@ function doload(userData) {
                 g.vScale = c; // 0.25; // 0.001;
                 g.vRotate = (Math.random() * 40) - 20;
 
-                g.setAttribute("transform", "translate(" + g.vTranslate[0] + "," + g.vTranslate[1] + ") " +
-                    "scale(" + g.vScale + "," + g.vScale + ") " +
-                    "rotate(" + g.vRotate + ") ");
+                g.setAttribute('transform', 
+                    'translate(' + g.vTranslate[0] + ',' + g.vTranslate[1] + ') ' +
+                    'scale(' + g.vScale + ',' + g.vScale + ') ' +
+                    'rotate(' + g.vRotate + ') '
+                );
                 rampOpacityUp(g, 0.45);
             }
         }(k, images[k]);
@@ -105,38 +106,6 @@ function doload(userData) {
     document.getElementById("background-rect").addEventListener("mouseup", onMouseUp, false);
 }
 
-function isImageAccessible(image_url) {
-    try {
-         var http = new XMLHttpRequest();
-        http.open('HEAD', image_url, false);
-        http.send();
-        return http.status != 404;
-    } catch (e) {
-        console.error('Image @' + image_url + ' is not accessible.');
-        return false;
-    }
-}
-
-function isBrowserSupported() {
-    var isChromium = window.chrome;
-    var vendorName = window.navigator.vendor;
-    var isOpera = window.navigator.userAgent.indexOf("OPR") > -1;
-    var isSafari = false;
-    var ua = navigator.userAgent.toLowerCase();
-    if (ua.indexOf('safari') != -1) {
-        if (ua.indexOf('chrome') > -1) {
-            // Nothing.
-        } else {
-            isSafari = true;
-        }
-    }
-    if (isChromium !== null && isChromium !== undefined && vendorName === "Google Inc." && isOpera == false || isSafari == true) {
-        return true;
-    } else {
-        window.location.href = '/notsupported';
-    }
-}
-
 function getImagesFromUserJsonData(userData) {
     var images = [];
     for (var i = 0; i < userData.images.length; i++) {
@@ -169,7 +138,6 @@ function svgSetXYWH(el, x, y, w, h) {
     el.setAttribute("height", h);
 }
 
-
 function startTransform(ev, group, what) {
     // Ignore if something else is already going on
     if (currentTransform !== null) {
@@ -199,8 +167,11 @@ function newClickableRect(group, id, x, y, w, h, fill, stroke) {
     p.setAttribute("rx", 30);
     p.setAttribute("ry", 30);
     p.setAttribute("fill", fill);
-    //p.setAttribute("stroke", stroke);
-    //p.setAttribute("stroke-width", 10);
+
+    // Stroke arround the picture
+    // p.setAttribute("stroke", stroke);
+    // p.setAttribute("stroke-width", 10);
+
     p.addEventListener('mousedown', function(evt) {
         var g = group;
         return startTransform(evt, g, 1);
@@ -213,7 +184,7 @@ function newClickableRect(group, id, x, y, w, h, fill, stroke) {
 // and the clickable hotspots used for rotating the image.
 var nextImageId = 0;
 var nextVideoId = 0;
-
+/*
 function addVideo(url) {
     var vidw = 560;
     var vidh = 349;
@@ -242,10 +213,9 @@ function addVideo(url) {
 
     gCanvas.innerHTML += video;
 
-    // -------------------------------------------------------------------
-
     return s;
 }
+*/
 
 function addImage(url, initOpacity, img) {
     var imgw = img.width > 550 && img.height > 500 ? img.width : img.width * 2;
@@ -310,7 +280,7 @@ function addImage(url, initOpacity, img) {
 }
 
 function redirectToLink(elementId) {
-    var id = parseInt(elementId.replace("image", ""));
+    var id = parseInt(elementId.replace('image', ''));
     var win = window.open(links[id], '_blank');
     win.focus();
 }
@@ -340,7 +310,7 @@ function zoomElement(evt, element) {
         var expectedWidth = viewportWidth * zoom;
         sc = expectedWidth / imageWidth;
 
-        // If ()
+        // Change the type of the image if the height is too important
         if ((imageHeight * sc) > (viewportHeight * zoom)) {
             type = 'portrait';
         }
@@ -356,13 +326,20 @@ function zoomElement(evt, element) {
     var translateWidth = (((viewportWidth - (imageWidth * sc)) + (imageWidth * sc)) / 2);
     var translateHeight = (((viewportHeight - (imageHeight * sc)) + (imageHeight * sc)) / 2) + headerHeight;
 
-    element.setAttribute('transform', 'translate(' + translateWidth + ', ' + translateHeight + ') scale(' + sc + ',' + sc + ') rotate(0)');
+    element.setAttribute('transform', 
+        'translate(' + translateWidth + ', ' + translateHeight + ') ' +
+        'scale(' + sc + ',' + sc + ') '+
+        'rotate(0)'
+    );
 }
 
 function deplace(evt, g) {
     return startTransform(evt, g, 0);
 }
 
+/*
+ * Bring an element foreground
+ */
 function foreground(g) {
     document.getElementById('canvas').appendChild(g);
 }
@@ -396,9 +373,8 @@ function onMouseUp(ev) {
 }
 
 function onMouseMove(ev) {
-    if (!('currentTransform' in window) || currentTransform == null) {
-        return;
-    }
+    // Discard treatment if an element is currently moving
+    if (!('currentTransform' in window) || currentTransform == null) return;
 
     var ex = ev.clientX;
     var ey = ev.clientY;
@@ -439,9 +415,11 @@ function onMouseMove(ev) {
         currentTransform.x = ex;
         currentTransform.y = ey;
 
-        g.setAttribute('transform', 'translate(' + g.vTranslate[0] + ',' + g.vTranslate[1] + ') ' +
+        g.setAttribute('transform', 
+            'translate(' + g.vTranslate[0] + ',' + g.vTranslate[1] + ') ' +
             'scale(' + g.vScale + ',' + g.vScale + ') ' +
-            'rotate(' + g.vRotate + ') ');
+            'rotate(' + g.vRotate + ') '
+        );
     }
 }
 
