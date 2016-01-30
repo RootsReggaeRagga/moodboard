@@ -1,118 +1,36 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<base href="/">
-
-	<title>Moodboard / It's here that all starts.</title>
-	<link rel="favicon" href="../img/favicon.ico" type="image/x-icon" />
-
-	<!-- CSS -->
-	<link rel="stylesheet" href="../libs/material-design-lite/material.min.css">
-  	<link rel="stylesheet" href="../css/style.css">
-  	<link rel="stylesheet" href="../css/mystyle.css">
-  	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-  	<link rel="stylesheet" href="../libs/angular-ui-notification/dist/angular-ui-notification.min.css">
-
-	<!-- JS -->
-	<script src="../libs/angular/angular.min.js"></script>
-	<script src="../libs/material-design-lite/material.min.js"></script>
-	<script src="../libs/angular-route/angular-route.min.js"></script>
-	<script src="../libs/jquery/dist/jquery.js"></script>
-	<script src="../libs/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
-
-	<!-- CONTROLLERS, SERVICES & ROUTES -->
-	<script src="../js/controllers/NotifierInit.js"></script>
-	<script src="../js/controllers/UtilsCtrl.js"></script>
-	<script src="../js/controllers/LoginCtrl.js"></script>
-	<script src="../js/services/LoginService.js"></script>
-	<script src="../js/controllers/SettingsCtrl.js"></script>
-	<script src="../js/services/SettingsService.js"></script>
-	<script src="../js/controllers/SandboxCtrl.js"></script>
-	<script src="../js/services/SandboxService.js"></script>
-	<script src="../js/controllers/RandomCtrl.js"></script>
-	<script src="../js/services/RandomService.js"></script>
-	<script src="../js/appRoutes.js"></script>
-	<script src="../js/app.js"></script>
-
-	<!-- CUSTOMS JS & UTILS -->
-	<script src="../js/svg.js"></script>
-	<script src="../js/utils.js"></script>
-	<script src="../js/palette.js"></script>
-
-</head>
-<body ng-app="moodboardApp">
-<div class="container">
-	<!-- HEADER -->
-	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
-	    <header id="actionbar" class="mdl-layout__header">
-		  <div id="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate invisible"></div>
-	      <div class="mdl-layout__header-row">
-	        <a href="/" class="white-link">
-	        	<span class="mdl-layout-title">{{ websiteName }}</span>
-	        </a>
-	        <span id="page-title-username" class="mdl-layout-title-mini"> {{ username }}</span>
-	        <div class="mdl-layout-spacer"></div>
-	        <!-- (T) Search a user -->
-	        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
-	          <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
-	            <i class="material-icons">search</i>
-	          </label>
-	          <div class="mdl-textfield__expandable-holder">
-	            <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp" onkeypress="alert('search this user')"/>
-	          </div>
-	        </div>
-			<!-- (+) Add an element to UI -->
-			<button id="add-button" class="mdl-button mdl-js-button mdl-button--icon mdl-text" style="display:none; margin-left:30px; top:-3px;">
-			  <i class="material-icons">add</i>
-			</button>
-			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="add-button">
-			  <li class="mdl-menu__item">Add a post-it</li>
-			  <li disabled class="mdl-menu__item">Add a caption</li>
-			  <li disabled class="mdl-menu__item">Add an element from URL</li>
-			</ul>
-			<!-- (<) Share -->
-			<label id="share-button" class="mdl-button mdl-js-button mdl-button--icon" style="display:none; margin-left:30px; top:-3px;">
-	          <i class="material-icons">share</i>
-	        </label>
-			<!-- (X) Notifications -->
-			<nav class="mdl-navigation mdl-layout--large-screen-only" style="margin-left:30px">
-	          <a class="mdl-badge" data-badge="4" href="">Mood</a>
-	        </nav>
-	      </div>
-	    </header>
-	    <div id="left-panel" class="mdl-layout__drawer" ng-controller="UtilsController" ng-click="hideLeftPanel($event)">
-	      <span class="mdl-layout-title">Menu</span>
-	      <nav class="mdl-navigation">
-	        <a class="mdl-navigation__link" href="/sandbox">
-	          <div class= "icon-menu-left"><i class="tiny material-icons">dashboard</i></div>
-	          <div class="txt-menu-left">Sandbox</div>
-	        </a>
-	        <a class="mdl-navigation__link" href="#">
-	          <div class= "icon-menu-left"><i class="tiny material-icons">supervisor_account</i></div>
-	          <div class="txt-menu-left">Follow</div>
-	        </a>
-	        <a class="mdl-navigation__link" href="/random">
-	          <div class= "icon-menu-left"><i class="tiny material-icons">loop</i></div>
-	          <div class="txt-menu-left">Random</div>
-	        </a>
-	        <a class="mdl-navigation__link" href="/settings">
-	          <div class= "icon-menu-left"><i class="tiny material-icons">build</i></div>
-	          <div class="txt-menu-left">Settings</div>
-	        </a>
-	        <a class="mdl-navigation__link align-bottom" href="/">
-	            <div class= "icon-menu-left"><i class="tiny material-icons">power_settings_new</i></div>
-	          	<div class="txt-menu-left">Logout</div>
-	        </a>
-	      </nav>
-	    </div>
-	   	<main id="mainView" class="mdl-layout__content" ng-view>
-
-	        <!-- ANGULAR DYNAMIC CONTENT -->
-
-    	</main>
-	</div>
+<div style="background-image: url('../img/paris.gif');background-size: cover;position: absolute;
+top:0;
+bottom:0;
+right:0;
+left:0;
+overflow:hidden;"
+data-ng-if="!authentication.user">
+<center>
+    <div style="margin:100px;padding:50px;width:300px;background-color:#eee;opacity:0.9;">
+        <span class="mdl-layout-title">{{ websiteName }}</span>
+        <h4>It's here that all starts.</h4>
+               <div class="text-center form-group">
+                  <a href="/#!/signup">
+	                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+	                      Sign up!
+	                  </button>
+                  </a>
+                  <a href="/#!/signin">
+	                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+	                      Sign in!
+	                  </button>
+                  </a>
+              </div>
+              <div data-ng-show="error" class="text-center text-danger">
+                <strong>{{error}}</strong>
+            </div>
+        </fieldset>
+    </form>
+   </div>
 </div>
-</body>
-</html>
+
+<div data-ng-if="authentication.user">
+	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" id="canvas">
+		<rect id="background-rect" x="0%" y="0%" width="100%" height="100%" fill="#F5F5F5"/>
+	</svg>
+</div>

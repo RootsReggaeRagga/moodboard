@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Moodboard / It's here that all starts.</title>
+    <link rel="favicon" href="img/favicon.ico" type="image/x-icon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="libs/material-design-lite/material.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="libs/angular-ui-notification/dist/angular-ui-notification.min.css">
+
+    <!-- JS -->
+    <script src="libs/angular/angular.min.js"></script>
+    <script src="libs/angular-route/angular-route.min.js"></script>
+    <script src="libs/material-design-lite/material.min.js"></script>
+    <script src="libs/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">window.user = <%- user || 'null' %>;</script>
+
+    <!-- Routes & app -->
+    <script type="text/javascript" src="application.js"></script>
+    <script type="text/javascript" src="config/application.client.routes.js"></script>
+
+    <!-- Controllers -->
+    <script type="text/javascript" src="controllers/authentication.client.controller.js"></script>
+    <script type="text/javascript" src="controllers/index.client.controller.js"></script>
+    <script type="text/javascript" src="controllers/settings.client.controller.js"></script>
+
+    <!-- Services -->
+    <script type="text/javascript" src="services/authentication.client.service.js"></script>
+    <script type="text/javascript" src="services/sandbox.client.service.js"></script>
+    <script type="text/javascript" src="services/settings.client.service.js"></script>
+
+    <!-- CUSTOMS JS & UTILS -->
+    <script src="js/svg.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/palette.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <!-- HEADER -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+        <header id="actionbar" class="mdl-layout__header">
+          <div id="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate invisible"></div>
+          <div class="mdl-layout__header-row">
+            <a href="/#!/" class="white-link">
+                <span class="mdl-layout-title">{{ websiteName }}</span>
+            </a>
+            <span id="page-title-username" class="mdl-layout-title-mini"> {{ $scope.authentication.user }}</span>
+            <div class="mdl-layout-spacer"></div>
+            <!-- (T) Search a user -->
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+              <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
+                <i class="material-icons">search</i>
+              </label>
+              <div class="mdl-textfield__expandable-holder">
+                <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp" onkeypress="alert('search this user')"/>
+              </div>
+            </div>
+            <!-- (+) Add an element to UI -->
+            <button id="add-button" class="mdl-button mdl-js-button mdl-button--icon mdl-text" style="display:none; margin-left:30px; top:-3px;">
+              <i class="material-icons">add</i>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="add-button">
+              <li class="mdl-menu__item">Add a post-it</li>
+              <li disabled class="mdl-menu__item">Add a caption</li>
+              <li disabled class="mdl-menu__item">Add an element from URL</li>
+            </ul>
+            <!-- (<) Share -->
+            <label id="share-button" class="mdl-button mdl-js-button mdl-button--icon" style="display:none; margin-left:30px; top:-3px;">
+              <i class="material-icons">share</i>
+            </label>
+            <!-- (X) Notifications -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only" style="margin-left:30px">
+              <a class="mdl-badge" data-badge="4" href="">Mood</a>
+            </nav>
+          </div>
+        </header>
+        <div id="left-panel" class="mdl-layout__drawer" ng-click="hideLeftPanel($event)">
+          <span class="mdl-layout-title">Menu</span>
+          <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="/#!/sandbox">
+              <div class= "icon-menu-left"><i class="tiny material-icons">dashboard</i></div>
+              <div class="txt-menu-left">Sandbox</div>
+            </a>
+            <a class="mdl-navigation__link" href="/#!/">
+              <div class= "icon-menu-left"><i class="tiny material-icons">supervisor_account</i></div>
+              <div class="txt-menu-left">Follow</div>
+            </a>
+            <a class="mdl-navigation__link" href="/#!/">
+              <div class= "icon-menu-left"><i class="tiny material-icons">loop</i></div>
+              <div class="txt-menu-left">Random</div>
+            </a>
+            <a class="mdl-navigation__link" href="/#!/settings">
+              <div class= "icon-menu-left"><i class="tiny material-icons">build</i></div>
+              <div class="txt-menu-left">Settings</div>
+            </a>
+            <a class="mdl-navigation__link align-bottom" href="/auth/signout">
+                <div class= "icon-menu-left"><i class="tiny material-icons">power_settings_new</i></div>
+                <div class="txt-menu-left">Logout</div>
+            </a>
+          </nav>
+        </div>
+        <main id="mainView" class="mdl-layout__content" ng-view>
+            <!-- ANGULAR DYNAMIC CONTENT -->
+        </main>
+    </div>
+</div>
+</body>
+</html>
+
