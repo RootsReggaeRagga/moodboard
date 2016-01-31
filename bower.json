@@ -1,5 +1,5 @@
 {
-  "name": "angular",
+  "name": "moodboard",
   "version": "1.0.0",
   "dependencies": {
     "material-design-lite": "latest",

@@ -5,7 +5,6 @@ angular.module('mean').controller('IndexController', ['$scope', '$rootScope', 'A
         $scope.authentication = Authentication;
         $rootScope.websiteName = 'MOODBOARD';
         if ($scope.authentication.user !== null) {
-	        console.log($scope.authentication);
 	        $rootScope.username = $scope.authentication.user.username;
 
 	        SandboxSrv.getUserData($rootScope.username)

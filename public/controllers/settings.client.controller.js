@@ -1,7 +1,12 @@
 'use strict';
 
-angular.module('mean').controller('SettingsController', ['$scope', '$rootScope', 'Authentication', 
-  function($scope, $rootScope, Authentication) {
+angular.module('mean').controller('SettingsController', ['$scope', '$rootScope', '$location', 'Authentication', 
+  function($scope, $rootScope, $location, Authentication) {
+      /*
+      if ($scope.authentication === undefined) {
+          $location.path( "/" );
+      }*/
+
       // --------------------------- FUNCTIONS --------------------------- // 
       $scope.saveChanges = function() {
         console.log('form values : ' + $scope.customize.colorpalette);
