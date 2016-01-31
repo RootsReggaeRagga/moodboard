@@ -36,6 +36,7 @@ angular.module('mean')
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
       if ($rootScope.username == null && next.access.restricted === true) {
           $location.path( "/");
-      }         
+        
+      }     
     })
 });
