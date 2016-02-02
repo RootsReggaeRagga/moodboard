@@ -39,8 +39,8 @@ angular.module('mean')
 .run( function($rootScope, $location) {
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
       if ($rootScope.username == null && next.access.restricted === true) {
-          $location.path( "/");
-      }     
+          $location.path('/');
+      }
     });
     $rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
         $rootScope.pageTitle = current.$$route.title;

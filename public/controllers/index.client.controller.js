@@ -9,11 +9,11 @@ angular.module('mean').controller('IndexController', ['$scope', '$rootScope', 'A
 			$rootScope.username = $scope.authentication.user.username;
 
 			SandboxSrv.getUserData($rootScope.username)
-			.success(function(data) {
-				$rootScope.userData = data;
-				applyUserInterfaceStyle($rootScope.userData.apparences[0].colorpalette);
-	            doload(data);
-	        });
+				.success(function(data) {
+					$rootScope.userData = data;
+					applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
+		            doload(data);
+		        });
 	        Menu.updateMenu(true, 'index');
 		} else {
 			Menu.updateMenu(false, 'index');

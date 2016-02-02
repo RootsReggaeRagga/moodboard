@@ -30,7 +30,7 @@ angular.module('mean').controller('AuthenticationController', ['$scope', '$rootS
                 SandboxSrv.getUserData($rootScope.username)
                 .success(function(data) {
                     $rootScope.userData = data;
-                    applyUserInterfaceStyle($rootScope.userData.apparences[0].colorpalette);
+                    applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
                     //$scope.showActionBarAndElements();
                     doload(data);
                 });

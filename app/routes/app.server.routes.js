@@ -3,5 +3,6 @@ module.exports = function(app) {
 	app.route('/').get(index.render);
 
 	var sandbox = require('../controllers/sandbox.server.controller');
-	app.route('/api/v1/users/:username/data').get(sandbox.getusersdata);
+    app.route('/api/v1/users/:username/data').get(sandbox.getusersdata);
+	app.route('/api/v1/users/:username/data/settings/colorpalette').put(sandbox.putusercolorpalette);
 };

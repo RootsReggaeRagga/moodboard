@@ -8,8 +8,7 @@ var SandboxSchema = new Schema({
 	    link: String
 	 }],
 	apparences : {
-		backgroundcolor: String,
-	    actionbarcolor: String
+		colorpalette: String
 	}
 });
 

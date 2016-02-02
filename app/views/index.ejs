@@ -36,6 +36,7 @@
     <script type="text/javascript" src="services/authentication.client.service.js"></script>
     <script type="text/javascript" src="services/sandbox.client.service.js"></script>
     <script type="text/javascript" src="services/menu.client.service.js"></script>
+    <script type="text/javascript" src="services/settings.client.service.js"></script>
 
     <!-- CUSTOMS JS & UTILS -->
     <script src="js/svg.js"></script>
@@ -83,7 +84,7 @@
             </nav>
           </div>
         </header>
-        <div id="left-panel" class="mdl-layout__drawer" ng-click="hideLeftPanel($event)">
+        <div id="left-panel" class="mdl-layout__drawer" onclick="hideLeftPanel(event)">
           <span class="mdl-layout-title">Menu</span>
           <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="/#!/sandbox">

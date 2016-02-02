@@ -23,11 +23,11 @@ function doload(userData) {
     // if (!isBrowserSupported()) return;
 
     var u = userData._username.toUpperCase();
-    edgeColor = userData.apparences[0].edgeofpictures;
+    edgeColor = userData.apparences.edgeofpictures;
     images = getImagesFromUserJsonData(userData);
     videos = getVideosFromUserJsonData(userData);
     links = getLinksFromUserJsonData(userData);
-    applyUserInterfaceStyle(userData.apparences[0].colorpalette);
+    applyUserInterfaceStyle(userData.apparences.colorpalette);
 
     // Get main canvas & retrieve width/height
     gCanvas = document.getElementById("canvas");
@@ -57,7 +57,7 @@ function doload(userData) {
                 g.vScale = c; // 0.25; // 0.001;
                 g.vRotate = (Math.random() * 40) - 20;
 
-                g.setAttribute('transform', 
+                g.setAttribute('transform',
                     'translate(' + g.vTranslate[0] + ',' + g.vTranslate[1] + ') ' +
                     'scale(' + g.vScale + ',' + g.vScale + ') ' +
                     'rotate(' + g.vRotate + ') '
@@ -326,7 +326,7 @@ function zoomElement(evt, element) {
     var translateWidth = (((viewportWidth - (imageWidth * sc)) + (imageWidth * sc)) / 2);
     var translateHeight = (((viewportHeight - (imageHeight * sc)) + (imageHeight * sc)) / 2) + headerHeight;
 
-    element.setAttribute('transform', 
+    element.setAttribute('transform',
         'translate(' + translateWidth + ', ' + translateHeight + ') ' +
         'scale(' + sc + ',' + sc + ') '+
         'rotate(0)'
@@ -368,6 +368,7 @@ function onMouseDown(evt, g) {
 function onMouseUp(ev) {
     if (currentTransform) {
         rampOpacityUp(currentTransform.g);
+        console.log('Update image position in database. element : ' + ev.target);
     }
     currentTransform = null;
 }
@@ -415,7 +416,7 @@ function onMouseMove(ev) {
         currentTransform.x = ex;
         currentTransform.y = ey;
 
-        g.setAttribute('transform', 
+        g.setAttribute('transform',
             'translate(' + g.vTranslate[0] + ',' + g.vTranslate[1] + ') ' +
             'scale(' + g.vScale + ',' + g.vScale + ') ' +
             'rotate(' + g.vRotate + ') '

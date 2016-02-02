@@ -1,11 +1,16 @@
 'use strict';
 
-angular.module('mean').controller('SettingsController', ['$scope', '$rootScope', '$location', 'Authentication', 
-  function($scope, $rootScope, $location, Authentication) {
+angular.module('mean').controller('SettingsController', ['$scope', '$rootScope', '$location', 'SettingsSrv',
+  function($scope, $rootScope, $location, SettingsSrv) {
 
-      // --------------------------- FUNCTIONS --------------------------- // 
+      var tempColorPalette;
+
+      // --------------------------- FUNCTIONS --------------------------- //
       $scope.saveChanges = function() {
-        console.log('form values : ' + $scope.customize.colorpalette);
+        SettingsSrv.putUserColorPalette($rootScope.username, tempColorPalette)
+          .success(function(data) {
+            console.log('update color with success.');
+          });
       }
 
       $scope.applyDefaultValues = function() {
@@ -25,13 +30,14 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
         $scope.previewColorPalette = function($event) {
           var element = event.target;
           if (element !== null && (element.id !== undefined)) {
-            var color = capitalizeFirstLetter(element.id.substring(3, element.id.length+1));
+            var color = capitalizeFirstLetter(element.id.substring(3, element.id.length + 1));
             if (color !== '' && color !== null) {
               try { document.querySelector(".mdl-layout__content").style.background = palette.get(color, '100'); } catch (e) {}
               try { document.querySelector(".mdl-layout__header").style.background = palette.get(color, '500'); } catch (e) {}
               try { document.querySelector(".mdl-switch__thumb").style.background = palette.get(color, '500'); } catch (e) {}
               try { document.querySelector(".mdl-button--raised").style.background = palette.get(color, '500'); } catch (e) {}
-            } 
+            }
+            tempColorPalette = color;
           }
         }
 
@@ -44,7 +50,7 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
             switchPrivacy.classList.add('is-checked');
 
           // Change label value
-          $scope.privacy = $scope.privacy == 'Private' ? 'Public' : 'Private';
+          $scope.privacy = $scope.privacy === 'Private' ? 'Public' : 'Private';
         }
 
         $scope.hideActionBarElements = function() {
@@ -63,14 +69,14 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
 
        // --------------------------- APPLY USER'S VALUES --------------------------- //
        // Retrieve user data
-       applyUserInterfaceStyle($rootScope.userData.apparences[0].colorpalette);
+       applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
        $scope.hideActionBarElements();
 
        $scope.customize = {
-        colorpalette: $rootScope.userData.apparences[0].colorpalette
+        colorpalette: $rootScope.userData.apparences.colorpalette
       };
 
-      $scope.privacy = capitalizeFirstLetter($rootScope.userData.settings[0].privacy);
+      $scope.privacy = capitalizeFirstLetter($rootScope.userData.settings.privacy);
       var switchPrivacy = document.getElementById('switch-privacy');
       switch($scope.privacy) {
         case 'Public':

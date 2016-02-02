@@ -12,7 +12,7 @@ function applyUserInterfaceStyle(color) {
   	try { document.querySelector(".mdl-layout__header").style.background = palette.get(color, '500'); } catch (e) {}
 	  try { document.querySelector(".mdl-switch__thumb").style.background = palette.get(color, '500'); } catch (e) {}
 	  try { document.querySelector(".mdl-button--raised").style.background = palette.get(color, '500');	} catch (e) {}
-	  
+
     // If a background rectangle is currenty displayed, fill this element with the user's color
     var backgroundRect = document.getElementById('background-rect');
     if (backgroundRect !== null) {
@@ -64,4 +64,15 @@ function eventFire(el, etype){
         evObj.initEvent(etype, true, false);
         el.dispatchEvent(evObj);
     }
+}
+
+function hideLeftPanel(event) {
+   var target = event.target;
+   if (target !== null) {
+       if (hasClass(target, 'mdl-navigation__link') || hasClass(target, 'txt-menu-left') || hasClass(target, 'icon-menu-left')) {
+           // It's a link that was just clicked, then, hide the left panel
+           var obfuscator = document.getElementsByClassName('mdl-layout__obfuscator');
+           eventFire(obfuscator[0], 'click');
+       }
+   }
 }
