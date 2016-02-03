@@ -7,8 +7,14 @@ var SandboxSchema = new Schema({
 	    url: String,
 	    link: String
 	 }],
+	videos : [{
+	    url: String
+	 }],
 	apparences : {
 		colorpalette: String
+	},
+	settings : {
+		privacy: String
 	}
 });
 
