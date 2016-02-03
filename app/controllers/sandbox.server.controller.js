@@ -26,13 +26,15 @@ exports.putusercolorpalette = function(req, res) {
 	if (req.user) {
 		var username = req.params.username;
 		var colorPalette = req.body.colorpalette;
+		var privacy = req.body.privacy;
 		Sandbox.findOne({'_username': username}, function(err, doc){
 	        if (err) {
 	            res.send(err);
 	        } else {
 	        	doc.apparences.colorpalette = colorPalette;
+	        	doc.settings.privacy = privacy;
 	        	doc.save();
-	        	res.json('Success');
+	        	res.json('Settings updated for user ' + username);
 	        }
 		});
 

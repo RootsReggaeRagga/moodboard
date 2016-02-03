@@ -7,9 +7,9 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
 
       // --------------------------- FUNCTIONS --------------------------- //
       $scope.saveChanges = function() {
-        SettingsSrv.putUserColorPalette($rootScope.username, tempColorPalette)
+        SettingsSrv.putUserColorPalette($rootScope.username, tempColorPalette, $scope.privacy)
           .success(function(data) {
-            console.log('update color with success.');
+            console.log('update color with success. show toast.');
           });
       }
 
