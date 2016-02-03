@@ -31,6 +31,12 @@ angular.module('mean')
             controller: 'SettingsController',
             access: {restricted: true}
         }).
+        when('/:username', {
+            title: 'Moodboard | User',
+            templateUrl: 'views/username.html',
+            controller: 'UsernameController',
+            access: {restricted: false}
+        }).
         otherwise({
             redirectTo: '/'
         });
@@ -38,7 +44,8 @@ angular.module('mean')
 ])
 .run( function($rootScope, $location) {
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
-      if ($rootScope.username == null && next.access.restricted === true) {
+        console.log(next);
+      if ($rootScope.username === null && next.$$route.access.restricted === true) {
           $location.path('/');
       }
     });

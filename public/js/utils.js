@@ -76,3 +76,13 @@ function hideLeftPanel(event) {
        }
    }
 }
+
+function searchUser(event) {
+    if (event.keyCode==13) {
+        var searchedUser = event.target.value;
+        window.location.href = '/#!/' + searchedUser;
+        event.target.value = '';
+        event.target.click();
+        //eventFire(document.getElementById('mytest1'), 'click');
+    }
+}

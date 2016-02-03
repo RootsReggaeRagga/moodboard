@@ -7,7 +7,7 @@
     src: url('../fonts/Roboto-Thin.ttf');
 }
 body {
-  background-color: #FFF; 
+  background-color: #FFF;
 	background-size: cover;
 	background-attachment: fixed;
 	margin: 0;
@@ -114,6 +114,8 @@ a.mdl-badge {
 .mdl-uppercase {
   text-transform: uppercase;
 }
+
+/* Buttons */
 
 /* Cards */
   .card-wide.mdl-card {

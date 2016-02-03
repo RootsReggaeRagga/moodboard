@@ -31,6 +31,7 @@
     <script type="text/javascript" src="controllers/authentication.client.controller.js"></script>
     <script type="text/javascript" src="controllers/index.client.controller.js"></script>
     <script type="text/javascript" src="controllers/settings.client.controller.js"></script>
+    <script type="text/javascript" src="controllers/username.client.controller.js"></script>
 
     <!-- Services -->
     <script type="text/javascript" src="services/authentication.client.service.js"></script>
@@ -52,17 +53,29 @@
           <div id="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate invisible"></div>
           <div class="mdl-layout__header-row">
             <a href="/#!/" class="white-link">
-                <span class="mdl-layout-title">{{ websiteName }}</span>
+                <span class="mdl-layout-title">Moodboard</span>
             </a>
             <span id="page-title-username" class="mdl-layout-title-mini"> {{ username }}</span>
             <div class="mdl-layout-spacer"></div>
+            <!-- Button sign in -->
+            <a href="/#!/signin">
+              <button id="signin-button" class="mdl-button mdl-button--raised invisible" style="margin-left:30px;">
+                Sign in
+              </button>
+            </a>
+            <!-- Button sign up -->
+            <a href="/#!/signup">
+              <button id="signup-button" class="mdl-button mdl-button--raised mdl-button--accent invisible" style="margin-left:30px;">
+                Sign up
+              </button>
+            </a>
             <!-- (T) Search a user -->
-            <div id="search-button" class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+            <div id="search-button" class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right" style="margin-left:30px;">
               <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
                 <i class="material-icons">search</i>
               </label>
               <div class="mdl-textfield__expandable-holder">
-                <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp" onkeypress="alert('search this user')"/>
+                <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp" onkeypress="searchUser(event)"/>
               </div>
             </div>
             <!-- (+) Add an element to UI -->
@@ -87,7 +100,7 @@
         <div id="left-panel" class="mdl-layout__drawer" onclick="hideLeftPanel(event)">
           <span class="mdl-layout-title">Menu</span>
           <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="/#!/sandbox">
+            <a class="mdl-navigation__link" href="/#!/">
               <div class= "icon-menu-left"><i class="tiny material-icons">dashboard</i></div>
               <div class="txt-menu-left">Sandbox</div>
             </a>

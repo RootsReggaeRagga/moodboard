@@ -1,12 +1,14 @@
 'use strict';
 
-angular.module('mean').controller('AuthenticationController', ['$scope', '$rootScope', '$http', '$location', 'Authentication', 'SandboxSrv',
-    function($scope, $rootScope, $http, $location, Authentication, SandboxSrv) {
+angular.module('mean').controller('AuthenticationController', ['$scope', '$rootScope', '$http', '$location', 'Authentication', 'SandboxSrv', 'Menu',
+    function($scope, $rootScope, $http, $location, Authentication, SandboxSrv, Menu) {
         $scope.authentication = Authentication;
 
         //If user is signed in then redirect back home
         if ($scope.authentication.user) {
             $location.path('/');
+        } else {
+            Menu.updateMenu(false, 'username');
         }
 
         $scope.signup = function() {
@@ -31,7 +33,6 @@ angular.module('mean').controller('AuthenticationController', ['$scope', '$rootS
                 .success(function(data) {
                     $rootScope.userData = data;
                     applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
-                    //$scope.showActionBarAndElements();
                     doload(data);
                 });
 
