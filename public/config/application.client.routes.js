@@ -43,12 +43,22 @@ angular.module('mean')
     }
 ])
 .run(function($rootScope, $location) {
+    // Redirect restricted URLs if user not logged in
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
       if ($rootScope.username === undefined && next.$$route.access.restricted === true) {
           $location.path('/');
       }
     });
+
+    // Change menu content dynamically & title
     $rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
+        // Update title
         $rootScope.pageTitle = current.$$route.title;
+        // Update menu content
+        /*if (current.$$route.templateUrl === "views/signin.html") {
+            $rootScope.buttonSearch = '';
+        } else {
+            $rootScope.buttonSearch = "views/menu/menu.search.button.html";
+        }*/
     });
 });
