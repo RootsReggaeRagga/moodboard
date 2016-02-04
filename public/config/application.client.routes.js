@@ -42,10 +42,9 @@ angular.module('mean')
         });
     }
 ])
-.run( function($rootScope, $location) {
+.run(function($rootScope, $location) {
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
-        console.log(next);
-      if ($rootScope.username === null && next.$$route.access.restricted === true) {
+      if ($rootScope.username === undefined && next.$$route.access.restricted === true) {
           $location.path('/');
       }
     });
