@@ -115,6 +115,11 @@ a.mdl-badge {
   text-transform: uppercase;
 }
 
+/* Snackbars */
+.mdl-snackbar {
+  left: 0px;
+}
+
 /* Buttons */
 
 /* Cards */

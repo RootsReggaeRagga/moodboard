@@ -11,6 +11,8 @@ angular.module('mean').controller('AuthenticationController', ['$scope', '$rootS
             Menu.updateMenu(false, 'username');
         }
 
+        var snackbarContainer = document.querySelector('#toast');
+
         $scope.signup = function() {
             $http.post('/auth/signup', $scope.credentials).success(function(response) {
                 //If successful we assign the response to the global user model
@@ -40,6 +42,10 @@ angular.module('mean').controller('AuthenticationController', ['$scope', '$rootS
                 $location.path('/');
             }).error(function(response) {
                 $scope.error = response.message;
+                var data = {
+                    message: $scope.error
+                };
+                snackbarContainer.MaterialSnackbar.showSnackbar(data);
             });
         };
     }
