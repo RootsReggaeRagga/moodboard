@@ -1,43 +1,40 @@
-<div style="background-image: url('../img/paris.gif');background-size: cover;position: absolute;
-top:0;
-bottom:0;
-right:0;
-left:0;
-overflow:hidden;">
-    <center>
-        <div style="margin:100px;padding:50px;width:300px;background-color:#eee;opacity:0.9;">
-            <span class="mdl-layout-title">{{ websiteName }}</span>
-            <h4>It's here that all starts.</h4>
+<ng-include src="templateUrl"></ng-include>
+<div style="background-image: url('../img/paris.gif');
+                background-size: cover;
+                position: absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                overflow:hidden;">
+<div style="margin:100px;width:300px;background-color:#eee;opacity:0.9;">
+  <md-content layout-padding>
+  <div>
+    <form data-ng-submit="signin()">
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+        <label>Username</label>
+        <input type="text" id="username" name="username" data-ng-model="credentials.username" tabindex="1">
+      </md-input-container>
+    </div>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+      <label>Password</label>
+      <input type="password" id="password" name="password" data-ng-model="credentials.password" tabindex="2">
+    </md-input-container>
+  </div>
 
-            <!-- LOGIN & PASSWORD -->
-            <form data-ng-submit="signin()" class="signin form-horizontal" style="margin-bottom: 30px;">
-                <fieldset>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <label class="mdl-textfield__label">Username</label>
-                        <input type="text" id="username" name="username" class="mdl-textfield__input" data-ng-model="credentials.username" tabindex="1">
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <label class="mdl-textfield__label">Password</label>
-                        <input type="password" id="password" name="password" class="mdl-textfield__input" data-ng-model="credentials.password" tabindex="2">
-                    </div>
-                    <div class="text-center form-group">
-                      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-                          Connect!
-                      </button>
-                  </div>
-              </fieldset>
-          </form>
+  <md-button class="md-raised md-primary" type="submit">Connect</md-button>
 
-          <hr> <!-- Separator -->
+</form>
+</div>
 
-          <div class="text-center">
-            <a class="btn btn-lg btn-primary" href="/auth/facebook">
-                <img src="../img/social/login_facebook.png" height="48px" style="margin-top:30px"></img>
-            </a>
-        </div>
-        <img src="../img/social/login_twitter.png" height="48px" style="margin-top:10px"></img>
-                <!--<p style="margin-top:30px">
-                    Even if you don't sign in, you do not have to fuck off, we've an <a href="#" target="blank">anonymous navigation</a> for you.
-                </p>-->
-    </center>
+<hr>
+
+<a class="btn btn-lg btn-primary" href="/auth/facebook">
+  <img src="../img/social/login_facebook.png" height="48px" style="margin-top:30px"></img>
+</a>
+<img src="../img/social/login_twitter.png" height="48px" style="margin-top:10px"></img>
+
+</md-content>
 </div>
