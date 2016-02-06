@@ -5,6 +5,9 @@
     "material-design-lite": "latest",
     "angular": "latest",
     "angular-route": "latest",
-    "angular-ui-notification": "~0.1.0"
+    "angular-material": "~1.0.5"
+  },
+  "resolutions": {
+    "angular": "1.4.9"
   }
 }
