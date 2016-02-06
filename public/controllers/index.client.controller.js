@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean').controller('IndexController', ['$scope', '$rootScope', 'Authentication', 'SandboxSrv', 'Menu',
-	function($scope, $rootScope, Authentication, SandboxSrv, Menu) {
+angular.module('mean').controller('IndexController', ['$scope', '$rootScope', 'Authentication', 'SandboxSrv',
+	function($scope, $rootScope, Authentication, SandboxSrv) {
 		$scope.authentication = Authentication;
 
 		if ($scope.authentication.user !== null) {
@@ -13,9 +13,6 @@ angular.module('mean').controller('IndexController', ['$scope', '$rootScope', 'A
 					applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
 		            doload(data);
 		        });
-	        Menu.updateMenu(true, 'index');
-		} else {
-			Menu.updateMenu(false, 'index');
 		}
 	}
 	]);

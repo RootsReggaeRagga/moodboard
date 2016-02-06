@@ -53,11 +53,6 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
           $scope.privacy = $scope.privacy === 'Private' ? 'Public' : 'Private';
         }
 
-        $scope.hideActionBarElements = function() {
-          document.getElementById("share-button").style.display = 'none';
-          document.getElementById("add-button").style.display = 'none';
-        }
-
        // Colorize color palette
        var colorPalette = document.getElementById('color-palette');
        for (var i = 0, iLen = colorPalette.children.length; i < iLen; i++) {
@@ -70,7 +65,6 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
        // --------------------------- APPLY USER'S VALUES --------------------------- //
        // Retrieve user data
        applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
-       $scope.hideActionBarElements();
 
        $scope.customize = {
         colorpalette: $rootScope.userData.apparences.colorpalette
