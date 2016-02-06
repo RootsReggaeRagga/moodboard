@@ -45,7 +45,7 @@ angular.module('mean')
 .run(function($rootScope, $location) {
     // Redirect restricted URLs if user not logged in
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
-      if ($rootScope.username === undefined && next.$$route.access.restricted === true) {
+      if ($rootScope.username === undefined && next.$$route.access && next.$$route.access.restricted === true) {
           $location.path('/');
       }
     });
@@ -55,10 +55,22 @@ angular.module('mean')
         // Update title
         $rootScope.pageTitle = current.$$route.title;
         // Update menu content
-        /*if (current.$$route.templateUrl === "views/signin.html") {
-            $rootScope.buttonSearch = '';
-        } else {
-            $rootScope.buttonSearch = "views/menu/menu.search.button.html";
-        }*/
+        switch(current.$$route.templateUrl) {
+            case 'views/signin.html':
+            case 'views/signup.html':
+                $rootScope.toolbarUrl = 'views/menu/menu.toolbar.empty.html';
+                break;
+            case 'views/index.html':
+                if ($rootScope.username === undefined) 
+                    $rootScope.toolbarUrl = 'views/menu/menu.toolbar.empty.html';
+                else
+                    $rootScope.toolbarUrl = 'views/menu/menu.toolbar.full.html';
+                break;
+            case 'views/settings.html':
+                $rootScope.toolbarUrl = 'views/menu/menu.toolbar.full.html';
+                break;
+            default:
+                $rootScope.toolbarUrl = 'views/menu/menu.toolbar.empty.html';
+        }
     });
 });
