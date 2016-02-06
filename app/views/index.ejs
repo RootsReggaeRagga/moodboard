@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <title ng-bind="pageTitle">Moodboard</title>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -10,14 +10,17 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="libs/material-design-lite/material.min.css">
+    <link rel="stylesheet" href="libs/angular-material/angular-material.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/mystyle.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-    <link rel="stylesheet" href="libs/angular-ui-notification/dist/angular-ui-notification.min.css">
-
-    <!-- JS -->
-    <script src="libs/angular/angular.min.js"></script>
+    
+    <!-- Angular -->
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-aria/angular-aria.js"></script>
+    <script src="libs/angular-animate/angular-animate.js"></script>
+    <script src="libs/angular-material/angular-material.js"></script>
     <script src="libs/angular-route/angular-route.min.js"></script>
     <script src="libs/material-design-lite/material.min.js"></script>
     <script src="libs/jquery/dist/jquery.js"></script>
@@ -36,96 +39,23 @@
     <!-- Services -->
     <script type="text/javascript" src="services/authentication.client.service.js"></script>
     <script type="text/javascript" src="services/sandbox.client.service.js"></script>
-    <script type="text/javascript" src="services/menu.client.service.js"></script>
     <script type="text/javascript" src="services/settings.client.service.js"></script>
 
-    <!-- CUSTOMS JS & UTILS -->
+    <!-- Customs & Utils -->
     <script src="js/svg.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/palette.js"></script>
 
 </head>
-<body>
+<body ng-app="mean" ng-cloak>
 <div class="container">
-    <!-- HEADER -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
-        <header id="actionbar" class="mdl-layout__header">
-          <div id="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate invisible"></div>
-          <div class="mdl-layout__header-row">
-            <a href="/#!/" class="white-link">
-                <span class="mdl-layout-title">Moodboard</span>
-            </a>
-            <span id="page-title-username" class="mdl-layout-title-mini"> {{ username }}</span>
-            <div class="mdl-layout-spacer"></div>
-            <!-- Button sign in -->
-            <a href="/#!/signin">
-              <button id="signin-button" class="mdl-button mdl-button--raised invisible" style="color:white; margin-left:30px;">
-                Sign in
-              </button>
-            </a>
-            <!-- Button sign up -->
-            <a href="/#!/signup">
-              <button id="signup-button" class="mdl-button mdl-button--raised mdl-button--accent invisible" style="margin-left:30px;">
-                Sign up
-              </button>
-            </a>
-            <!-- (T) Search a user -->
-            <div id="search-button" class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right" style="margin-left:30px;">
-              <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
-                <i class="material-icons">search</i>
-              </label>
-              <div class="mdl-textfield__expandable-holder">
-                <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp" onkeypress="searchUser(event)"/>
-              </div>
-            </div>
-            <!-- (+) Add an element to UI -->
-            <button id="add-button" class="mdl-button mdl-js-button mdl-button--icon mdl-text" style="margin-left:30px; top:-3px;">
-              <i class="material-icons">add</i>
-            </button>
-            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="add-button">
-              <li class="mdl-menu__item">Add a post-it</li>
-              <li disabled class="mdl-menu__item">Add a caption</li>
-              <li disabled class="mdl-menu__item">Add an element from URL</li>
-            </ul>
-            <!-- (<) Share -->
-            <label id="share-button" class="mdl-button mdl-js-button mdl-button--icon" style="margin-left:30px; top:-3px;">
-              <i class="material-icons">share</i>
-            </label>
-            <!-- (X) Notifications -->
-            <nav id="mood-notif" class="mdl-navigation mdl-layout--large-screen-only" style="margin-left:30px">
-              <a class="mdl-badge" data-badge="4" href="">Mood</a>
-            </nav>
-          </div>
-        </header>
-        <div id="left-panel" class="mdl-layout__drawer" onclick="hideLeftPanel(event)">
-          <span class="mdl-layout-title">Menu</span>
-          <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="/#!/">
-              <div class= "icon-menu-left"><i class="tiny material-icons">dashboard</i></div>
-              <div class="txt-menu-left">Sandbox</div>
-            </a>
-            <a class="mdl-navigation__link" href="/#!/">
-              <div class= "icon-menu-left"><i class="tiny material-icons">supervisor_account</i></div>
-              <div class="txt-menu-left">Follow</div>
-            </a>
-            <a class="mdl-navigation__link" href="/#!/">
-              <div class= "icon-menu-left"><i class="tiny material-icons">loop</i></div>
-              <div class="txt-menu-left">Random</div>
-            </a>
-            <a class="mdl-navigation__link" href="/#!/settings">
-              <div class= "icon-menu-left"><i class="tiny material-icons">build</i></div>
-              <div class="txt-menu-left">Settings</div>
-            </a>
-            <a class="mdl-navigation__link" href="/auth/signout">
-                <div class= "icon-menu-left"><i class="tiny material-icons">power_settings_new</i></div>
-                <div class="txt-menu-left">Logout</div>
-            </a>
-            <p class="align-bottom signature">- Moodboard -<br>coded with <span class="txt-pink">♥</span> by Joey Bronner</p>
-          </nav>
-        </div>
-        <main id="mainView" class="mdl-layout__content" ng-view>
-            <!-- ANGULAR DYNAMIC CONTENT -->
-        </main>
+        <!-- Header -->
+        <ng-include src="toolbarUrl"></ng-include>
+
+        <!-- Content -->
+        <main id="mainView" class="mdl-layout__content" ng-view></main>
+
         <div id="toast" class="mdl-js-snackbar mdl-snackbar">
           <div class="mdl-snackbar__text"></div>
           <button class="mdl-snackbar__action" type="button"></button>
