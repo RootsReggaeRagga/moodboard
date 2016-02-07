@@ -1,6 +1,7 @@
-<div class="mdl-grid">
-	<div class="mdl-cell mdl-cell--4-col" style="text-align: center;">
-			<!-- Apparences -->
+
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Apparences">
+		<div layout="column" layout-align="center center">
 		  	<h4>Colors</h4>
 		  	<div id="color-palette" ng-click="previewColorPalette($event)">
 			  	<div id="cp-red" class="color-palette"></div>
@@ -17,10 +18,17 @@
 			  	<div id="cp-pink" class="color-palette"></div>
 			  	<div id="cp-black" class="color-palette"></div>
 			</div>
-	</div>
-	<div class="mdl-cell mdl-cell--4-col" style="text-align: center;">
-		    <!-- Private / Public -->
-		    <h4 id="privacy-title">Confidentality</h4>
+			<!-- Bottom buttons to save changes -->
+			<button class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="applyDefaultValues()">
+		  		Apply default values
+		  	</button>
+	        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="saveChanges()">
+	        	Save
+	        </button>
+		</div>
+      </md-tab>
+      <md-tab label="Confidentiality">
+          	<h4 id="privacy-title">Confidentality</h4>
 			<div class="snippet-demo">
 	            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded" id="switch-privacy" data-upgraded=",MaterialSwitch,MaterialRipple">
 				  	<input type="checkbox" class="mdl-switch__input" checked="">
@@ -34,11 +42,8 @@
           		{{ privacy }}
         	  </div>
 	        </div>
-	        <!-- Subscriptions (email) -->
-	        <h4 id="subscription-title">Subscriptions</h4>
-	</div>
-	<div class="mdl-cell mdl-cell--4-col" style="text-align: center;">
-		    <!-- Private / Public -->
+      </md-tab>
+      <md-tab label="Credentials">
 		    <h4 id="privacy-title">Other</h4>
 		    <!-- Old Password -->
 		  	<p>
@@ -61,15 +66,5 @@
 			    <label class="mdl-textfield__label">Confirm password</label>
 			  </div>
 		    </p>
-	</div>
-	<div class="mdl-cell mdl-cell--12-col" style="text-align: center;">
-		<!-- Bottom buttons to save changes -->
-		<button class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="applyDefaultValues()">
-	  		Apply default values
-	  	</button>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="saveChanges()">
-        	Save
-        </button>
-	</div>
-</div>
-
+      </md-tab>
+    </md-tabs>
