@@ -83,6 +83,5 @@ function searchUser(event) {
         window.location.href = '/#!/' + searchedUser;
         event.target.value = '';
         event.target.click();
-        //eventFire(document.getElementById('mytest1'), 'click');
     }
 }
