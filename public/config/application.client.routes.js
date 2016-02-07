@@ -54,23 +54,5 @@ angular.module('mean')
     $rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
         // Update title
         $rootScope.pageTitle = current.$$route.title;
-        // Update menu content
-        switch(current.$$route.templateUrl) {
-            case 'views/signin.html':
-            case 'views/signup.html':
-                $rootScope.toolbarUrl = 'views/menu/menu.toolbar.empty.html';
-                break;
-            case 'views/index.html':
-                if ($rootScope.username === undefined) 
-                    $rootScope.toolbarUrl = 'views/menu/menu.toolbar.empty.html';
-                else
-                    $rootScope.toolbarUrl = 'views/menu/menu.toolbar.full.html';
-                break;
-            case 'views/settings.html':
-                $rootScope.toolbarUrl = 'views/menu/menu.toolbar.full.html';
-                break;
-            default:
-                $rootScope.toolbarUrl = 'views/menu/menu.toolbar.empty.html';
-        }
     });
 });
