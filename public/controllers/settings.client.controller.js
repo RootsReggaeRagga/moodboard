@@ -3,6 +3,7 @@
 angular.module('mean').controller('SettingsController', ['$scope', '$rootScope', '$location', 'SettingsSrv',
   function($scope, $rootScope, $location, SettingsSrv) {
 
+      $rootScope.toolbarUrl = 'views/menu/menu.toolbar.full.html';
       var tempColorPalette;
 
       // --------------------------- FUNCTIONS --------------------------- //
@@ -54,23 +55,24 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
         }
 
        // Colorize color palette
-       var colorPalette = document.getElementById('color-palette');
+       /*var colorPalette = document.getElementById('color-palette');
        for (var i = 0, iLen = colorPalette.children.length; i < iLen; i++) {
         var box = colorPalette.children[i];
         var boxId = colorPalette.children[i].getAttribute('id');
         var color = capitalizeFirstLetter(boxId.substring(3, boxId.length+1));
         box.style.background = palette.get(color, '500');
-      }
+      }*/
+
 
        // --------------------------- APPLY USER'S VALUES --------------------------- //
        // Retrieve user data
-       applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
+       //applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
 
        $scope.customize = {
         colorpalette: $rootScope.userData.apparences.colorpalette
       };
 
-      $scope.privacy = capitalizeFirstLetter($rootScope.userData.settings.privacy);
+      /*$scope.privacy = capitalizeFirstLetter($rootScope.userData.settings.privacy);
       var switchPrivacy = document.getElementById('switch-privacy');
       switch($scope.privacy) {
         case 'Public':
@@ -81,6 +83,6 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
         if (!hasClass(switchPrivacy, 'is-checked'))
           switchPrivacy.classList.add('is-checked');
         break;
-      }
+      }*/
     }
 ]);
