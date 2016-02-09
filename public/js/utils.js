@@ -8,8 +8,9 @@ function hasClass(element, cls) {
 }
 
 function applyUserInterfaceStyle(color) {
+    console.log('defualt style');
     try { document.querySelector(".mdl-layout__content").style.background = palette.get(color, '100'); } catch (e) {}
-  	try { document.querySelector(".mdl-layout__header").style.background = palette.get(color, '500'); } catch (e) {}
+  	try { document.querySelector(".md-toolbar-tools").style.background = palette.get(color, '500'); } catch (e) {}
 	  try { document.querySelector(".mdl-switch__thumb").style.background = palette.get(color, '500'); } catch (e) {}
 	  try { document.querySelector(".mdl-button--raised").style.background = palette.get(color, '500');	} catch (e) {}
 

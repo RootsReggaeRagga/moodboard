@@ -3,7 +3,7 @@
 	<div layout="row" layout-align="center center" style="height:100%">
     <div style="padding:30px; background-color:rgba(255,255,255,0.5); width:800px;">
   	  <form>
-        <h3>Welcome</h3>
+        <h4 class="md-title">Who are U looking for?</h4>
   		  <md-autocomplete
             ng-disabled="ctrl.isDisabled"
             md-no-cache="ctrl.noCache"
@@ -14,7 +14,7 @@
             md-items="item in ctrl.querySearch(ctrl.searchText)"
             md-item-text="item.name"
             md-min-length="0"
-            placeholder="Are u searching someone? User, theme or topic..."
+            placeholder="Type name here and press enter"
             md-menu-class="autocomplete-custom-template" onkeypress="searchUser(event)">
         </md-autocomplete>
       </form>

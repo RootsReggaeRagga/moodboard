@@ -55,19 +55,12 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
           $scope.privacy = $scope.privacy === 'Private' ? 'Public' : 'Private';
         }
 
-       // Colorize color palette
-       /*var colorPalette = document.getElementById('color-palette');
-       for (var i = 0, iLen = colorPalette.children.length; i < iLen; i++) {
-        var box = colorPalette.children[i];
-        var boxId = colorPalette.children[i].getAttribute('id');
-        var color = capitalizeFirstLetter(boxId.substring(3, boxId.length+1));
-        box.style.background = palette.get(color, '500');
-      }*/
-
+        // After document is rendered and loaded in the DOM
+        angular.element(document).ready(function () {
+            applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
+        });
 
        // --------------------------- APPLY USER'S VALUES --------------------------- //
-       // Retrieve user data
-       //applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
 
        $scope.customize = {
         colorpalette: $rootScope.userData.apparences.colorpalette
