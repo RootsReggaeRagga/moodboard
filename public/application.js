@@ -4,7 +4,7 @@
 var mainApplicationModuleName = 'mean';
 
 // Define the main angular application module 
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngRoute', 'ngMaterial']);
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngRoute', 'ngMaterial', 'ng-mfb']);
 
 //Configure application hashbang routing
 mainApplicationModule.config(['$locationProvider',
