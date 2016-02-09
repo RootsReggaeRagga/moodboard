@@ -6,9 +6,9 @@
 			        md-row-height-gt-md="1:1" md-row-height="2:2"
 			        md-gutter="12px" md-gutter-gt-sm="8px" >
 
-			    <md-grid-tile id="cp-red" class="red" md-rowspan="2" md-colspan="2" md-colspan-sm="1">
+			    <md-grid-tile id="cp-blue" class="blue" md-rowspan="2" md-colspan="2" md-colspan-sm="1">
 			      <md-grid-tile-footer>
-			        <h3>Red</h3>
+			        <h3>Blue</h3>
 			      </md-grid-tile-footer>
 			    </md-grid-tile>
 
@@ -42,9 +42,9 @@
 			      </md-grid-tile-footer>
 			    </md-grid-tile>
 
-			    <md-grid-tile id="cp-blue" class="blue">
+			    <md-grid-tile id="cp-red" class="red" md-colspan="2">
 			      <md-grid-tile-footer>
-			        <h3>Blue</h3>
+			        <h3>Red</h3>
 			      </md-grid-tile-footer>
 			    </md-grid-tile>
 
@@ -54,7 +54,7 @@
 			      </md-grid-tile-footer>
 			    </md-grid-tile>
 
-			    <md-grid-tile id="cp-yellow" class="yellow">
+			    <md-grid-tile id="cp-yellow" class="yellow" md-colspan="2">
 			      <md-grid-tile-footer>
 			        <h3>Yellow</h3>
 			      </md-grid-tile-footer>
@@ -67,34 +67,35 @@
 			      </md-grid-tile-footer>
 			    </md-grid-tile>
 
-			    <md-grid-tile id="cp-cyan" class="cyan"
-			        md-rowspan="2" md-colspan="2" md-colspan-sm="1">
+			    <md-grid-tile id="cp-cyan" class="cyan" md-colspan="2" md-colspan-sm="1">
 			      <md-grid-tile-footer>
 			        <h3>Cyan</h3>
 			      </md-grid-tile-footer>
 			    </md-grid-tile>
 
-			    <md-grid-tile id="cp-orange" class="orange"
-			        md-rowspan="2" md-colspan="2" md-colspan-sm="1">
+			    <md-grid-tile id="cp-orange" class="orange" md-colspan="2" md-colspan-sm="1">
 			      <md-grid-tile-footer>
 			        <h3>Orange</h3>
 			      </md-grid-tile-footer>
 			    </md-grid-tile>
 
-			    <md-grid-tile id="cp-teal" class="teal"
-			        md-rowspan="2" >
+			    <md-grid-tile id="cp-teal" class="teal" >
 			      <md-grid-tile-footer>
 			        <h3>Teal</h3>
 			      </md-grid-tile-footer>
 			    </md-grid-tile>
 
 			  </md-grid-list>
-			  <button class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="applyDefaultValues()">
-		  		Apply default values
-		  	</button>
-	        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="saveChanges()">
-	        	Save
-	        </button>
+
+ 			<nav mfb-menu 
+ 				position="br" 
+ 				effect="zoomin"
+			    active-icon="ion-android-close"
+			    resting-icon="ion-android-more-vertical"
+			    toggling-method="hover">
+			  	<button mfb-button icon="ion-android-done" label="Save changes" ng-click="saveChanges()"></button>
+			  	<button mfb-button icon="ion-android-options" label="Apply default colors" ng-click="applyDefaultValues()"></button>
+			</nav>
       </md-tab>
       <md-tab label="Confidentiality">
           	<h4 id="privacy-title">Confidentality</h4>

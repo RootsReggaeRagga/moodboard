@@ -65,7 +65,11 @@ svg { position:fixed; top:0; left:0; height:100%; width:100% }
 .red { background: #FF5252; }
 .indigo { background: #8C9EFF; }
 .grey { background: #BDBDBD; }
-.cyan { background: #84FFFF; }
-.teal { background: #A7FFEB; }
+.cyan { background: #00BCD4; }
+.teal { background: #009688; }
 .gridListdemoBasicUsage md-grid-tile {
   transition: all 400ms ease-out 50ms; }
+
+md-input-container {
+	margin:0;
+}
