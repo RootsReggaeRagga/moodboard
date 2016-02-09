@@ -1,24 +1,25 @@
 <!-- If the user IS NOT logged in -->
 <div style="background-image: url('../img/paris.gif');background-size: cover;position: absolute;top:0;bottom:0;right:0;left:0;overflow:hidden;" data-ng-if="!authentication.user">
-	<div layout="column" layout-align="center center">
-	<form>
-		<span class="md-headline">Moodboard</span><br>
-        <span class="md-subhead">Find a board: type username, topic or theme...</span>
-		<md-autocomplete
-          ng-disabled="ctrl.isDisabled"
-          md-no-cache="ctrl.noCache"
-          md-selected-item="ctrl.selectedItem"
-          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-          md-search-text="ctrl.searchText"
-          md-selected-item-change="ctrl.selectedItemChange(item)"
-          md-items="item in ctrl.querySearch(ctrl.searchText)"
-          md-item-text="item.name"
-          md-min-length="0"
-          placeholder="Are u searching someone? User, theme or topic..."
-          md-menu-class="autocomplete-custom-template" onkeypress="searchUser(event)">
-      </md-autocomplete>
-    </form>
-	</div>
+	<div layout="row" layout-align="center center" style="height:100%">
+    <div style="padding:30px; background-color:rgba(255,255,255,0.5); width:800px;">
+  	  <form>
+        <h3>Welcome</h3>
+  		  <md-autocomplete
+            ng-disabled="ctrl.isDisabled"
+            md-no-cache="ctrl.noCache"
+            md-selected-item="ctrl.selectedItem"
+            md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+            md-search-text="ctrl.searchText"
+            md-selected-item-change="ctrl.selectedItemChange(item)"
+            md-items="item in ctrl.querySearch(ctrl.searchText)"
+            md-item-text="item.name"
+            md-min-length="0"
+            placeholder="Are u searching someone? User, theme or topic..."
+            md-menu-class="autocomplete-custom-template" onkeypress="searchUser(event)">
+        </md-autocomplete>
+      </form>
+	 </div>
+  </div>
 </div>
 
 <!-- If the user IS logged in -->

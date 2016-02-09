@@ -1,37 +1,38 @@
 <div style="background-image: url('../img/paris.gif');background-size: cover;position: absolute;top:0;bottom:0;right:0;left:0;overflow:hidden;">
 
-    <div layout="column" layout-align="center center">
-        <span class="md-headline">Sign in</span>
-        <span class="md-subhead">It's here that all starts.</span>
-            <form data-ng-submit="signin()">
-                <!-- Username -->
-                <div layout-gt-sm="row">
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>Username</label>
-                        <input type="text" id="username" name="username" data-ng-model="credentials.username" tabindex="1">
-                    </md-input-container>
-                </div>
-                <!-- Password -->
-                <div layout-gt-sm="row">
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>Password</label>
-                        <input type="password" id="password" name="password" data-ng-model="credentials.password" tabindex="2">
-                    </md-input-container>
-                </div>
-                <md-button class="md-raised md-primary" type="submit">Connect</md-button>
-            </form>
+    <div layout="row" layout-align="center center" style="height:100%">
+        <div style="padding:30px; background-color:rgba(255,255,255,0.5);">
+            <p><span class="md-headline">Sign in</span></p>
+                <form data-ng-submit="signin()">
+                    <!-- Username -->
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Username</label>
+                            <input type="text" id="username" name="username" data-ng-model="credentials.username" tabindex="1">
+                        </md-input-container>
+                    </div>
+                    <!-- Password -->
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Password</label>
+                            <input type="password" id="password" name="password" data-ng-model="credentials.password" tabindex="2">
+                        </md-input-container>
+                    </div>
+                    <md-button class="md-raised md-primary" type="submit">Connect</md-button>
+                </form>
 
-        <hr> <!-- Separator -->
+            <hr> <!-- Separator -->
 
-        <!-- Twitter -->
-        <div layout-gt-sm="row">
-          <a class="btn btn-lg btn-primary" href="/auth/facebook">
-              <img src="../img/social/login_facebook.png" height="48px" style="margin-top:30px"></img>
-          </a>
-        </div>
-        <!-- Facebook -->
-        <div layout-gt-sm="row">
-            <img src="../img/social/login_twitter.png" height="48px" style="margin-top:10px"></img>
+            <!-- Twitter -->
+            <div layout-gt-sm="row">
+              <a class="btn btn-lg btn-primary" href="/auth/facebook">
+                  <img src="../img/social/login_facebook.png" height="48px" style="margin-top:30px"></img>
+              </a>
+            </div>
+            <!-- Facebook -->
+            <div layout-gt-sm="row">
+                <img src="../img/social/login_twitter.png" height="48px" style="margin-top:10px"></img>
+            </div>
         </div>
     </div>
 </div>
