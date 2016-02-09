@@ -14,6 +14,21 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
           });
       }
 
+      $scope.settings = {};
+      $scope.settings.previewColorPalette = function(event) {
+          var element = event.target.parentElement;
+          if (element !== null && (element.id !== undefined)) {
+            var color = capitalizeFirstLetter(element.id.substring(3, element.id.length + 1));
+            if (color !== '' && color !== null) {
+              try { document.querySelector(".mdl-layout__content").style.background = palette.get(color, '100'); } catch (e) {}
+              try { document.querySelector(".md-toolbar-tools").style.background = palette.get(color, '500'); } catch (e) {}
+              try { document.querySelector(".mdl-switch__thumb").style.background = palette.get(color, '500'); } catch (e) {}
+              try { document.querySelector(".mdl-button--raised").style.background = palette.get(color, '500'); } catch (e) {}
+            }
+            tempColorPalette = color;
+          }
+      }
+
       $scope.applyDefaultValues = function() {
         console.log('apply default values.');
       }
@@ -25,20 +40,6 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
             document.getElementById('mainView').style.background = palette.get(color, '100');
           } else {
             console.log('hexa color is not valid.');
-          }
-        }
-
-        $scope.previewColorPalette = function($event) {
-          var element = event.target;
-          if (element !== null && (element.id !== undefined)) {
-            var color = capitalizeFirstLetter(element.id.substring(3, element.id.length + 1));
-            if (color !== '' && color !== null) {
-              try { document.querySelector(".mdl-layout__content").style.background = palette.get(color, '100'); } catch (e) {}
-              try { document.querySelector(".mdl-layout__header").style.background = palette.get(color, '500'); } catch (e) {}
-              try { document.querySelector(".mdl-switch__thumb").style.background = palette.get(color, '500'); } catch (e) {}
-              try { document.querySelector(".mdl-button--raised").style.background = palette.get(color, '500'); } catch (e) {}
-            }
-            tempColorPalette = color;
           }
         }
 

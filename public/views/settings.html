@@ -1,69 +1,100 @@
 
     <md-tabs md-dynamic-height md-border-bottom>
       <md-tab label="Apparences">
-		<div layout="column" layout-align="center center">
-		  	<h4>Colors</h4>
-		  	<div id="color-palette" ng-click="previewColorPalette($event)">
-			  	<div id="cp-red" class="color-palette"></div>
-			  	<div id="cp-purple" class="color-palette"></div>
-			  	<div id="cp-indigo" class="color-palette"></div>
-			  	<div id="cp-blue" class="color-palette"></div>
-			  	<div id="cp-cyan" class="color-palette"></div>
-			  	<div id="cp-teal" class="color-palette"></div>
-			  	<div id="cp-green" class="color-palette"></div>
-			  	<div id="cp-yellow" class="color-palette"></div>
-			  	<div id="cp-orange" class="color-palette"></div>
-			  	<div id="cp-brown" class="color-palette"></div>
-			  	<div id="cp-grey" class="color-palette"></div>
-			  	<div id="cp-pink" class="color-palette"></div>
-			  	<div id="cp-black" class="color-palette"></div>
-			</div>
-			<!-- Bottom buttons to save changes -->
-			<button class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="applyDefaultValues()">
-		  		Apply default values
-		  	</button>
-	        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="saveChanges()">
-	        	Save
-	        </button>
-		</div>
-			  <md-grid-list
+			  <md-grid-list ng-click="settings.previewColorPalette($event)"
 			        md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
 			        md-row-height-gt-md="1:1" md-row-height="2:2"
 			        md-gutter="12px" md-gutter-gt-sm="8px" >
-			    <md-grid-tile class="gray" md-rowspan="3" md-colspan="2" md-colspan-sm="1">
+
+			    <md-grid-tile id="cp-red" class="red" md-rowspan="2" md-colspan="2" md-colspan-sm="1">
 			      <md-grid-tile-footer>
 			        <h3>Red</h3>
 			      </md-grid-tile-footer>
 			    </md-grid-tile>
-			    <md-grid-tile class="green">
+
+			    <md-grid-tile id="cp-purple" class="purple" md-rowspan="1" md-colspan="2" md-colspan-sm="1">
 			      <md-grid-tile-footer>
 			        <h3>Purple</h3>
 			      </md-grid-tile-footer>
 			    </md-grid-tile>
-			    <md-grid-tile class="yellow">
+
+			    <md-grid-tile id="cp-brown" class="brown" md-rowspan="1" md-colspan="2" md-colspan-sm="1">
+			      <md-grid-tile-footer>
+			        <h3>Brown</h3>
+			      </md-grid-tile-footer>
+			    </md-grid-tile>
+
+			    <md-grid-tile id="cp-indigo" class="indigo">
 			      <md-grid-tile-footer>
 			        <h3>Indigo</h3>
 			      </md-grid-tile-footer>
 			    </md-grid-tile>
-			    <md-grid-tile class="blue"
-			        md-rowspan="2">
+
+			    <md-grid-tile id="cp-pink" class="pink" md-rowspan="1" md-colspan="2" md-colspan-sm="1">
+			      <md-grid-tile-footer>
+			        <h3>Pink</h3>
+			      </md-grid-tile-footer>
+			    </md-grid-tile>
+
+			    <md-grid-tile id="cp-black" class="black">
+			      <md-grid-tile-footer>
+			        <h3>Black</h3>
+			      </md-grid-tile-footer>
+			    </md-grid-tile>
+
+			    <md-grid-tile id="cp-blue" class="blue">
 			      <md-grid-tile-footer>
 			        <h3>Blue</h3>
 			      </md-grid-tile-footer>
 			    </md-grid-tile>
-			    <md-grid-tile class="red"
+
+			    <md-grid-tile id="cp-green" class="green">
+			      <md-grid-tile-footer>
+			        <h3>Green</h3>
+			      </md-grid-tile-footer>
+			    </md-grid-tile>
+
+			    <md-grid-tile id="cp-yellow" class="yellow">
+			      <md-grid-tile-footer>
+			        <h3>Yellow</h3>
+			      </md-grid-tile-footer>
+			    </md-grid-tile>
+
+			    <md-grid-tile id="cp-grey" class="grey"
+			        md-rowspan="2">
+			      <md-grid-tile-footer>
+			        <h3>Grey</h3>
+			      </md-grid-tile-footer>
+			    </md-grid-tile>
+
+			    <md-grid-tile id="cp-cyan" class="cyan"
 			        md-rowspan="2" md-colspan="2" md-colspan-sm="1">
 			      <md-grid-tile-footer>
 			        <h3>Cyan</h3>
 			      </md-grid-tile-footer>
 			    </md-grid-tile>
-			    <md-grid-tile class="green"
+
+			    <md-grid-tile id="cp-orange" class="orange"
+			        md-rowspan="2" md-colspan="2" md-colspan-sm="1">
+			      <md-grid-tile-footer>
+			        <h3>Orange</h3>
+			      </md-grid-tile-footer>
+			    </md-grid-tile>
+
+			    <md-grid-tile id="cp-teal" class="teal"
 			        md-rowspan="2" >
 			      <md-grid-tile-footer>
 			        <h3>Teal</h3>
 			      </md-grid-tile-footer>
 			    </md-grid-tile>
+
 			  </md-grid-list>
+			  <button class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="applyDefaultValues()">
+		  		Apply default values
+		  	</button>
+	        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="saveChanges()">
+	        	Save
+	        </button>
       </md-tab>
       <md-tab label="Confidentiality">
           	<h4 id="privacy-title">Confidentality</h4>
