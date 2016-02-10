@@ -1,4 +1,4 @@
-    <md-tabs md-dynamic-height md-border-bottom>
+    <md-tabs md-dynamic-height md-border-bottom style="height:100%">
       <md-tab label="Apparences">
 			  <md-grid-list ng-click="settings.previewColorPalette($event)"
 			        md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
@@ -86,8 +86,8 @@
 
 			  </md-grid-list>
 
- 			<nav mfb-menu 
- 				position="br" 
+ 			<nav mfb-menu
+ 				position="br"
  				effect="zoomin"
 			    active-icon="ion-android-close"
 			    resting-icon="ion-android-more-vertical"
@@ -96,8 +96,9 @@
 			  	<button mfb-button icon="ion-android-options" label="Apply default colors" ng-click="applyDefaultValues()"></button>
 			</nav>
       </md-tab>
-      <md-tab label="Confidentiality">
-          	<h4 id="privacy-title">Confidentality</h4>
+      <md-tab label="Privacy">
+      	<div layout="row" layout-align="center center" style="height:100%">
+          	<h4 id="privacy-title">Privacy</h4>
 			<div class="snippet-demo">
 	            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded" id="switch-privacy" data-upgraded=",MaterialSwitch,MaterialRipple">
 				  	<input type="checkbox" class="mdl-switch__input" checked="">
@@ -111,6 +112,7 @@
           		{{ privacy }}
         	  </div>
 	        </div>
+      	</div>
       </md-tab>
       <md-tab label="Credentials">
 		    <h4 id="privacy-title">Other</h4>
