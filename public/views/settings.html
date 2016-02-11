@@ -1,5 +1,5 @@
-    <md-tabs md-dynamic-height md-border-bottom style="height:100%">
-      <md-tab label="Apparences">
+  <md-tabs flex layout="column" layout-fill>
+      <md-tab label="Apparences" flex layout="column" layout="column" layout-fill>
 			  <md-grid-list ng-click="settings.previewColorPalette($event)"
 			        md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
 			        md-row-height-gt-md="1:1" md-row-height="2:2"
@@ -96,46 +96,58 @@
 			  	<button mfb-button icon="ion-android-options" label="Apply default colors" ng-click="applyDefaultValues()"></button>
 			</nav>
       </md-tab>
-      <md-tab label="Privacy">
-      	<div layout="row" layout-align="center center" style="height:100%">
-          	<h4 id="privacy-title">Privacy</h4>
-			<div class="snippet-demo">
-	            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded" id="switch-privacy" data-upgraded=",MaterialSwitch,MaterialRipple">
-				  	<input type="checkbox" class="mdl-switch__input" checked="">
-				  	<span class="mdl-switch__label"></span>
-					<div class="mdl-switch__track" ng-click="switchPrivacy()"></div>
-					<div class="mdl-switch__thumb" ng-click="switchPrivacy()">
-						<span class="mdl-switch__focus-helper"></span>
-					</div>
-				</label>
-	          <div id="privacy-value" class="snippet-caption">
-          		{{ privacy }}
-        	  </div>
-	        </div>
-      	</div>
+      <md-tab label="Privacy" layout-fill>
+	      <md-tab-content flex layout-fill>
+	      	<div layout="column" layout-align="center center" style="height:100%">
+	          	<h3 class="md-headline">Privacy</h3>
+				<md-switch ng-model="data.cb1" id="switch-privacy" ng-click="switchPrivacy()"></md-switch>
+				<div id="privacy-value" class="snippet-caption">{{ privacy }}</div>
+	      	</div>
+	 			<nav mfb-menu
+	 				position="br"
+				    active-icon="ion-android-done"
+				    resting-icon="ion-android-done"
+				    label="Save changes"
+				    toggling-method="hover">
+				</nav>
+	      </md-tab-content>
       </md-tab>
-      <md-tab label="Credentials">
-		    <h4 id="privacy-title">Other</h4>
-		    <!-- Old Password -->
-		  	<p>
-			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			    <input ng-model="settings.oldpassword" class="mdl-textfield__input" type="password" style="text-align:right;"/>
-			    <label class="mdl-textfield__label">Old password</label>
-			  </div>
-		    </p>
-		    <!-- New Password -->
-		  	<p>
-			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			    <input ng-model="settings.newpassword" class="mdl-textfield__input" type="password" style="text-align:right;"/>
-			    <label class="mdl-textfield__label">New password</label>
-			  </div>
-		    </p>
-		    <!-- Confirm Password -->
-		  	<p>
-			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			    <input ng-model="settings.confirmpassword" class="mdl-textfield__input" type="password" style="text-align:right;"/>
-			    <label class="mdl-textfield__label">Confirm password</label>
-			  </div>
-		    </p>
+      <md-tab label="Credentials" layout-fill>
+	      <md-tab-content flex layout-fill>
+	      	<div layout="column" layout-align="center center" style="height:100%">
+				<h4 id="privacy-title">Credentials</h4>
+                <form data-ng-submit="alert('hello');">
+
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Old Password</label>
+                            <input type="password" ng-model="settings.oldpassword">
+                        </md-input-container>
+                    </div>
+
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>New Password</label>
+                            <input type="password" ng-model="settings.newpassword">
+                        </md-input-container>
+                    </div>
+
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Confirm Password</label>
+                            <input type="password" ng-model="settings.confirmpassword">
+                        </md-input-container>
+                    </div>
+
+                </form>
+	      	</div>
+	 			<nav mfb-menu
+	 				position="br"
+				    active-icon="ion-android-done"
+				    resting-icon="ion-android-done"
+				    label="Save changes"
+				    toggling-method="hover">
+				</nav>
+	      </md-tab-content>
       </md-tab>
     </md-tabs>
