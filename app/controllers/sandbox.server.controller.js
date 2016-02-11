@@ -6,6 +6,7 @@
 var mongoose = require('mongoose');
 var passport = require('passport');
 var Sandbox = mongoose.model('Sandbox');
+var User = mongoose.model('User');
 
 exports.getusersdata = function(req, res) {
 	// TODO: Here, first check if the username has a public moodboard.
@@ -19,6 +20,19 @@ exports.getusersdata = function(req, res) {
         	res.json(doc);
         }
 	});
+};
+
+exports.getusersinfos = function(req, res) {
+    if (req.user) {
+        var username = req.params.username;
+        User.findOne({'username': username}, function(err, doc){
+            if (err) {
+                res.send(err);
+            } else {
+                res.json(doc);
+            }
+        });
+    }
 };
 
 exports.putusercolorpalette = function(req, res) {

@@ -1,13 +1,15 @@
 'use strict';
 
-angular.module('mean').controller('AuthenticationController', ['$scope', '$rootScope', '$http', '$location', 'Authentication', 'SandboxSrv', '$mdToast',
-    function($scope, $rootScope, $http, $location, Authentication, SandboxSrv, $mdToast) {
+angular.module('mean').controller('AuthenticationController', ['$scope', '$rootScope', '$http', '$location', 'Authentication', 'SandboxSrv', '$mdToast', 'UserSrv',
+    function($scope, $rootScope, $http, $location, Authentication, SandboxSrv, $mdToast, UserSrv) {
         $scope.authentication = Authentication;
 
         // If user is signed in then redirect back home
         if ($scope.authentication.user) {
             $location.path('/');
         }
+
+        eventFire(document.getElementById('username'), 'click');
 
         // Toast
         var last = {
@@ -18,7 +20,7 @@ angular.module('mean').controller('AuthenticationController', ['$scope', '$rootS
         };
 
         $scope.toastPosition = angular.extend({},last);
-        
+
         $scope.getToastPosition = function() {
             sanitizePosition();
             return Object.keys($scope.toastPosition)
@@ -33,7 +35,7 @@ angular.module('mean').controller('AuthenticationController', ['$scope', '$rootS
             if ( current.right && last.left ) current.left = false;
             if ( current.left && last.right ) current.right = false;
             last = angular.extend({},current);
-        }  
+        }
 
         $scope.showSimpleToast = function(msg) {
             $mdToast.show(
@@ -63,11 +65,14 @@ angular.module('mean').controller('AuthenticationController', ['$scope', '$rootS
                 $scope.authentication.user = response;
                 $rootScope.username = response.username;
 
-                SandboxSrv.getUserData($rootScope.username)
-                .success(function(data) {
+                SandboxSrv.getUserData($rootScope.username).success(function(data) {
                     $rootScope.userData = data;
                     applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
                     doload(data);
+                });
+
+                UserSrv.getUserInfos($rootScope.username).success(function(data) {
+                    $rootScope.userInfos = data;
                 });
 
                 //And redirect to the index page
