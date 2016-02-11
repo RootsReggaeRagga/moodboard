@@ -99,9 +99,9 @@
       <md-tab label="Privacy" layout-fill>
 	      <md-tab-content flex layout-fill>
 	      	<div layout="column" layout-align="center center" style="height:100%">
-	          	<h3 class="md-headline">Privacy</h3>
+                <i id="privacy-logo" class="material-icons" style="font-size:64px;/*color:red;*/">lock_outline</i>
 				<md-switch ng-model="data.cb1" id="switch-privacy" ng-click="switchPrivacy()"></md-switch>
-				<div id="privacy-value" class="snippet-caption">{{ privacy }}</div>
+                <h3 id="privacy-value" class="md-headline">{{ privacy }}</h3>
 	      	</div>
 	 			<nav mfb-menu
 	 				position="br"
@@ -113,11 +113,19 @@
 	      </md-tab-content>
       </md-tab>
       <md-tab label="Credentials" layout-fill>
-	      <md-tab-content flex layout-fill>
-	      	<div layout="column" layout-align="center center" style="height:100%">
-				<h4 id="privacy-title">Credentials</h4>
+          <md-tab-content flex layout-fill>
+            <div layout="column" layout-align="center center" style="height:100%">
+                <h2 class="md-display-1">Email</h2>
                 <form data-ng-submit="alert('hello');">
-
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Email</label>
+                            <input type="email" ng-model="email">
+                        </md-input-container>
+                    </div>
+                </form>
+                <h2 class="md-display-1">Password</h2>
+                <form data-ng-submit="alert('hello');">
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Old Password</label>
@@ -138,16 +146,15 @@
                             <input type="password" ng-model="settings.confirmpassword">
                         </md-input-container>
                     </div>
-
                 </form>
-	      	</div>
-	 			<nav mfb-menu
-	 				position="br"
-				    active-icon="ion-android-done"
-				    resting-icon="ion-android-done"
-				    label="Save changes"
-				    toggling-method="hover">
-				</nav>
-	      </md-tab-content>
+            </div>
+                <nav mfb-menu
+                    position="br"
+                    active-icon="ion-android-done"
+                    resting-icon="ion-android-done"
+                    label="Save changes"
+                    toggling-method="hover">
+                </nav>
+          </md-tab-content>
       </md-tab>
     </md-tabs>

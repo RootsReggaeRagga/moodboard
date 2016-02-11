@@ -4,6 +4,7 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
   function($scope, $rootScope, $location, SettingsSrv) {
 
       $rootScope.toolbarUrl = 'views/menu/menu.toolbar.full.html';
+
       var tempColorPalette;
 
       // --------------------------- FUNCTIONS --------------------------- //
@@ -46,18 +47,40 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
         $scope.switchPrivacy = function() {
           // Change switch value
           var switchPrivacy = document.getElementById('switch-privacy');
-          if (hasClass(switchPrivacy, 'is-checked'))
-            switchPrivacy.classList.remove('is-checked');
-          else
-            switchPrivacy.classList.add('is-checked');
+          var privacyLogo = document.getElementById('privacy-logo');
 
-          // Change label value
           $scope.privacy = $scope.privacy === 'Private' ? 'Public' : 'Private';
+
+            switch($scope.privacy) {
+              case 'Public':
+                privacyLogo.textContent = 'lock_open';
+              break;
+              case 'Private':
+                privacyLogo.textContent = 'lock_outline';
+              break;
+            }
         }
 
         // After document is rendered and loaded in the DOM
         angular.element(document).ready(function () {
             applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
+
+            $scope.email = $rootScope.userInfos.email;
+
+            $scope.privacy = capitalizeFirstLetter($rootScope.userData.settings.privacy);
+            var switchPrivacy = document.getElementById('switch-privacy');
+            var privacyLogo = document.getElementById('privacy-logo');
+
+            switch($scope.privacy) {
+              case 'Public':
+                privacyLogo.textContent = 'lock_open';
+              break;
+              case 'Private':
+                eventFire(switchPrivacy, 'click');
+                $scope.privacy = capitalizeFirstLetter($rootScope.userData.settings.privacy);
+                privacyLogo.textContent = 'lock_outline';
+              break;
+            }
         });
 
        // --------------------------- APPLY USER'S VALUES --------------------------- //
@@ -65,18 +88,5 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
        $scope.customize = {
         colorpalette: $rootScope.userData.apparences.colorpalette
       };
-
-      /*$scope.privacy = capitalizeFirstLetter($rootScope.userData.settings.privacy);
-      var switchPrivacy = document.getElementById('switch-privacy');
-      switch($scope.privacy) {
-        case 'Public':
-        if (hasClass(switchPrivacy, 'is-checked'))
-          switchPrivacy.classList.remove('is-checked');
-        break;
-        case 'Private':
-        if (!hasClass(switchPrivacy, 'is-checked'))
-          switchPrivacy.classList.add('is-checked');
-        break;
-      }*/
     }
 ]);
