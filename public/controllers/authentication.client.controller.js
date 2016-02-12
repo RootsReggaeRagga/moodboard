@@ -65,16 +65,6 @@ angular.module('mean').controller('AuthenticationController', ['$scope', '$rootS
                 $scope.authentication.user = response;
                 $rootScope.username = response.username;
 
-                SandboxSrv.getUserData($rootScope.username).success(function(data) {
-                    $rootScope.userData = data;
-                    applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
-                    doload(data);
-                });
-
-                UserSrv.getUserInfos($rootScope.username).success(function(data) {
-                    $rootScope.userInfos = data;
-                });
-
                 //And redirect to the index page
                 $location.path('/');
             }).error(function(response) {
