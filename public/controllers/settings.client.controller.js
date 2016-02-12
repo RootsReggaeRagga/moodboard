@@ -66,6 +66,8 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
             applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
 
             $scope.email = $rootScope.userInfos.email;
+            $scope.firstName = $rootScope.userInfos.firstName;
+            $scope.lastName = $rootScope.userInfos.lastName;
 
             $scope.privacy = capitalizeFirstLetter($rootScope.userData.settings.privacy);
             var switchPrivacy = document.getElementById('switch-privacy');

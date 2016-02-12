@@ -115,17 +115,29 @@
       <md-tab label="Credentials" layout-fill>
           <md-tab-content flex layout-fill>
             <div layout="column" layout-align="center center" style="height:100%">
-                <h2 class="md-display-1">Email</h2>
-                <form data-ng-submit="alert('hello');">
+                <h2 class="md-display-1">Me</h2>
+                <form>
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Firstname</label>
+                            <input type="text" ng-model="firstName" disabled>
+                        </md-input-container>
+                    </div>
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Lastname</label>
+                            <input type="text" ng-model="lastName" disabled>
+                        </md-input-container>
+                    </div>
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Email</label>
-                            <input type="email" ng-model="email">
+                            <input type="email" ng-model="email" disabled>
                         </md-input-container>
                     </div>
                 </form>
                 <h2 class="md-display-1">Password</h2>
-                <form data-ng-submit="alert('hello');">
+                <form>
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Old Password</label>

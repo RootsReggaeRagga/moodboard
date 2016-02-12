@@ -29,7 +29,14 @@ exports.getusersinfos = function(req, res) {
             if (err) {
                 res.send(err);
             } else {
-                res.json(doc);
+                var user = {
+                    username: doc.username,
+                    email: doc.email,
+                    firstName: doc.firstName,
+                    lastName: doc.lastName,
+                    created: doc.created
+                }
+                res.json(user);
             }
         });
     }
