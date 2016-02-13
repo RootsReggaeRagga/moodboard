@@ -42,7 +42,7 @@ exports.getusersinfos = function(req, res) {
     }
 };
 
-exports.putusercolorpalette = function(req, res) {
+exports.putSettings = function(req, res) {
 	if (req.user) {
 		var username = req.params.username;
 		var colorPalette = req.body.colorpalette;

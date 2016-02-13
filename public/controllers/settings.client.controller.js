@@ -9,7 +9,8 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
 
       // --------------------------- FUNCTIONS --------------------------- //
       $scope.saveChanges = function() {
-        SettingsSrv.putUserColorPalette($rootScope.username, tempColorPalette, $scope.privacy)
+        SettingsSrv.putSettings($rootScope.username, tempColorPalette, $scope.privacy, 
+              $scope.settings.oldpassword, $scope.settings.newpassword, $scope.settings.confirmpassword)
           .success(function(data) {
             console.log('update color with success. show toast.');
           });
@@ -64,6 +65,7 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
         // After document is rendered and loaded in the DOM
         angular.element(document).ready(function () {
             applyUserInterfaceStyle($rootScope.userData.apparences.colorpalette);
+            tempColorPalette = $rootScope.userData.apparences.colorpalette;
 
             $scope.email = $rootScope.userInfos.email;
             $scope.firstName = $rootScope.userInfos.firstName;
