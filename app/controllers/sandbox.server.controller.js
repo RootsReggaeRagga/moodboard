@@ -47,7 +47,26 @@ exports.putSettings = function(req, res) {
 		var username = req.params.username;
 		var colorPalette = req.body.colorpalette;
 		var privacy = req.body.privacy;
-		Sandbox.findOne({'_username': username}, function(err, doc){
+        var oldpassword = req.body.oldpassword;
+        var newpassword = req.body.newpassword; 
+        var confirmpassword = req.body.confirmpassword;
+        var view = req.body.view;
+
+        // Update password
+        if (view === 'myinfos') {
+            User.findOne({
+                username: username
+            }, function(err, user) {
+                if (user.authenticate(oldpassword)) {
+                    console.log('password is ok.');
+                } else {
+                    res.send('Your current password is not matching');
+                }
+            });
+        }
+
+        // Update colors & privacy settings
+        Sandbox.findOne({'_username': username}, function(err, doc){
 	        if (err) {
 	            res.send(err);
 	        } else {
@@ -57,7 +76,6 @@ exports.putSettings = function(req, res) {
 	        	res.json('Settings updated for user ' + username);
 	        }
 		});
-
 	} else {
 	    res.send('401.Unauthorized');
 	}

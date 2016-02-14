@@ -1,5 +1,5 @@
   <md-tabs flex layout="column" layout-fill>
-      <md-tab label="Apparences" flex layout="column" layout="column" layout-fill>
+      <md-tab label="Colors" flex layout="column" layout="column" layout-fill>
 			  <md-grid-list ng-click="settings.previewColorPalette($event)"
 			        md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
 			        md-row-height-gt-md="1:1" md-row-height="2:2"
@@ -92,7 +92,7 @@
 			    active-icon="ion-android-close"
 			    resting-icon="ion-android-more-vertical"
 			    toggling-method="hover">
-			  	<button mfb-button icon="ion-android-done" label="Save changes" ng-click="saveChanges()"></button>
+			  	<button mfb-button icon="ion-android-done" label="Save changes" ng-click="saveChanges('colors')"></button>
 			  	<button mfb-button icon="ion-android-options" label="Apply default colors" ng-click="applyDefaultValues()"></button>
 			</nav>
       </md-tab>
@@ -108,12 +108,12 @@
 				    active-icon="ion-android-done"
 				    resting-icon="ion-android-done"
 				    label="Save changes"
-				    ng-click="saveChanges()"
+				    ng-click="saveChanges('privacy')"
 				    toggling-method="hover">
 				</nav>
 	      </md-tab-content>
       </md-tab>
-      <md-tab label="Credentials" layout-fill>
+      <md-tab label="My informations" layout-fill>
           <md-tab-content flex layout-fill>
             <div layout="column" layout-align="center center" style="height:100%">
                 <h2 class="md-display-1">Me</h2>
@@ -141,7 +141,7 @@
                 <form>
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
-                            <label>Old Password</label>
+                            <label>Current Password</label>
                             <input type="password" ng-model="settings.oldpassword">
                         </md-input-container>
                     </div>
@@ -166,7 +166,7 @@
                     active-icon="ion-android-done"
                     resting-icon="ion-android-done"
                     label="Save changes"
-                    ng-click="saveChanges()"
+                    ng-click="saveChanges('myinfos')"
                     toggling-method="hover">
                 </nav>
           </md-tab-content>

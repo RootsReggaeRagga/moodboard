@@ -8,9 +8,9 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
       var tempColorPalette;
 
       // --------------------------- FUNCTIONS --------------------------- //
-      $scope.saveChanges = function() {
+      $scope.saveChanges = function(view) {
         SettingsSrv.putSettings($rootScope.username, tempColorPalette, $scope.privacy, 
-              $scope.settings.oldpassword, $scope.settings.newpassword, $scope.settings.confirmpassword)
+              $scope.settings.oldpassword, $scope.settings.newpassword, $scope.settings.confirmpassword, view)
           .success(function(data) {
             console.log('update color with success. show toast.');
           });
