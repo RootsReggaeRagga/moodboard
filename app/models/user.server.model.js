@@ -16,7 +16,12 @@ var UserSchema = new Schema({
 		trim: true
 	},
 	password: {
-		type: String
+		type: String,
+		validate: [
+			function(password) {
+				return password && password.length > 6;
+			}, 'Password should be longer'
+		]
 	},
 	salt: {
 		type: String

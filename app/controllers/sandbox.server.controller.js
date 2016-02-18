@@ -61,14 +61,26 @@ exports.putSettings = function(req, res) {
                 if (user.authenticate(oldpassword)) {
                     if (newpassword === confirmpassword) {
                         user.password = newpassword;
-                        user.save();
-                        res.send('Successfully updated');
+                        user.save(function(err) {
+                            if (err) {
+                                return res.send(400, {
+                                    message: 'TODO: Error message.'
+                                });
+                            } else {
+                                res.send(200, {
+                                    message: 'Successfully updated'
+                                });
+                            }
+                        });
                     } else {
-                        res.send('Confirmation password is not matching with your new password');
+                        return res.send(400, {
+                            message: 'Confirmation password is not matching with your new password'
+                        });
                     }
-                    
                 } else {
-                    res.send('Your current password is not matching');
+                    return res.send(400, {
+                        message: 'Your current password is not matching'
+                    });
                 }
             });
         }
@@ -81,7 +93,9 @@ exports.putSettings = function(req, res) {
 	        	doc.apparences.colorpalette = colorPalette;
 	        	doc.settings.privacy = privacy;
 	        	doc.save();
-	        	res.json('Settings updated for user ' + username);
+                res.send(200, {
+                    message: 'Successfully updated'
+                });
 	        }
 		});
 	} else {
