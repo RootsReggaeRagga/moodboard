@@ -12,6 +12,10 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
         SettingsSrv.putSettings($rootScope.username, tempColorPalette, $scope.privacy, 
               $scope.settings.oldpassword, $scope.settings.newpassword, $scope.settings.confirmpassword, view)
           .success(function(data) {
+            if (view === 'myinfos') {
+                var myEl = document.getElementById('password-form').reset();
+            }
+            // TODO: Show toast : success.
             console.log('update color with success. show toast.');
           });
       }

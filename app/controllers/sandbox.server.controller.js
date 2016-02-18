@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var Sandbox = mongoose.model('Sandbox');
 var User = mongoose.model('User');
+var crypto = require('crypto');
 
 exports.getusersdata = function(req, res) {
 	// TODO: Here, first check if the username has a public moodboard.
@@ -58,7 +59,14 @@ exports.putSettings = function(req, res) {
                 username: username
             }, function(err, user) {
                 if (user.authenticate(oldpassword)) {
-                    console.log('password is ok.');
+                    if (newpassword === confirmpassword) {
+                        user.password = newpassword;
+                        user.save();
+                        res.send('Successfully updated');
+                    } else {
+                        res.send('Confirmation password is not matching with your new password');
+                    }
+                    
                 } else {
                     res.send('Your current password is not matching');
                 }
