@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean').controller('SettingsController', ['$scope', '$rootScope', '$location', 'SettingsSrv',
-  function($scope, $rootScope, $location, SettingsSrv) {
+angular.module('mean').controller('SettingsController', ['$scope', '$rootScope', '$location', 'SettingsSrv', '$mdToast',
+  function($scope, $rootScope, $location, SettingsSrv, $mdToast) {
 
       $rootScope.toolbarUrl = 'views/menu/menu.toolbar.full.html';
 
@@ -15,12 +15,10 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
               if (view === 'myinfos') {
                   var myEl = document.getElementById('password-form').reset();
               }
-              // TODO: Show toast instead of console.log
-              console.log('SUCCESS : ' + response.message);
+              $scope.showSimpleToast(response.message);
           })
           .error(function(err) {
-              // TODO: Show toast instead of console.log
-              console.log('ERROR : ' + err.message);
+              $scope.showSimpleToast(err.message);
           });
       }
 
@@ -40,8 +38,18 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
       }
 
       $scope.applyDefaultValues = function() {
-          console.log('apply default values.');
+          $scope.showSimpleToast('TODO: apply default values');
       }
+
+      // Method to show a simple toast
+      $scope.showSimpleToast = function(msg) {
+          $mdToast.show(
+              $mdToast.simple()
+                  .textContent(msg)
+                  .position(getToastPosition())
+                  .hideDelay(3000)
+              );
+      };
 
       $scope.updateBackgroundColor = function() {
           var color = $scope.customize.colorpalette;
@@ -49,7 +57,7 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
                   // Apply background color if it's a valid hexa color
                   document.getElementById('mainView').style.background = palette.get(color, '100');
               } else {
-                  console.log('hexa color is not valid.');
+                  $scope.showSimpleToast('hexa color is not valid.');
               }
           }
 
@@ -98,7 +106,7 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
         // --------------------------- APPLY USER'S VALUES --------------------------- //
 
         $scope.customize = {
-          colorpalette: $rootScope.userData.apparences.colorpalette
+            colorpalette: $rootScope.userData.apparences.colorpalette
         };
     }
 ]);
