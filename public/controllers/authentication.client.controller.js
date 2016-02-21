@@ -26,6 +26,7 @@ angular.module('mean').controller('AuthenticationController', ['$scope', '$rootS
                 //If successful we assign the response to the global user model
                 $scope.authentication.user = response;
                 $rootScope.username = response.username;
+                $scope.showSimpleToast('Welcome back ' + $rootScope.username + '!');
 
                 //And redirect to the index page
                 $location.path('/');

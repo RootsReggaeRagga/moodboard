@@ -1,6 +1,6 @@
 'use strict'
 
-var lastPosition = { bottom: false, top: true, left: false, right: true };
+var lastPosition = { bottom: true, top: false, left: true, right: false };
 
 var toastPosition = $.extend({},lastPosition);
 

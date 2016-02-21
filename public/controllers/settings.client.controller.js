@@ -61,21 +61,21 @@ angular.module('mean').controller('SettingsController', ['$scope', '$rootScope',
               }
           }
 
-          $scope.switchPrivacy = function() {
-          // Change switch value
-          var switchPrivacy = document.getElementById('switch-privacy');
-          var privacyLogo = document.getElementById('privacy-logo');
+        $scope.switchPrivacy = function() {
+            // Change switch value
+            var switchPrivacy = document.getElementById('switch-privacy');
+            var privacyLogo = document.getElementById('privacy-logo');
 
-          $scope.privacy = $scope.privacy === 'Private' ? 'Public' : 'Private';
+            $scope.privacy = $scope.privacy === 'Private' ? 'Public' : 'Private';
 
-              switch($scope.privacy) {
+            switch($scope.privacy) {
                 case 'Public':
-                  privacyLogo.textContent = 'lock_open';
-                break;
+                    privacyLogo.textContent = 'lock_open';
+                    break;
                 case 'Private':
-                  privacyLogo.textContent = 'lock_outline';
-                break;
-              }
+                    privacyLogo.textContent = 'lock_outline';
+                    break;
+            }
         }
 
         // After document is rendered and loaded in the DOM
