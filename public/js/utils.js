@@ -10,14 +10,14 @@ function hasClass(element, cls) {
 function applyUserInterfaceStyle(color) {
     try { document.querySelector(".mdl-layout__content").style.background = palette.get(color, '100'); } catch (e) {}
   	try { document.querySelector(".md-toolbar-tools").style.background = palette.get(color, '500'); } catch (e) {}
-	  try { document.querySelector(".mdl-switch__thumb").style.background = palette.get(color, '500'); } catch (e) {}
-	  try { document.querySelector(".mdl-button--raised").style.background = palette.get(color, '500');	} catch (e) {}
+    try { document.querySelector(".mdl-switch__thumb").style.background = palette.get(color, '500'); } catch (e) {}
+	try { document.querySelector(".mdl-button--raised").style.background = palette.get(color, '500');	} catch (e) {}
 
     // If a background rectangle is currenty displayed, fill this element with the user's color
     var backgroundRect = document.getElementById('background-rect');
     if (backgroundRect !== null) {
-		    backgroundRect.setAttribute("fill", palette.get(color, '100'));
-	  }
+	   backgroundRect.setAttribute("fill", palette.get(color, '100'));
+	}
 }
 
 function capitalizeFirstLetter(string) {

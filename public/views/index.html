@@ -1,9 +1,9 @@
 <!-- If the user IS NOT logged in -->
 <div style="background-image: url('../img/paris.gif');background-size: cover;position: absolute;top:0;bottom:0;right:0;left:0;overflow:hidden;" data-ng-if="!authentication.user">
-	<div layout="row" layout-align="center center" style="height:100%">
-    <div style="padding:30px; background-color:rgba(255,255,255,0.5); width:800px;">
+	<div layout="row" layout-align="center top" style="margin-top:30px;">
+    <div style="padding:30px; background-color:rgba(255,255,255,0.5); width:60%;">
   	  <form>
-        <h4 class="md-title">Who are U looking for?</h4>
+        <!--<h4 class="md-title">Who are U looking for?</h4>-->
   		  <md-autocomplete
             ng-disabled="ctrl.isDisabled"
             md-no-cache="ctrl.noCache"
@@ -14,7 +14,7 @@
             md-items="item in ctrl.querySearch(ctrl.searchText)"
             md-item-text="item.name"
             md-min-length="0"
-            placeholder="Type name here and press enter"
+            placeholder="Who are you looking for dude?"
             md-menu-class="autocomplete-custom-template" onkeypress="searchUser(event)">
         </md-autocomplete>
       </form>

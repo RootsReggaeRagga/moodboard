@@ -13,8 +13,6 @@ var videos = [];
 var links = [];
 var invalid_img = 'img/invalid_img.png';
 var backgroundcolor;
-var edgeColor;
-var db;
 var clicks = 0;
 
 function doload(userData) {
@@ -23,7 +21,6 @@ function doload(userData) {
     // if (!isBrowserSupported()) return;
 
     var u = userData._username.toUpperCase();
-    edgeColor = userData.apparences.edgeofpictures;
     images = getImagesFromUserJsonData(userData);
     videos = getVideosFromUserJsonData(userData);
     links = getLinksFromUserJsonData(userData);
@@ -240,7 +237,7 @@ function addImage(url, initOpacity, img) {
     var rect = document.createElementNS(SVG, "rect");
     rect.setAttribute("id", s + "-border");
     svgSetXYWH(rect, -imgw / 2, -imgh / 2, imgw, imgh);
-    rect.setAttribute("stroke", edgeColor);
+    //rect.setAttribute("stroke", edgeColor);
     rect.setAttribute("rx", "10");
     rect.setAttribute("ry", "10");
     rect.setAttribute("stroke-width", "10");

@@ -53,20 +53,20 @@
 
 </head>
 <body ng-app="mean" ng-cloak>
-<div class="container">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
-        <!-- Header -->
-        <ng-include src="toolbarUrl"></ng-include>
+    <div class="container">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+            <!-- Header -->
+            <ng-include src="toolbarUrl"></ng-include>
 
-        <!-- Content -->
-        <main id="mainView" class="mdl-layout__content" ng-view layout="column"></main>
+            <!-- Content -->
+            <main id="mainView" class="mdl-layout__content" ng-view layout="column"></main>
 
-        <div id="toast" class="mdl-js-snackbar mdl-snackbar">
-          <div class="mdl-snackbar__text"></div>
-          <button class="mdl-snackbar__action" type="button"></button>
+            <div id="toast" class="mdl-js-snackbar mdl-snackbar">
+              <div class="mdl-snackbar__text"></div>
+              <button class="mdl-snackbar__action" type="button"></button>
+            </div>
         </div>
     </div>
-</div>
 </body>
 </html>
 

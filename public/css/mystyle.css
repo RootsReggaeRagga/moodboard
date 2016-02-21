@@ -4,8 +4,19 @@
     src: url('../fonts/Roboto-Thin.ttf');
 }
 
-html, body { margin:0; padding:0; overflow:hidden }
-svg { position:fixed; top:0; left:0; height:100%; width:100% }
+html, body { 
+	margin:0;
+	padding:0;
+	overflow:hidden
+}
+
+svg {
+	position:fixed;
+	top:0;
+	left:0;
+	height:100%;
+	width:100%
+}
 
 .icon-menu-left {
 	display: inline-block;
@@ -23,8 +34,14 @@ svg { position:fixed; top:0; left:0; height:100%; width:100% }
 	 display:inline-block;
 	 cursor:pointer;
 }
-.invisible { display:none; }
-.visible { display:block; }
+
+.invisible {
+	display:none;
+}
+
+.visible {
+	display:block;
+}
 
 .align-bottom {
 	bottom:0px;
@@ -43,32 +60,68 @@ svg { position:fixed; top:0; left:0; height:100%; width:100% }
 }
 
 .tabsdemoDynamicHeight md-content {
-  background-color: transparent !important; }
-  .tabsdemoDynamicHeight md-content md-tabs {
+  	background-color: transparent !important;
+}
+
+.tabsdemoDynamicHeight md-content md-tabs {
     background: #f6f6f6;
-    border: 1px solid #e1e1e1; }
-    .tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
-      background: white; }
-  .tabsdemoDynamicHeight md-content h1:first-child {
-    margin-top: 0; }
+    border: 1px solid #e1e1e1;
+}
+.tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+    background: white;
+}
+.tabsdemoDynamicHeight md-content h1:first-child {
+    margin-top: 0;
+}
 
 .gridListdemoBasicUsage md-grid-list {
-  margin: 8px; }
-.green { background: #00C853; }
-.pink { background: #FF4081; }
-.black { background: #212121; }
-.brown { background: #795548; }
-.yellow { background: #FFD740; }
-.orange { background: #FFAB40; }
-.blue { background: #448AFF; }
-.purple { background: #E040FB; }
-.red { background: #FF5252; }
-.indigo { background: #3F51B5; }
-.grey { background: #BDBDBD; }
-.cyan { background: #00BCD4; }
-.teal { background: #009688; }
+  	margin: 8px;
+}
+
 .gridListdemoBasicUsage md-grid-tile {
-  transition: all 400ms ease-out 50ms; }
+  	transition: all 400ms ease-out 50ms;
+}
+
+/* Colors based on Material Design Colors */
+.green { 
+	background: #00C853;
+}
+.pink {
+	background: #FF4081;
+}
+.black {
+	background: #212121;
+}
+.brown {
+	background: #795548;
+}
+.yellow {
+	background: #FFD740;
+}
+.orange {
+	background: #FFAB40;
+}
+.blue { 
+	background: #448AFF;
+}
+.purple {
+	background: #E040FB;
+}
+.red {
+	background: #FF5252;
+}
+.indigo {
+	background: #3F51B5;
+}
+.grey {
+	background: #BDBDBD;
+}
+.cyan {
+	background: #00BCD4;
+}
+.teal {
+	background: #009688;
+}
 
 md-input-container {
 	margin:0;

@@ -1,6 +1,11 @@
-'use strict'
+'use strict';
 
-var lastPosition = { bottom: true, top: false, left: true, right: false };
+var lastPosition = {
+	bottom: true,
+	top: false,
+	left: true,
+	right: false
+};
 
 var toastPosition = $.extend({},lastPosition);
 

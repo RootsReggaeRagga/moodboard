@@ -1,16 +1,16 @@
 @font-face {
-    font-family: 'DK';
-    src: url('../fonts/DK.ttf');
+  font-family: 'DK';
+  src: url('../fonts/DK.ttf');
 }
 @font-face {
-    font-family: 'Roboto-Thin';
-    src: url('../fonts/Roboto-Thin.ttf');
+  font-family: 'Roboto-Thin';
+  src: url('../fonts/Roboto-Thin.ttf');
 }
 body {
   background-color: #FFF;
-	background-size: cover;
-	background-attachment: fixed;
-	margin: 0;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
 }
 
 a.mdl-badge {
@@ -45,21 +45,21 @@ a.mdl-badge {
 }
 
 .mdl-layout-title-mini {
-    text-transform: uppercase;
-    left: 10px;
-    display: block;
-    position: relative;
-    font-family: 'Roboto-Thin';
-    font-size: 16px;
-    line-height: 1;
-    letter-spacing: .02em;
-    font-weight: 100;
-    box-sizing: border-box;
+  text-transform: uppercase;
+  left: 10px;
+  display: block;
+  position: relative;
+  font-family: 'Roboto-Thin';
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: .02em;
+  font-weight: 100;
+  box-sizing: border-box;
 }
 
 .white-link {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 /* Content / Container / Main */
@@ -103,7 +103,7 @@ a.mdl-badge {
 }
 
 .mdl-switch.is-checked .mdl-switch__track {
-    background: rgba(204,204,204, 0.5);
+  background: rgba(204,204,204, 0.5);
 }
 
 /* Inputs */
@@ -123,17 +123,17 @@ a.mdl-badge {
 /* Buttons */
 
 /* Cards */
-  .card-wide.mdl-card {
-    width: 512px;
-  }
-  .card-wide > .mdl-card__title {
-    color: #fff;
-    height: 176px;
-    background: gray;
-  }
-  .card-wide > .mdl-card__menu {
-    color: #fff;
-  }
+.card-wide.mdl-card {
+  width: 512px;
+}
+.card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  background: gray;
+}
+.card-wide > .mdl-card__menu {
+  color: #fff;
+}
 
 /* Footer */
 
