@@ -2,7 +2,6 @@
 
 const SVG = "http://www.w3.org/2000/svg";
 const XLINK = "http://www.w3.org/1999/xlink";
-const hotspot = "rgba(110,100,100,0.15)";
 var r2d = 360.0 / (2.0 * Math.PI);
 var gCanvas = null;
 var currentTransform = null;
@@ -13,10 +12,11 @@ var videos = [];
 var links = [];
 var invalid_img = 'img/invalid_img.png';
 var backgroundcolor;
+var color;
+var rgbColor;
 var clicks = 0;
 
 function doload(userData) {
-
     // Check if Chrome or Safari browser
     // if (!isBrowserSupported()) return;
 
@@ -24,7 +24,10 @@ function doload(userData) {
     images = getImagesFromUserJsonData(userData);
     videos = getVideosFromUserJsonData(userData);
     links = getLinksFromUserJsonData(userData);
-    applyUserInterfaceStyle(userData.apparences.colorpalette);
+    color = userData.apparences.colorpalette;
+    applyUserInterfaceStyle(color);
+    
+    rgbColor = hexToRgb(palette.get(color, '500'));
 
     // Get main canvas & retrieve width/height
     gCanvas = document.getElementById("canvas");
@@ -50,9 +53,9 @@ function doload(userData) {
                     Math.floor((Math.random() * gCanvasHeight * 0.5) + gCanvasHeight * 0.3)
                 ];
 
-                var c = 0.25 + (Math.random() * .25);
-                g.vScale = c; // 0.25; // 0.001;
-                g.vRotate = (Math.random() * 40) - 20;
+                //var c = 0.25 + (Math.random() * .25);
+                g.vScale = images[k].scale;
+                g.vRotate = images[k].rotate;
 
                 g.setAttribute('transform',
                     'translate(' + g.vTranslate[0] + ',' + g.vTranslate[1] + ') ' +
@@ -61,9 +64,9 @@ function doload(userData) {
                 );
                 rampOpacityUp(g, 0.45);
             }
-        }(k, images[k]);
+        }(k, images[k].url);
 
-        img.src = images[k];
+        img.src = images[k].url;
     }
 
     // Loading videos
@@ -106,7 +109,15 @@ function doload(userData) {
 function getImagesFromUserJsonData(userData) {
     var images = [];
     for (var i = 0; i < userData.images.length; i++) {
-        images.push(userData.images[i].url);
+        var img = {
+            url: userData.images[i].url,
+            link: userData.images[i].link,
+            rotate: userData.images[i].rotate,
+            scale: userData.images[i].scale
+        };
+        //var json = JSON.stringify(img); //json is a JSON string
+        //images.push(userData.images[i].url);
+        images.push(img);
     }
     return images;
 }
@@ -161,9 +172,9 @@ function newClickableRect(group, id, x, y, w, h, fill, stroke) {
     var p = document.createElementNS(SVG, "rect");
     p.setAttribute("id", id);
     svgSetXYWH(p, x, y, w, h);
-    p.setAttribute("rx", 30);
-    p.setAttribute("ry", 30);
-    p.setAttribute("fill", fill);
+    //p.setAttribute("rx", 30);
+    //p.setAttribute("ry", 30);
+    p.setAttribute("fill",  "rgba(" + fill.r + "," + fill.g + "," + fill.b + ", 0.35)");
 
     // Stroke arround the picture
     // p.setAttribute("stroke", stroke);
@@ -234,7 +245,7 @@ function addImage(url, initOpacity, img) {
     image.setAttributeNS(XLINK, "href", url);
     g.appendChild(image);
 
-    var rect = document.createElementNS(SVG, "rect");
+    /*var rect = document.createElementNS(SVG, "rect");
     rect.setAttribute("id", s + "-border");
     svgSetXYWH(rect, -imgw / 2, -imgh / 2, imgw, imgh);
     //rect.setAttribute("stroke", edgeColor);
@@ -243,7 +254,7 @@ function addImage(url, initOpacity, img) {
     rect.setAttribute("stroke-width", "10");
     rect.setAttribute("fill", "none");
 
-    g.appendChild(rect);
+    g.appendChild(rect);*/
 
     var g2 = document.createElementNS(SVG, "g");
     g2.setAttribute("id", s + "-overlay");
@@ -252,10 +263,10 @@ function addImage(url, initOpacity, img) {
 
     var rsz = 200;
 
-    g2.appendChild(newClickableRect(g, s + "-tl", -imgw / 2, -imgh / 2, rsz, rsz, hotspot, "rgba(100,100,100,0.5)"));
-    g2.appendChild(newClickableRect(g, s + "-tr", imgw / 2 - rsz, -imgh / 2, rsz, rsz, hotspot, "rgba(100,100,100,0.5)"));
-    g2.appendChild(newClickableRect(g, s + "-br", imgw / 2 - rsz, imgh / 2 - rsz, rsz, rsz, hotspot, "rgba(100,100,100,0.5)"));
-    g2.appendChild(newClickableRect(g, s + "-bl", -imgw / 2, imgh / 2 - rsz, rsz, rsz, hotspot, "rgba(100,100,100,0.5)"));
+    g2.appendChild(newClickableRect(g, s + "-tl", -imgw / 2, -imgh / 2, rsz, rsz, rgbColor, rgbColor);
+    g2.appendChild(newClickableRect(g, s + "-tr", imgw / 2 - rsz, -imgh / 2, rsz, rsz, rgbColor, rgbColor));
+    g2.appendChild(newClickableRect(g, s + "-br", imgw / 2 - rsz, imgh / 2 - rsz, rsz, rsz, rgbColor, rgbColor));
+    g2.appendChild(newClickableRect(g, s + "-bl", -imgw / 2, imgh / 2 - rsz, rsz, rsz, rgbColor, rgbColor));
 
     g.appendChild(g2);
     g.addEventListener('mouseover', function(evt) {

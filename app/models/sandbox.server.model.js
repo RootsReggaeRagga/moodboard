@@ -5,7 +5,9 @@ var SandboxSchema = new Schema({
 	_username : String,
 	images : [{
 	    url: String,
-	    link: String
+	    link: String,
+	    rotate: Number,
+	    scale: Number
 	 }],
 	videos : [{
 	    url: String
