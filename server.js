@@ -4,7 +4,10 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var mongoose = require('mongoose');
 
 // Configure Mongoose
-var db = mongoose.connect('mongodb://joey:password@lamppost.17.mongolayer.com:10145/moodboard');
+mongoose.connect('mongodb://joey:password@lamppost.17.mongolayer.com:10145/moodboard',
+	function(err) {
+    	if (err) throw err;
+    });
 
 // Configure Express
 var express = require('./config/express');
